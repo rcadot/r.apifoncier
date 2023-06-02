@@ -3,4 +3,5 @@ template:
   bootstrap: 5
   bootswatch: united
 lang: fr
-
+development:
+  mode: auto
