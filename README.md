@@ -23,17 +23,19 @@ cerema](https://apidf-preprod.cerema.fr/swagger/).
 
 # Installation
 
-You can install the development version of r.apifoncier from
-[GitHub](https://github.com/) with:
+Vous pouvez installer r.apifoncier depuis [GitHub](https://github.com/)
+avec le code suivant :
 
 ``` r
 # install.packages("devtools")
 devtools::install_github("rcadot/r.apifoncier")
 ```
 
-# Indicateur de consommations d’espace communes
+# Consommations d’espace
 
-## Exemple
+## À la commune
+
+### Indicateur de consommations d’espace communes
 
 En indiquant le code INSEE d’une commune au format `numeric` ou
 `character`, on obtient un dataframe des consommations.
@@ -55,3 +57,53 @@ ind_conso_espace_communes(59001)
 #> 11  2019 59001 Abancourt        0         0         0         0         0
 #> 12  2020 59001 Abancourt        0         0         0         0         0
 ```
+
+### Graphique associé à la consommation d’espace d’une commune
+
+La fonction `g_ind_conso_espace_communes()` permet de générer un
+graphique `{plotly}` de la consommation sur la commune de son choix.
+
+``` r
+ind_conso_espace_communes_g(59350)
+```
+
+<img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" />
+
+Par défaut, les consommations sont affichées en hectares, mais on peut
+les indiquer en m² en choisissant `hectare=FALSE`.
+
+``` r
+ind_conso_espace_communes_g(59001,hectare = FALSE,affichage = 'total',legende = FALSE)
+#> Warning in RColorBrewer::brewer.pal(N, "Set2"): minimal value for n is 3, returning requested palette with 3 different levels
+
+#> Warning in RColorBrewer::brewer.pal(N, "Set2"): minimal value for n is 3, returning requested palette with 3 different levels
+```
+
+<img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
+
+## Au département
+
+On retrouve les mêmes fonctionnalités à l’échelle départementale.
+
+``` r
+ind_conso_espace_dep(59)
+#>    annee iddep naf_arti conso_act conso_hab conso_mix conso_inc
+#> 1   2009    59  7160318   2411926   4331601    161717    255074
+#> 2   2010    59  7160627   2412051   4331880    161779    254917
+#> 3   2011    59  7148756   2659007   4138877    131963    218909
+#> 4   2012    59  5405315   2015161   2961481    105407    323266
+#> 5   2013    59  5996455   2109677   3600919    153014    132845
+#> 6   2014    59  4999980   1601109   3162301    125174    111396
+#> 7   2015    59  3252097    973713   2063197    103209    111978
+#> 8   2016    59  4061015   1556719   2254362     38928    211006
+#> 9   2017    59  3342142   1094209   2074584     79102     94247
+#> 10  2018    59  3696251   1349675   2123473     68086    155017
+#> 11  2019    59  3586737   1249801   2194795     30123    112018
+#> 12  2020    59  3183794    937015   2088970     58280     99529
+```
+
+``` r
+ind_conso_espace_dep_g(59)
+```
+
+<img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />

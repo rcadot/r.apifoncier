@@ -1,5 +1,6 @@
 ---
 output: github_document
+always_allow_html: true
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -29,18 +30,50 @@ Grâce à `{r.apifoncier}` vous pouvez accéder aux données disponibles par l'[
 
 # Installation
 
-You can install the development version of r.apifoncier from [GitHub](https://github.com/) with:
+Vous pouvez installer r.apifoncier depuis [GitHub](https://github.com/) avec le code suivant :
 
 ``` r
 # install.packages("devtools")
 devtools::install_github("rcadot/r.apifoncier")
 ```
 
-# Indicateur de consommations d'espace communes
+# Consommations d'espace
 
-## Exemple
+## À la commune
+
+### Indicateur de consommations d'espace communes
+
 En indiquant le code INSEE d'une commune au format `numeric` ou `character`, on obtient un dataframe des consommations.
 
-```{r examples-ind_conso_espace_communes}
+```{r}
+library(r.apifoncier)
 ind_conso_espace_communes(59001)
 ```
+
+
+### Graphique associé à la consommation d'espace d'une commune
+
+La fonction `g_ind_conso_espace_communes()` permet de générer un graphique `{plotly}` de la consommation sur la commune de son choix.
+
+```{r}
+ind_conso_espace_communes_g(59350)
+```
+
+Par défaut, les consommations sont affichées en hectares, mais on peut les indiquer en m² en choisissant `hectare=FALSE`.
+
+```{r}
+ind_conso_espace_communes_g(59001,hectare = FALSE,affichage = 'total',legende = FALSE)
+```
+
+## Au département
+
+On retrouve les mêmes fonctionnalités à l'échelle départementale.
+
+```{r}
+ind_conso_espace_dep(59)
+```
+```{r}
+ind_conso_espace_dep_g(59)
+```
+
+
