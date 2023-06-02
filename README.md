@@ -31,17 +31,16 @@ avec le code suivant :
 devtools::install_github("rcadot/r.apifoncier")
 ```
 
-# Consommations d’espace
+# Indicateurs de consommation d’espace (accès libre)
 
-## À la commune
-
-### Indicateur de consommations d’espace communes
+Les données sont disponibles à deux échelles : communes et départements.
 
 En indiquant le code INSEE d’une commune au format `numeric` ou
 `character`, on obtient un dataframe des consommations.
 
 ``` r
 library(r.apifoncier)
+
 ind_conso_espace_communes(59001)
 #>    annee idcom  idcomtxt naf_arti conso_act conso_hab conso_mix conso_inc
 #> 1   2009 59001 Abancourt    13286         0     13286         0         0
@@ -58,8 +57,6 @@ ind_conso_espace_communes(59001)
 #> 12  2020 59001 Abancourt        0         0         0         0         0
 ```
 
-### Graphique associé à la consommation d’espace d’une commune
-
 La fonction `g_ind_conso_espace_communes()` permet de générer un
 graphique `{plotly}` de la consommation sur la commune de son choix.
 
@@ -73,37 +70,56 @@ Par défaut, les consommations sont affichées en hectares, mais on peut
 les indiquer en m² en choisissant `hectare=FALSE`.
 
 ``` r
-ind_conso_espace_communes_g(59001,hectare = FALSE,affichage = 'total',legende = FALSE)
-#> Warning in RColorBrewer::brewer.pal(N, "Set2"): minimal value for n is 3, returning requested palette with 3 different levels
-
-#> Warning in RColorBrewer::brewer.pal(N, "Set2"): minimal value for n is 3, returning requested palette with 3 different levels
+ind_conso_espace_communes_g(
+  code_insee = 59001,
+  hectare = FALSE,
+  affichage = 'total',
+  legende = FALSE
+)
 ```
 
 <img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
 
-## Au département
+# Indicateurs de prix (accès libre)
 
-On retrouve les mêmes fonctionnalités à l’échelle départementale.
+Les indicateurs de prix sont disponibles annuellement et de manière
+triennale à plusieurs échelles :
 
-``` r
-ind_conso_espace_dep(59)
-#>    annee iddep naf_arti conso_act conso_hab conso_mix conso_inc
-#> 1   2009    59  7160318   2411926   4331601    161717    255074
-#> 2   2010    59  7160627   2412051   4331880    161779    254917
-#> 3   2011    59  7148756   2659007   4138877    131963    218909
-#> 4   2012    59  5405315   2015161   2961481    105407    323266
-#> 5   2013    59  5996455   2109677   3600919    153014    132845
-#> 6   2014    59  4999980   1601109   3162301    125174    111396
-#> 7   2015    59  3252097    973713   2063197    103209    111978
-#> 8   2016    59  4061015   1556719   2254362     38928    211006
-#> 9   2017    59  3342142   1094209   2074584     79102     94247
-#> 10  2018    59  3696251   1349675   2123473     68086    155017
-#> 11  2019    59  3586737   1249801   2194795     30123    112018
-#> 12  2020    59  3183794    937015   2088970     58280     99529
-```
+- Régions ;
+- Départements ;
+- Aires d’attractivités des villes ;
+- EPCI ;
+- Communes.
 
 ``` r
-ind_conso_espace_dep_g(59)
+ind_dv3f_com_annuel('59350') %>% 
+  dplyr::select(1:10) # Le résultat contient 617 colonnes
+#>    annee codgeo libgeo nbtrans_cod1 valeurfonc_sum_cod1 nbtrans_cod2
+#> 1   2010  59350  Lille         5120           837659942           57
+#> 2   2011  59350  Lille         4474           882766180           52
+#> 3   2012  59350  Lille         4200           813426374           78
+#> 4   2013  59350  Lille         3971           781613569           45
+#> 5   2014  59350  Lille         3931           804964493           40
+#> 6   2015  59350  Lille         4472           913893573           36
+#> 7   2016  59350  Lille         4708          1016164793           43
+#> 8   2017  59350  Lille         5387          1315158597           49
+#> 9   2018  59350  Lille         5587          1533348525           50
+#> 10  2019  59350  Lille         5914          1316236006           45
+#> 11  2020  59350  Lille         5115          1338281971           52
+#> 12  2021  59350  Lille         5638          1368565071           74
+#> 13  2022  59350  Lille         5188          1793537471           44
+#>    valeurfonc_sum_cod2 nbtrans_cod11 valeurfonc_sum_cod11 nbtrans_cod111
+#> 1             11280409          1018            191957219           1009
+#> 2             12029527          1007            193464212           1001
+#> 3             10470981           898            185220834            888
+#> 4              9220512           900            176372788            891
+#> 5              9204725           809            158841064            800
+#> 6              5374163           950            190094699            939
+#> 7             18337891          1074            218153085           1058
+#> 8             21091314          1066            218596803           1045
+#> 9              8863366           999            209565961            986
+#> 10            21399434          1129            260309641           1125
+#> 11            22967299          1068            266500635           1057
+#> 12            18772045          1102            286547302           1092
+#> 13            19906913          1030            281169115           1020
 ```
-
-<img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />

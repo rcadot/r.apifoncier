@@ -72,7 +72,7 @@ ind_conso_espace_dep_g <- function(
     prep_graph <-
       res %>%
       dplyr::rename(
-        "Activit\u00e9"=conso_act,
+        "Activite"=conso_act,
         "Habitat"=conso_hab,
         "Mixte"=conso_mix,
         "Inconnu"=conso_inc
@@ -97,12 +97,12 @@ ind_conso_espace_dep_g <- function(
       x=~annee,
       y=~conso,
       color=~type,
-      hovertemplate = paste('%{y:.2f}',ifelse(hectare,'hectares','m²')),
+      hovertemplate = paste('%{y:.2f}',ifelse(hectare,'hectares','m2')),
       type="bar"
     ) %>%
     plotly::layout(title="Consommation d'espace",
                    xaxis = list(title = '',showticklabels=TRUE),
-                   yaxis = list(title = ifelse(hectare,'hectares','metres carr\u00e9s')),
+                   yaxis = list(title = ifelse(hectare,'hectares','metres carre')),
                    barmode = 'stack',
                    hovermode = "x unified",
                    # hovermode="color",

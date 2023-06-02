@@ -102,7 +102,7 @@ ind_conso_espace_communes_g <- function(
       x=~annee,
       y=~conso,
       color=~type,
-      hovertemplate = paste('%{y:.2f}',ifelse(hectare,'hectares','m²')),
+      hovertemplate = paste('%{y:.2f}',ifelse(hectare,'hectares','m2')),
       type="bar"
     ) %>%
     plotly::layout(title="Consommation d'espace",

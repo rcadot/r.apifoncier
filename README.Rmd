@@ -37,21 +37,17 @@ Vous pouvez installer r.apifoncier depuis [GitHub](https://github.com/) avec le 
 devtools::install_github("rcadot/r.apifoncier")
 ```
 
-# Consommations d'espace
+# Indicateurs de consommation d'espace (accès libre)
 
-## À la commune
-
-### Indicateur de consommations d'espace communes
+Les données sont disponibles à deux échelles : communes et départements.
 
 En indiquant le code INSEE d'une commune au format `numeric` ou `character`, on obtient un dataframe des consommations.
 
 ```{r}
 library(r.apifoncier)
+
 ind_conso_espace_communes(59001)
 ```
-
-
-### Graphique associé à la consommation d'espace d'une commune
 
 La fonction `g_ind_conso_espace_communes()` permet de générer un graphique `{plotly}` de la consommation sur la commune de son choix.
 
@@ -61,19 +57,28 @@ ind_conso_espace_communes_g(59350)
 
 Par défaut, les consommations sont affichées en hectares, mais on peut les indiquer en m² en choisissant `hectare=FALSE`.
 
-```{r}
-ind_conso_espace_communes_g(59001,hectare = FALSE,affichage = 'total',legende = FALSE)
+```{r message=FALSE, warning=FALSE}
+ind_conso_espace_communes_g(
+  code_insee = 59001,
+  hectare = FALSE,
+  affichage = 'total',
+  legende = FALSE
+)
 ```
 
-## Au département
+# Indicateurs de prix (accès libre)
 
-On retrouve les mêmes fonctionnalités à l'échelle départementale.
+Les indicateurs de prix sont disponibles annuellement et de manière triennale à plusieurs échelles :
+
+- Régions ;
+- Départements ;
+- Aires d'attractivités des villes ;
+- EPCI ; 
+- Communes.
 
 ```{r}
-ind_conso_espace_dep(59)
-```
-```{r}
-ind_conso_espace_dep_g(59)
+ind_dv3f_com_annuel('59350') %>% 
+  dplyr::select(1:10) # Le résultat contient 617 colonnes
 ```
 
 
