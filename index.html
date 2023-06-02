@@ -75,17 +75,13 @@
 <span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"rcadot/r.apifoncier"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level1">
-<h1 id="consommations-despace">Consommations d’espace<a class="anchor" aria-label="anchor" href="#consommations-despace"></a>
+<h1 id="indicateurs-de-consommation-despace-accès-libre">Indicateurs de consommation d’espace (accès libre)<a class="anchor" aria-label="anchor" href="#indicateurs-de-consommation-despace-acc%C3%A8s-libre"></a>
 </h1>
-<div class="section level2">
-<h2 id="à-la-commune">À la commune<a class="anchor" aria-label="anchor" href="#%C3%A0-la-commune"></a>
-</h2>
-<div class="section level3">
-<h3 id="indicateur-de-consommations-despace-communes">Indicateur de consommations d’espace communes<a class="anchor" aria-label="anchor" href="#indicateur-de-consommations-despace-communes"></a>
-</h3>
+<p>Les données sont disponibles à deux échelles : communes et départements.</p>
 <p>En indiquant le code INSEE d’une commune au format <code>numeric</code> ou <code>character</code>, on obtient un dataframe des consommations.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/rcadot/r.apifoncier" class="external-link">r.apifoncier</a></span><span class="op">)</span></span>
+<span></span>
 <span><span class="fu"><a href="reference/ind_conso_espace_communes.html">ind_conso_espace_communes</a></span><span class="op">(</span><span class="fl">59001</span><span class="op">)</span></span>
 <span><span class="co">#&gt;    annee idcom  idcomtxt naf_arti conso_act conso_hab conso_mix conso_inc</span></span>
 <span><span class="co">#&gt; 1   2009 59001 Abancourt    13286         0     13286         0         0</span></span>
@@ -100,46 +96,62 @@
 <span><span class="co">#&gt; 10  2018 59001 Abancourt        0         0         0         0         0</span></span>
 <span><span class="co">#&gt; 11  2019 59001 Abancourt        0         0         0         0         0</span></span>
 <span><span class="co">#&gt; 12  2020 59001 Abancourt        0         0         0         0         0</span></span></code></pre></div>
-</div>
-<div class="section level3">
-<h3 id="graphique-associé-à-la-consommation-despace-dune-commune">Graphique associé à la consommation d’espace d’une commune<a class="anchor" aria-label="anchor" href="#graphique-associ%C3%A9-%C3%A0-la-consommation-despace-dune-commune"></a>
-</h3>
 <p>La fonction <code>g_ind_conso_espace_communes()</code> permet de générer un graphique <a href="https://plotly-r.com" class="external-link">plotly</a> de la consommation sur la commune de son choix.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/ind_conso_espace_communes_g.html">ind_conso_espace_communes_g</a></span><span class="op">(</span><span class="fl">59350</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-3-1.png" width="100%"></p>
 <p>Par défaut, les consommations sont affichées en hectares, mais on peut les indiquer en m² en choisissant <code>hectare=FALSE</code>.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/ind_conso_espace_communes_g.html">ind_conso_espace_communes_g</a></span><span class="op">(</span><span class="fl">59001</span>,hectare <span class="op">=</span> <span class="cn">FALSE</span>,affichage <span class="op">=</span> <span class="st">'total'</span>,legende <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning in RColorBrewer::brewer.pal(N, "Set2"): minimal value for n is 3, returning requested palette with 3 different levels</span></span>
-<span></span>
-<span><span class="co">#&gt; Warning in RColorBrewer::brewer.pal(N, "Set2"): minimal value for n is 3, returning requested palette with 3 different levels</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/ind_conso_espace_communes_g.html">ind_conso_espace_communes_g</a></span><span class="op">(</span></span>
+<span>  code_insee <span class="op">=</span> <span class="fl">59001</span>,</span>
+<span>  hectare <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  affichage <span class="op">=</span> <span class="st">'total'</span>,</span>
+<span>  legende <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-4-1.png" width="100%"></p>
 </div>
-</div>
-<div class="section level2">
-<h2 id="au-département">Au département<a class="anchor" aria-label="anchor" href="#au-d%C3%A9partement"></a>
-</h2>
-<p>On retrouve les mêmes fonctionnalités à l’échelle départementale.</p>
+<div class="section level1">
+<h1 id="indicateurs-de-prix-accès-libre">Indicateurs de prix (accès libre)<a class="anchor" aria-label="anchor" href="#indicateurs-de-prix-acc%C3%A8s-libre"></a>
+</h1>
+<p>Les indicateurs de prix sont disponibles annuellement et de manière triennale à plusieurs échelles :</p>
+<ul>
+<li>Régions ;</li>
+<li>Départements ;</li>
+<li>Aires d’attractivités des villes ;</li>
+<li>EPCI ;</li>
+<li>Communes.</li>
+</ul>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/ind_conso_espace_dep.html">ind_conso_espace_dep</a></span><span class="op">(</span><span class="fl">59</span><span class="op">)</span></span>
-<span><span class="co">#&gt;    annee iddep naf_arti conso_act conso_hab conso_mix conso_inc</span></span>
-<span><span class="co">#&gt; 1   2009    59  7160318   2411926   4331601    161717    255074</span></span>
-<span><span class="co">#&gt; 2   2010    59  7160627   2412051   4331880    161779    254917</span></span>
-<span><span class="co">#&gt; 3   2011    59  7148756   2659007   4138877    131963    218909</span></span>
-<span><span class="co">#&gt; 4   2012    59  5405315   2015161   2961481    105407    323266</span></span>
-<span><span class="co">#&gt; 5   2013    59  5996455   2109677   3600919    153014    132845</span></span>
-<span><span class="co">#&gt; 6   2014    59  4999980   1601109   3162301    125174    111396</span></span>
-<span><span class="co">#&gt; 7   2015    59  3252097    973713   2063197    103209    111978</span></span>
-<span><span class="co">#&gt; 8   2016    59  4061015   1556719   2254362     38928    211006</span></span>
-<span><span class="co">#&gt; 9   2017    59  3342142   1094209   2074584     79102     94247</span></span>
-<span><span class="co">#&gt; 10  2018    59  3696251   1349675   2123473     68086    155017</span></span>
-<span><span class="co">#&gt; 11  2019    59  3586737   1249801   2194795     30123    112018</span></span>
-<span><span class="co">#&gt; 12  2020    59  3183794    937015   2088970     58280     99529</span></span></code></pre></div>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/ind_conso_espace_dep_g.html">ind_conso_espace_dep_g</a></span><span class="op">(</span><span class="fl">59</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-unnamed-chunk-6-1.png" width="100%"></p>
-</div>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/ind_dv3f_com_annuel.html">ind_dv3f_com_annuel</a></span><span class="op">(</span><span class="st">'59350'</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span> <span class="co"># Le résultat contient 617 colonnes</span></span>
+<span><span class="co">#&gt;    annee codgeo libgeo nbtrans_cod1 valeurfonc_sum_cod1 nbtrans_cod2</span></span>
+<span><span class="co">#&gt; 1   2010  59350  Lille         5120           837659942           57</span></span>
+<span><span class="co">#&gt; 2   2011  59350  Lille         4474           882766180           52</span></span>
+<span><span class="co">#&gt; 3   2012  59350  Lille         4200           813426374           78</span></span>
+<span><span class="co">#&gt; 4   2013  59350  Lille         3971           781613569           45</span></span>
+<span><span class="co">#&gt; 5   2014  59350  Lille         3931           804964493           40</span></span>
+<span><span class="co">#&gt; 6   2015  59350  Lille         4472           913893573           36</span></span>
+<span><span class="co">#&gt; 7   2016  59350  Lille         4708          1016164793           43</span></span>
+<span><span class="co">#&gt; 8   2017  59350  Lille         5387          1315158597           49</span></span>
+<span><span class="co">#&gt; 9   2018  59350  Lille         5587          1533348525           50</span></span>
+<span><span class="co">#&gt; 10  2019  59350  Lille         5914          1316236006           45</span></span>
+<span><span class="co">#&gt; 11  2020  59350  Lille         5115          1338281971           52</span></span>
+<span><span class="co">#&gt; 12  2021  59350  Lille         5638          1368565071           74</span></span>
+<span><span class="co">#&gt; 13  2022  59350  Lille         5188          1793537471           44</span></span>
+<span><span class="co">#&gt;    valeurfonc_sum_cod2 nbtrans_cod11 valeurfonc_sum_cod11 nbtrans_cod111</span></span>
+<span><span class="co">#&gt; 1             11280409          1018            191957219           1009</span></span>
+<span><span class="co">#&gt; 2             12029527          1007            193464212           1001</span></span>
+<span><span class="co">#&gt; 3             10470981           898            185220834            888</span></span>
+<span><span class="co">#&gt; 4              9220512           900            176372788            891</span></span>
+<span><span class="co">#&gt; 5              9204725           809            158841064            800</span></span>
+<span><span class="co">#&gt; 6              5374163           950            190094699            939</span></span>
+<span><span class="co">#&gt; 7             18337891          1074            218153085           1058</span></span>
+<span><span class="co">#&gt; 8             21091314          1066            218596803           1045</span></span>
+<span><span class="co">#&gt; 9              8863366           999            209565961            986</span></span>
+<span><span class="co">#&gt; 10            21399434          1129            260309641           1125</span></span>
+<span><span class="co">#&gt; 11            22967299          1068            266500635           1057</span></span>
+<span><span class="co">#&gt; 12            18772045          1102            286547302           1092</span></span>
+<span><span class="co">#&gt; 13            19906913          1030            281169115           1020</span></span></code></pre></div>
 </div>
 
   </main><aside class="col-md-3"><div class="liens">
