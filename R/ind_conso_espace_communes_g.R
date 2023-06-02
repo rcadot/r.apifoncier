@@ -6,7 +6,7 @@
 #' @param ordering Which field to use when ordering the results.
 #' @param page A page number within the paginated result set.
 #' @param page_size Number of results to return per page.
-#' @param legende Afficahge de la légende True/False
+#' @param legende Affichage de la légende True/False
 #' @param affichage 'total' ou par 'type'
 #' @param hectare valeur de la consommation en hectares
 #'
@@ -15,7 +15,12 @@
 #'
 #' @examples
 #' ind_conso_espace_communes_g(59350)
-#' ind_conso_espace_communes_g(59001,hectare = FALSE,affichage = 'total',legende = FALSE)
+#' ind_conso_espace_communes_g(
+#'   59001,
+#'   hectare = FALSE,
+#'   affichage = 'total',
+#'   legende = FALSE
+#' )
 ind_conso_espace_communes_g <- function(
     code_insee,
     annee_max=NULL,
@@ -72,7 +77,7 @@ ind_conso_espace_communes_g <- function(
     prep_graph <-
       res %>%
       dplyr::rename(
-        "Activité"=conso_act,
+        "Activite"=conso_act,
         "Habitat"=conso_hab,
         "Mixte"=conso_mix,
         "Inconnu"=conso_inc
@@ -97,13 +102,15 @@ ind_conso_espace_communes_g <- function(
       x=~annee,
       y=~conso,
       color=~type,
+      hovertemplate = paste('%{y:.2f}',ifelse(hectare,'hectares','m²')),
       type="bar"
     ) %>%
     plotly::layout(title="Consommation d'espace",
                    xaxis = list(title = '',showticklabels=TRUE),
-                   yaxis = list(title = ifelse(hectare,'hectares','mètres carrés')),
+                   yaxis = list(title = ifelse(hectare,'hectares','metres carres')),
                    barmode = 'stack',
-                   hovermode="color",
+                   hovermode = "x unified",
+                   # hovermode="color",
                    showlegend=legende) %>%
     plotly::config(displaylogo = FALSE)
 

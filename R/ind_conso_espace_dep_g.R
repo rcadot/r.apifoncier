@@ -8,6 +8,7 @@
 #' @param page_size Number of results to return per page.
 #' @param affichage 'total' ou par 'type'
 #' @param hectare valeur de la consommation en hectares
+#' @param legende Affichage de la légende True/False
 #'
 #' @return Renvoie les indicateurs de consommation d'espace pour la période comprise entre annee_min et annee_max, bornes incluses, à l'échelle départementale
 #' @export
@@ -71,7 +72,7 @@ ind_conso_espace_dep_g <- function(
     prep_graph <-
       res %>%
       dplyr::rename(
-        "Activité"=conso_act,
+        "Activit\u00e9"=conso_act,
         "Habitat"=conso_hab,
         "Mixte"=conso_mix,
         "Inconnu"=conso_inc
@@ -96,13 +97,15 @@ ind_conso_espace_dep_g <- function(
       x=~annee,
       y=~conso,
       color=~type,
+      hovertemplate = paste('%{y:.2f}',ifelse(hectare,'hectares','m²')),
       type="bar"
     ) %>%
     plotly::layout(title="Consommation d'espace",
                    xaxis = list(title = '',showticklabels=TRUE),
-                   yaxis = list(title = ifelse(hectare,'hectares','mètres carrés')),
+                   yaxis = list(title = ifelse(hectare,'hectares','metres carr\u00e9s')),
                    barmode = 'stack',
-                   hovermode="color",
+                   hovermode = "x unified",
+                   # hovermode="color",
                    showlegend=legende) %>%
     plotly::config(displaylogo = FALSE)
 

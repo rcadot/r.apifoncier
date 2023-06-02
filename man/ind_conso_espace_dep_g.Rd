@@ -29,6 +29,8 @@ ind_conso_espace_dep_g(
 
 \item{page_size}{Number of results to return per page.}
 
+\item{legende}{Affichage de la légende True/False}
+
 \item{affichage}{'total' ou par 'type'}
 
 \item{hectare}{valeur de la consommation en hectares}

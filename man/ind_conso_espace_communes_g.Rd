@@ -31,7 +31,7 @@ ind_conso_espace_communes_g(
 
 \item{affichage}{'total' ou par 'type'}
 
-\item{legende}{Afficahge de la légende True/False}
+\item{legende}{Affichage de la légende True/False}
 
 \item{hectare}{valeur de la consommation en hectares}
 }
@@ -43,5 +43,10 @@ Consommation d'espace par commune (Graphique)
 }
 \examples{
 ind_conso_espace_communes_g(59350)
-ind_conso_espace_communes_g(59001,hectare = FALSE,affichage = 'total',legende = FALSE)
+ind_conso_espace_communes_g(
+  59001,
+  hectare = FALSE,
+  affichage = 'total',
+  legende = FALSE
+)
 }
