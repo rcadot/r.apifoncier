@@ -16,7 +16,9 @@ Imports:
     magrittr,
     plotly,
     purrr,
+    sf,
     stringr,
+    tibble,
     tidyr
 Suggests: 
     testthat (>= 3.0.0)

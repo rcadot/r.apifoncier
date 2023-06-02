@@ -1,5 +1,8 @@
 ---
-output: github_document
+output:
+  github_document:
+    toc: true
+    toc_depth: 2
 always_allow_html: true
 ---
 
@@ -10,7 +13,8 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   fig.path = "man/figures/README-",
-  out.width = "100%"
+  out.width = "50%",
+  dpi = 1200
 )
 ```
 
@@ -51,13 +55,14 @@ ind_conso_espace_communes(59001)
 
 La fonction `g_ind_conso_espace_communes()` permet de générer un graphique `{plotly}` de la consommation sur la commune de son choix.
 
-```{r dpi=600}
+```{r}
 ind_conso_espace_communes_g(59350)
 ```
 
+
 Par défaut, les consommations sont affichées en hectares, mais on peut les indiquer en m² en choisissant `hectare=FALSE`.
 
-```{r message=FALSE, warning=FALSE, dpi=600}
+```{r message=FALSE, warning=FALSE}
 ind_conso_espace_communes_g(
   code_insee = 59350,
   hectare = FALSE,
@@ -65,6 +70,7 @@ ind_conso_espace_communes_g(
   legende = FALSE
 )
 ```
+
 
 # Indicateurs de prix (accès libre)
 
@@ -81,4 +87,29 @@ ind_dv3f_com_annuel('59350') %>%
   dplyr::select(1:10) # Le résultat contient 617 colonnes
 ```
 
+# Cartofriches (accès libre)
+
+On peut accéder aux friches, soit par département, commune ou encore à partir d'une emprise au format WGS84
+
+```{r}
+cartofriches_friches(coddep = 59,page_size = 3)
+```
+
+
+```{r}
+cartofriches_friches(code_insee = 59350,page_size = 3)
+```
+
+
+```{r}
+cartofriches_friches(in_bbox = '2.827642,50.495958,3.32616,50.767734',page_size = 2)
+```
+
+On peut également accéder aux objets géographiques associés.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+cartofriches_geofriches(code_insee = 59350,page_size = 10) %>% 
+  dplyr::select(geometry) %>% 
+  mapview::mapview()
+```
 
