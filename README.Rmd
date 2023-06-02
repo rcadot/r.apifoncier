@@ -1,0 +1,46 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+
+> 🚧 Warning
+>
+> Il s'agit d'une version de développement
+
+
+> 📘 Info
+>
+> Les wrappers d'API sont des outils qui facilitent l'utilisation des fonctionnalités offertes par une interface de programmation d'applications (API). Ils simplifient la communication entre une application et une API en gérant les détails techniques et en offrant une interface plus conviviale. Les wrappers d'API permettent aux développeurs de se concentrer sur la logique de leur application plutôt que sur les aspects techniques de l'intégration avec l'API. Ils accélèrent le développement et améliorent la productivité en réduisant la quantité de code nécessaire.
+
+
+Grâce à `{r.apifoncier}` vous pouvez accéder aux données disponibles par l'[API données foncières du cerema](https://apidf-preprod.cerema.fr/swagger/).
+
+
+# Installation
+
+You can install the development version of r.apifoncier from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("rcadot/r.apifoncier")
+```
+
+# Indicateur de consommations d'espace communes
+
+## Exemple
+En indiquant le code INSEE d'une commune au format `numeric` ou `character`, on obtient un dataframe des consommations.
+
+```{r examples-ind_conso_espace_communes}
+ind_conso_espace_communes(59001)
+```
