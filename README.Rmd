@@ -107,7 +107,7 @@ cartofriches_friches(in_bbox = '2.827642,50.495958,3.32616,50.767734',page_size 
 
 On peut également accéder aux objets géographiques associés.
 
-```{r echo=FALSE, message=FALSE, warning=FALSE}
+```{r echo=TRUE, message=FALSE, warning=FALSE}
 cartofriches_geofriches(code_insee = 59350,page_size = 10) %>% 
   dplyr::select(geometry) %>% 
   mapview::mapview()
