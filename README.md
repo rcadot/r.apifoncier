@@ -71,7 +71,7 @@ les indiquer en m² en choisissant `hectare=FALSE`.
 
 ``` r
 ind_conso_espace_communes_g(
-  code_insee = 59001,
+  code_insee = 59350,
   hectare = FALSE,
   affichage = 'total',
   legende = FALSE

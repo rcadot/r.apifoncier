@@ -51,15 +51,15 @@ ind_conso_espace_communes(59001)
 
 La fonction `g_ind_conso_espace_communes()` permet de générer un graphique `{plotly}` de la consommation sur la commune de son choix.
 
-```{r}
+```{r dpi=600}
 ind_conso_espace_communes_g(59350)
 ```
 
 Par défaut, les consommations sont affichées en hectares, mais on peut les indiquer en m² en choisissant `hectare=FALSE`.
 
-```{r message=FALSE, warning=FALSE}
+```{r message=FALSE, warning=FALSE, dpi=600}
 ind_conso_espace_communes_g(
-  code_insee = 59001,
+  code_insee = 59350,
   hectare = FALSE,
   affichage = 'total',
   legende = FALSE
