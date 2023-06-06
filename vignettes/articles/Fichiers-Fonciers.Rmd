@@ -9,6 +9,11 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup}
-library(r.apifoncier)
-```
+Les fonctions présentes dans le package commencent par `ff_` et permettent d'interroger 
+- les parcelles ;
+- les tups ;
+- les locaux ;
+- les propriétaires ;
+- avec ou sans géométrie.
+
+Retrouvez l'ensemble des fonctions disponibles directement dans l'onglet référence.

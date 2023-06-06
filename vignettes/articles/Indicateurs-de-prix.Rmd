@@ -11,6 +11,8 @@ knitr::opts_chunk$set(
 
 On peut extraire les données prix pour le périmètre de son choix tel que la commune ou l'epci comme dans les exemples ci-dessous.
 
+L'ensemble des fonctions liées aux indicateurs de prix (présentes dans l'onglet référence) commencent par le préfixe `ind_dv3f_PERI_FREQ` où `PERI`et `FREQ` désigne les périmètres et fréquences des données comme indiqué dans le [chapitre dédié](https://rcadot.github.io/r.apifoncier/index.html#indicateurs-de-prix-acc%C3%A8s-libre).
+
 ```{r setup}
 library(r.apifoncier)
 ```

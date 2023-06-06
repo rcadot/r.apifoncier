@@ -9,11 +9,22 @@ knitr::opts_chunk$set(
 )
 ```
 
+Grâce aux fonction commençant par le préfixe `dvf_opendata_`, on peut interroger l'API données foncières afin d'obtenir les parcelles ayant fait l'objet d'une mutation avec ou sans géométrie.
+
+De nombreux paramètres de filtre sont présents tels que :
+
+- les années de mutations ;
+- les surfaces en jeu ;
+- les valeurs foncières ;
+- les typologies d'acheteurs, vendeurs et du bien ;
+- avec ou sans géométrie.
+
+Retrouvez l'ensemble des fonctions `dvf_opendata` dans l'onglet référence.
+ 
+
 ```{r setup}
 library(r.apifoncier)
 ```
-
-
 
 ```{r eval=FALSE, message=FALSE, warning=FALSE, include=FALSE}
 dvf_opendata_geomutations(code_insee=59001) %>% 
