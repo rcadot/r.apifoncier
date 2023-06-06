@@ -1,11 +1,26 @@
 
+- <a href="#présentation-du-package"
+  id="toc-présentation-du-package">Présentation du package</a>
 - <a href="#installation" id="toc-installation">Installation</a>
 - <a href="#fonctions-et-données-disponibles"
   id="toc-fonctions-et-données-disponibles">Fonctions et données
   disponibles</a>
   - <a href="#en-accès-libre" id="toc-en-accès-libre">En accès libre</a>
-  - <a href="#en-accès-restreint" id="toc-en-accès-restreint">En accès
-    restreint</a>
+    - <a href="#indicateurs-de-consommation-despace-accès-libre"
+      id="toc-indicateurs-de-consommation-despace-accès-libre">Indicateurs de
+      consommation d’espace (accès libre)</a>
+    - <a href="#indicateurs-de-prix-accès-libre"
+      id="toc-indicateurs-de-prix-accès-libre">Indicateurs de prix (accès
+      libre)</a>
+    - <a href="#cartofriches-accès-libre"
+      id="toc-cartofriches-accès-libre">Cartofriches (accès libre)</a>
+    - <a href="#dvf-accès-libre" id="toc-dvf-accès-libre">DVF+ (accès
+      libre)</a>
+    - <a href="#dv3f-accès-restreint" id="toc-dv3f-accès-restreint">DV3F
+      (accès restreint)</a>
+    - <a href="#fichiers-fonciers-accès-restreint"
+      id="toc-fichiers-fonciers-accès-restreint">Fichiers fonciers (accès
+      restreint)</a>
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
@@ -14,11 +29,14 @@
 > Il s’agit d’une version de développement. Des modifications sur les
 > fonctions peuvent intervenir.
 
+# Présentation du package
+
 Grâce à `{r.apifoncier}`, vous pouvez interroger les principales
 informations issues des différentes bases de données foncières produites
 par le Cerema et la DGALN. Une partie des données est interrogeable
-uniquement en tant que bénéficiaire des données foncières. Pour
-retrouver toutes les informations sur les données foncières :
+uniquement en tant que bénéficiaire des données foncières.
+
+Pour retrouver toutes les informations sur les données foncières :
 [datafoncier.cerema.fr](datafoncier.cerema.fr) Dictionnaire et
 documentation sur toutes les variables
 :[doc-datafoncier.cerema.fr](doc-datafoncier.cerema.fr)
@@ -42,14 +60,30 @@ devtools::install_github("rcadot/r.apifoncier")
 
 ### Indicateurs de consommation d’espace (accès libre)
 
-Retrouvez les
+*La lutte contre la consommation excessive d’espace est un objectif
+prioritaire des dernières lois en matière d’urbanisme. Cependant, il est
+difficile de définir comme « excessive » la consommation sans disposer
+de moyens de mesure adaptés. Dans ce cadre, le Cerema produit
+annuellement des données sur la consommation d’espaces à l’aide des
+Fichiers fonciers.*
+
+*[Pour plus d’informations sur la consommation
+d’espaces](https://artificialisation.developpement-durable.gouv.fr/suivi-consommation-espaces-naf)*
+
+Le package `{r.apifoncier}` permet d’interroger l’ensemble du territoire
+français afin d’obtenir les indicateurs de consommation d’espace pour la
+période comprise entre une `annee_min` et `annee_max`, bornes incluses,
+à l’échelle communale ou départementale.
+
+**Plus d’informations sur les fonctions disponibles en allant sur :
+`vignette('Consommation-ENAF')`**
 
 ### Indicateurs de prix (accès libre)
 
-La base de données DV3F facilite l’observation des marchés et permet de
+*La base de données DV3F facilite l’observation des marchés et permet de
 produire des indicateurs de prix et de volumes de transactions à
 différentes échelles géographiques afin d’apprécier et d’étudier les
-marchés fonciers et immobiliers d’un territoire.
+marchés fonciers et immobiliers d’un territoire.*
 
 Les indicateurs de prix sont disponibles annuellement et de manière
 triennale à plusieurs échelles :
@@ -69,110 +103,121 @@ périmètres administratifs au 1er janvier 2022.
 Retrouvez l’ensemble de la documentation en suivant [ce
 lien](https://doc-datafoncier.cerema.fr/dv3f/tuto/indicateurs_agreges).
 
-Retrouvez un article dédié sur le site de `vignette('DVF-')`.
+**Plus d’informations sur les fonctions disponibles en allant sur :
+`vignette('Indicateurs-de-prix')`**
 
 ### Cartofriches (accès libre)
 
-Les travaux effectués par le Cerema pour constituer un premier
+*Les travaux effectués par le Cerema pour constituer un premier
 inventaire national ont permis de montrer la possibilité de
 pré-identifier une partie des friches, mais ils montrent aussi les
 limites de l’approche nationale. En effet, sur un sujet aussi complexe
 que les friches, les bases nationales manquent d’exhaustivité et de mise
 à jour. La comparaison de la base nationale avec des inventaires locaux
 met en évidence l’absence de définition réglementaire d’une friche, et
-le peu de mise à jour de certaines informations nationales.
+le peu de mise à jour de certaines informations nationales.*
 
-Ainsi, si une base nationale permet d’avoir des informations homogènes
+*Ainsi, si une base nationale permet d’avoir des informations homogènes
 sur le territoire métropolitain, une base de données consolidées
 nécessite la contribution large de nombreux acteurs proches du terrain,
 et l’agglomération de données issues d’observatoires locaux, en
-partageant un minimum de concepts.
+partageant un minimum de concepts.*
 
 [Plus d’informations sur
 cartofriches](https://artificialisation.developpement-durable.gouv.fr/cartofriches/donnees-utilisees)
 
+**Plus d’informations sur les fonctions disponibles en allant sur :
+`vignette('Cartofriches')`**
+
 ### DVF+ (accès libre)
 
-La DGALN et le Cerema propose “DVF+ open-data”, qui permet d’accéder
-librement à cette même donnée sous la forme d’une base de données
+*La DGALN et le Cerema propose “DVF+ open-data”, qui permet d’accéder
+librement aux données DV3F sous la forme d’une base de données
 géolocalisée aisément exploitable pour l’observation des marchés
-fonciers et immobiliers.
+fonciers et immobiliers.*
 
-La structuration de la donnée DVF proposée s’appuie sur le modèle de
+*La structuration de la donnée DVF proposée s’appuie sur le modèle de
 données partagé dit “DVF+”, issu des travaux menés à l’initiative du
 groupe national DVF et qui existe depuis 2013. Ce modèle, développé pour
 faciliter les analyses, fournit notamment une table des mutations dans
 laquelle chaque ligne correspond aux informations et à la localisation
-d’une transaction.
+d’une transaction.*
 
-La géolocalisation s’appuie sur les différents millésimes du Plan
+*La géolocalisation s’appuie sur les différents millésimes du Plan
 cadastral informatisé également disponibles en open-data sur
-data.gouv.fr.
+data.gouv.fr.*
 
-Chacune des variables du modèle DVF+ est calculée uniquement à partir
+*Chacune des variables du modèle DVF+ est calculée uniquement à partir
 des données brutes de DVF. Les variables calculées s’appliquent sur
 l’ensemble du territoire et relèvent d’une méthodologie partagée. Il n’y
 a pas de données exogènes à ce stade hormis les données de
-géolocalisation issue du PCI Vecteur.
+géolocalisation issue du PCI Vecteur.*
 
-A noter que le modèle DVF+ constitue également le socle pour la
-constitution de la base de données DV3F.
+*A noter que le modèle DVF+ constitue également le socle pour la
+constitution de la base de données DV3F.*
 
 [Pour en savoir plus sur
 DVF+](http://doc-datafoncier.cerema.fr/dv3f/tuto/objectif_tutoriel)
 
-## En accès restreint
+**Plus d’informations sur les fonctions disponibles en allant sur :
+`vignette('DVF')`** \## En accès restreint
 
 ### DV3F (accès restreint)
 
-L’amélioration du fonctionnement des marchés fonciers et immobiliers en
+*L’amélioration du fonctionnement des marchés fonciers et immobiliers en
 France, la recherche d’une meilleure transparence sur les prix des
 transactions, nécessite aujourd’hui l’accès à une donnée large et aussi
-complète que possible sur les transactions, les biens et les prix.
+complète que possible sur les transactions, les biens et les prix.*
 
-La Direction Générale des Finances Publiques (DGFiP) propose
+*La Direction Générale des Finances Publiques (DGFiP) propose
 gratuitement et en open-data le fichier “Demande de Valeurs Foncières”
 (DVF) qui recense l’ensemble des mutations foncières à titre onéreux
-publiées dans les services de la publicité foncière.
+publiées dans les services de la publicité foncière.*
 
-Cette donnée est riche et précise mais reste néanmoins difficilement
-exploitable.
+*Cette donnée est riche et précise mais reste néanmoins difficilement
+exploitable.*
 
-C’est pourquoi le Ministère du Logement a missionné le Cerema pour
+*C’est pourquoi le Ministère du Logement a missionné le Cerema pour
 travailler à une structuration de la donnée DVF en y associant des
-données foncières complémentaires permettant des analyses plus fines.
+données foncières complémentaires permettant des analyses plus fines.*
 
-Ces travaux ont conduit à la constitution de la base de données DV3F
-ainsi qu’à des outils facilitant son exploitation.
+*Ces travaux ont conduit à la constitution de la base de données DV3F
+ainsi qu’à des outils facilitant son exploitation.*
 
-Pour les acteurs ne pouvant bénéficier de DV3F, les données open-data
+*Pour les acteurs ne pouvant bénéficier de DV3F, les données open-data
 sont également disponibles librement sous un format “DVF+ - open-data”
-structuré et géolocalisé.
+structuré et géolocalisé.*
 
 [Plus d’informations sur DV3F](https://datafoncier.cerema.fr/dv3f)
 
+**Plus d’informations sur les fonctions disponibles en allant sur :
+`vignette('DV3F')`**
+
 ### Fichiers fonciers (accès restreint)
 
-Depuis 2009, le Cerema retraite, géolocalise et enrichit les Fichiers
+*Depuis 2009, le Cerema retraite, géolocalise et enrichit les Fichiers
 fonciers de la Direction Générale des Finances Publiques (DGFiP) pour le
 compte du ministère en charge du Logement, des services de la Direction
 Générale de l’Aménagement, du Logement et de la Nature (DGALN), afin de
 permettre aux acteurs publics de réaliser facilement des analyses fines
-et comparables sur leur territoire.
+et comparables sur leur territoire.*
 
-Les nouvelles politiques publiques et les stratégies d’aménagement
+*Les nouvelles politiques publiques et les stratégies d’aménagement
 foncier amènent de nombreux acteurs publics à se saisir de cette base de
-données nationale et complète.
+données nationale et complète.*
 
-Les Fichiers fonciers décrivent de manière détaillée le foncier, les
+*Les Fichiers fonciers décrivent de manière détaillée le foncier, les
 locaux ainsi que les différents droits de propriété qui leur sont liés.
 Ils sont aujourd’hui devenus essentiels dans de nombreux domaines tels
 que l’occupation du sol, l’aménagement, le logement, le risque et
-l’énergie.
+l’énergie.*
 
-La base est disponible sous forme de millésimes via deux produits : -
+*La base est disponible sous forme de millésimes via deux produits : -
 les tables principales - les tables agrégées (tables communales,
-carroyages, etc.).
+carroyages, etc.).*
 
 [Plus d’informations sur les fichiers
 fonciers](https://datafoncier.cerema.fr/fichiers-fonciers)
+
+**Plus d’informations sur les fonctions disponibles en allant sur :
+`vignette('Fichiers-Fonciers')`**

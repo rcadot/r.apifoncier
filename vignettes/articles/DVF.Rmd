@@ -1,0 +1,22 @@
+---
+title: "DVF"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(r.apifoncier)
+```
+
+
+
+```{r eval=FALSE, message=FALSE, warning=FALSE, include=FALSE}
+dvf_opendata_geomutations(code_insee=59001) %>% 
+  dplyr::select(geometry) %>% 
+  mapview::mapview()
+```
