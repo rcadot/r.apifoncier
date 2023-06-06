@@ -3,8 +3,9 @@
 - <a href="#fonctions-et-données-disponibles"
   id="toc-fonctions-et-données-disponibles">Fonctions et données
   disponibles</a>
-  - <a href="#accès-libre" id="toc-accès-libre">Accès libre</a>
-  - <a href="#accès-restreint" id="toc-accès-restreint">Accès restreint</a>
+  - <a href="#en-accès-libre" id="toc-en-accès-libre">En accès libre</a>
+  - <a href="#en-accès-restreint" id="toc-en-accès-restreint">En accès
+    restreint</a>
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
@@ -13,30 +14,17 @@
 > Il s’agit d’une version de développement. Des modifications sur les
 > fonctions peuvent intervenir.
 
-> 📘
->
-> Ce service permet l’interrogation des principales informations issues
-> des différentes bases de données foncières produites par le Cerema et
-> la DGALN. Une partie des données est interrogeable uniquement en tant
-> que bénéficiaire des données foncières. Pour retrouver toutes les
-> informations sur les données foncières :
-> [datafoncier.cerema.fr](datafoncier.cerema.fr) Dictionnaire et
-> documentation sur toutes les variables
-> :[doc-datafoncier.cerema.fr](doc-datafoncier.cerema.fr)
+Grâce à `{r.apifoncier}`, vous pouvez interroger les principales
+informations issues des différentes bases de données foncières produites
+par le Cerema et la DGALN. Une partie des données est interrogeable
+uniquement en tant que bénéficiaire des données foncières. Pour
+retrouver toutes les informations sur les données foncières :
+[datafoncier.cerema.fr](datafoncier.cerema.fr) Dictionnaire et
+documentation sur toutes les variables
+:[doc-datafoncier.cerema.fr](doc-datafoncier.cerema.fr)
 
-> Les wrappers d’API sont des outils qui facilitent l’utilisation des
-> fonctionnalités offertes par une interface de programmation
-> d’applications (API). Ils simplifient la communication entre une
-> application et une API en gérant les détails techniques et en offrant
-> une interface plus conviviale. Les wrappers d’API permettent aux
-> développeurs de se concentrer sur la logique de leur application
-> plutôt que sur les aspects techniques de l’intégration avec l’API. Ils
-> accélèrent le développement et améliorent la productivité en réduisant
-> la quantité de code nécessaire.
-
-Grâce à `{r.apifoncier}` vous pouvez accéder aux données disponibles par
-l’[API données foncières du
-cerema](https://apidf-preprod.cerema.fr/swagger/).
+[Pour en savoir plus sur l’API données foncières du
+cerema.](https://apidf-preprod.cerema.fr/swagger/)
 
 # Installation
 
@@ -48,13 +36,9 @@ Vous pouvez installer `{r.apifoncier}` depuis
 devtools::install_github("rcadot/r.apifoncier")
 ```
 
-``` r
-library(r.apifoncier)
-```
-
 # Fonctions et données disponibles
 
-## Accès libre
+## En accès libre
 
 ### Indicateurs de consommation d’espace (accès libre)
 
@@ -137,8 +121,58 @@ constitution de la base de données DV3F.
 [Pour en savoir plus sur
 DVF+](http://doc-datafoncier.cerema.fr/dv3f/tuto/objectif_tutoriel)
 
-## Accès restreint
+## En accès restreint
 
 ### DV3F (accès restreint)
 
+L’amélioration du fonctionnement des marchés fonciers et immobiliers en
+France, la recherche d’une meilleure transparence sur les prix des
+transactions, nécessite aujourd’hui l’accès à une donnée large et aussi
+complète que possible sur les transactions, les biens et les prix.
+
+La Direction Générale des Finances Publiques (DGFiP) propose
+gratuitement et en open-data le fichier “Demande de Valeurs Foncières”
+(DVF) qui recense l’ensemble des mutations foncières à titre onéreux
+publiées dans les services de la publicité foncière.
+
+Cette donnée est riche et précise mais reste néanmoins difficilement
+exploitable.
+
+C’est pourquoi le Ministère du Logement a missionné le Cerema pour
+travailler à une structuration de la donnée DVF en y associant des
+données foncières complémentaires permettant des analyses plus fines.
+
+Ces travaux ont conduit à la constitution de la base de données DV3F
+ainsi qu’à des outils facilitant son exploitation.
+
+Pour les acteurs ne pouvant bénéficier de DV3F, les données open-data
+sont également disponibles librement sous un format “DVF+ - open-data”
+structuré et géolocalisé.
+
+[Plus d’informations sur DV3F](https://datafoncier.cerema.fr/dv3f)
+
 ### Fichiers fonciers (accès restreint)
+
+Depuis 2009, le Cerema retraite, géolocalise et enrichit les Fichiers
+fonciers de la Direction Générale des Finances Publiques (DGFiP) pour le
+compte du ministère en charge du Logement, des services de la Direction
+Générale de l’Aménagement, du Logement et de la Nature (DGALN), afin de
+permettre aux acteurs publics de réaliser facilement des analyses fines
+et comparables sur leur territoire.
+
+Les nouvelles politiques publiques et les stratégies d’aménagement
+foncier amènent de nombreux acteurs publics à se saisir de cette base de
+données nationale et complète.
+
+Les Fichiers fonciers décrivent de manière détaillée le foncier, les
+locaux ainsi que les différents droits de propriété qui leur sont liés.
+Ils sont aujourd’hui devenus essentiels dans de nombreux domaines tels
+que l’occupation du sol, l’aménagement, le logement, le risque et
+l’énergie.
+
+La base est disponible sous forme de millésimes via deux produits : -
+les tables principales - les tables agrégées (tables communales,
+carroyages, etc.).
+
+[Plus d’informations sur les fichiers
+fonciers](https://datafoncier.cerema.fr/fichiers-fonciers)
