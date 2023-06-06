@@ -18,69 +18,44 @@ knitr::opts_chunk$set(
 )
 ```
 
-
-> 🚧 Warning
+> 🚧 Avertissement
 >
-> Il s'agit d'une version de développement
+> Il s'agit d'une version de développement. Des modifications sur les fonctions peuvent intervenir.
 
-
-> 📘 Info
+> 📘
 >
+> Ce service permet l'interrogation des principales informations issues des différentes bases de données foncières produites par le Cerema et la DGALN. Une partie des données est interrogeable uniquement en tant que bénéficiaire des données foncières. Pour retrouver toutes les informations sur les données foncières : [datafoncier.cerema.fr](datafoncier.cerema.fr) Dictionnaire et documentation sur toutes les variables :[doc-datafoncier.cerema.fr](doc-datafoncier.cerema.fr)
+
 > Les wrappers d'API sont des outils qui facilitent l'utilisation des fonctionnalités offertes par une interface de programmation d'applications (API). Ils simplifient la communication entre une application et une API en gérant les détails techniques et en offrant une interface plus conviviale. Les wrappers d'API permettent aux développeurs de se concentrer sur la logique de leur application plutôt que sur les aspects techniques de l'intégration avec l'API. Ils accélèrent le développement et améliorent la productivité en réduisant la quantité de code nécessaire.
-
 
 Grâce à `{r.apifoncier}` vous pouvez accéder aux données disponibles par l'[API données foncières du cerema](https://apidf-preprod.cerema.fr/swagger/).
 
-
 # Installation
 
-Vous pouvez installer r.apifoncier depuis [GitHub](https://github.com/) avec le code suivant :
+Vous pouvez installer `{r.apifoncier}` depuis [GitHub](https://github.com/) avec le code suivant :
 
 ``` r
 # install.packages("devtools")
 devtools::install_github("rcadot/r.apifoncier")
 ```
 
-# Indicateurs de consommation d'espace (accès libre)
-
-Les données sont disponibles à deux échelles : communes et départements.
-
-En indiquant le code INSEE d'une commune au format `numeric` ou `character`, on obtient un dataframe des consommations.
-
-```{r}
+```{r setup}
 library(r.apifoncier)
-
-ind_conso_espace_communes(59001)
-```
-
-La fonction `g_ind_conso_espace_communes()` permet de générer un graphique `{plotly}` de la consommation sur la commune de son choix.
-
-```{r}
-ind_conso_espace_communes_g(59350)
 ```
 
 
-Par défaut, les consommations sont affichées en hectares, mais on peut les indiquer en m² en choisissant `hectare=FALSE`.
-
-```{r message=FALSE, warning=FALSE}
-ind_conso_espace_communes_g(
-  code_insee = 59350,
-  hectare = FALSE,
-  affichage = 'total',
-  legende = FALSE
-)
-```
+# Indicateurs de consommation d'espace (accès libre)
 
 
 # Indicateurs de prix (accès libre)
 
 Les indicateurs de prix sont disponibles annuellement et de manière triennale à plusieurs échelles :
 
-- Régions ;
-- Départements ;
-- Aires d'attractivités des villes ;
-- EPCI ; 
-- Communes.
+-   Régions ;
+-   Départements ;
+-   Aires d'attractivités des villes ;
+-   EPCI ;
+-   Communes.
 
 ```{r}
 ind_dv3f_com_annuel('59350') %>% 
@@ -95,11 +70,9 @@ On peut accéder aux friches, soit par département, commune ou encore à partir
 cartofriches_friches(coddep = 59)
 ```
 
-
 ```{r}
 cartofriches_friches(code_insee = 59350)
 ```
-
 
 ```{r}
 cartofriches_friches(in_bbox = '2.827642,50.495958,3.32616,50.767734')
@@ -120,10 +93,6 @@ dvf_opendata_geomutations(code_insee=59001) %>%
   mapview::mapview()
 ```
 
-
 # DV3F (accès restreint)
 
-
-
 # Fichiers fonciers (accès restreint)
-

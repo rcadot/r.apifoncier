@@ -75,7 +75,10 @@ cartofriches_geofriches <- function(
     } else {
 
       data <-
-        sf::st_read(httr::GET(url, query = purrr::compact(args))) %>%
+        sf::st_read(
+          httr::GET(url, query = purrr::compact(args)),
+          quiet=TRUE
+          ) %>%
         sf::st_make_valid() %>%
         dplyr::group_by(id) %>%
         dplyr::mutate(proprio_type_lib=proprio_type_lib %>% paste0(collapse = ","))

@@ -135,7 +135,7 @@ ff_geoparcelles <- function(
             url,
             query = purrr::compact(args),
             httr::add_headers(headers)
-          )
+          ),quiet=TRUE
         ) %>%
         sf::st_make_valid() #%>%
       # dplyr::group_by(id) %>%
@@ -243,7 +243,7 @@ ff_geotups <- function(
             url,
             query = purrr::compact(args),
             httr::add_headers(headers)
-          )
+          ),quiet=TRUE
         ) %>%
         sf::st_make_valid()
 

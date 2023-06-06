@@ -118,9 +118,9 @@ dv3f_geomutations <- function(
         sf::st_read(
           httr::GET(
             url,
-            query = purrr::compact(args),
+            query = purrr::compact(args),#encoding = "UTF-8",
             httr::add_headers(headers)
-          )
+          ),quiet=TRUE#,options = "ENCODING=UTF-8"
         ) %>%
         sf::st_make_valid() #%>%
       # dplyr::group_by(id) %>%
