@@ -24,6 +24,8 @@ Retrouvez l'ensemble des fonctions `dvf_opendata` dans l'onglet référence.
 
 ```{r setup}
 library(r.apifoncier)
+library(dplyr)
+library(mapview)
 ```
 
 ```{r eval=FALSE, message=FALSE, warning=FALSE, include=FALSE}

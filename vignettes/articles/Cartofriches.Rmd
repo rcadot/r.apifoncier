@@ -11,6 +11,8 @@ knitr::opts_chunk$set(
 
 ```{r setup}
 library(r.apifoncier)
+library(dplyr)
+library(mapview)
 ```
 
 On peut accéder aux friches, soit par département, commune ou encore à partir d'une emprise au format WGS84
