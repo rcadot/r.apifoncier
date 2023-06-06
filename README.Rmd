@@ -43,11 +43,17 @@ devtools::install_github("rcadot/r.apifoncier")
 library(r.apifoncier)
 ```
 
+# Fonctions et données disponibles
 
-# Indicateurs de consommation d'espace (accès libre)
+## Accès libre
 
+### Indicateurs de consommation d'espace (accès libre)
 
-# Indicateurs de prix (accès libre)
+Retrouvez les 
+
+### Indicateurs de prix (accès libre)
+
+La base de données DV3F facilite l'observation des marchés et permet de produire des indicateurs de prix et de volumes de transactions à différentes échelles géographiques afin d'apprécier et d'étudier les marchés fonciers et immobiliers d'un territoire.
 
 Les indicateurs de prix sont disponibles annuellement et de manière triennale à plusieurs échelles :
 
@@ -57,42 +63,38 @@ Les indicateurs de prix sont disponibles annuellement et de manière triennale �
 -   EPCI ;
 -   Communes.
 
-```{r}
-ind_dv3f_com_annuel('59350') %>% 
-  dplyr::select(1:10) # Le résultat contient 617 colonnes
-```
+La période proposée court de 2010 à 2022 avec une exhaustivité moindre sur les derniers semestres.
 
-# Cartofriches (accès libre)
+Les indicateurs proposés dans la version 2023-1 de DV3F utilisent les périmètres administratifs au 1er janvier 2022.
 
-On peut accéder aux friches, soit par département, commune ou encore à partir d'une emprise au format WGS84
+Retrouvez l'ensemble de la documentation en suivant [ce lien](https://doc-datafoncier.cerema.fr/dv3f/tuto/indicateurs_agreges).
 
-```{r}
-cartofriches_friches(coddep = 59)
-```
+Retrouvez un article dédié sur le site de `vignette('DVF-')`.
 
-```{r}
-cartofriches_friches(code_insee = 59350)
-```
+### Cartofriches (accès libre)
 
-```{r}
-cartofriches_friches(in_bbox = '2.827642,50.495958,3.32616,50.767734')
-```
+Les travaux effectués par le Cerema pour constituer un premier inventaire national ont permis de montrer la possibilité de pré-identifier une partie des friches, mais ils montrent aussi les limites de l’approche nationale. En effet, sur un sujet aussi complexe que les friches, les bases nationales manquent d’exhaustivité et de mise à jour. La comparaison de la base nationale avec des inventaires locaux met en évidence l'absence de définition réglementaire d’une friche, et le peu de mise à jour de certaines informations nationales.
 
-On peut également accéder aux objets géographiques associés.
+Ainsi, si une base nationale permet d’avoir des informations homogènes sur le territoire métropolitain, une base de données consolidées nécessite la contribution large de nombreux acteurs proches du terrain, et l'agglomération de données issues d'observatoires locaux, en partageant un minimum de concepts.
 
-```{r echo=TRUE, message=FALSE, warning=FALSE}
-cartofriches_geofriches(code_insee = 59350) %>% 
-  mapview::mapview()
-```
+[Plus d'informations sur cartofriches](https://artificialisation.developpement-durable.gouv.fr/cartofriches/donnees-utilisees)
 
-# DVF+ (accès libre)
+### DVF+ (accès libre)
 
-```{r message=FALSE, warning=FALSE}
-dvf_opendata_geomutations(code_insee=59001) %>% 
-  dplyr::select(geometry) %>% 
-  mapview::mapview()
-```
+La DGALN et le Cerema propose "DVF+ open-data", qui permet d'accéder librement à cette même donnée sous la forme d'une base de données géolocalisée aisément exploitable pour l'observation des marchés fonciers et immobiliers.
 
-# DV3F (accès restreint)
+La structuration de la donnée DVF proposée s'appuie sur le modèle de données partagé dit "DVF+", issu des travaux menés à l'initiative du groupe national DVF et qui existe depuis 2013. Ce modèle, développé pour faciliter les analyses, fournit notamment une table des mutations dans laquelle chaque ligne correspond aux informations et à la localisation d'une transaction. 
 
-# Fichiers fonciers (accès restreint)
+La géolocalisation s'appuie sur les différents millésimes du Plan cadastral informatisé également disponibles en open-data sur data.gouv.fr.
+
+Chacune des variables du modèle DVF+ est calculée uniquement à partir des données brutes de DVF. Les variables calculées s’appliquent sur l’ensemble du territoire et relèvent d’une méthodologie partagée. Il n’y a pas de données exogènes à ce stade hormis les données de géolocalisation issue du PCI Vecteur.
+
+A noter que le modèle DVF+ constitue également le socle pour la constitution de la base de données DV3F.
+
+[Pour en savoir plus sur DVF+](http://doc-datafoncier.cerema.fr/dv3f/tuto/objectif_tutoriel)
+
+## Accès restreint
+
+### DV3F (accès restreint)
+
+### Fichiers fonciers (accès restreint)

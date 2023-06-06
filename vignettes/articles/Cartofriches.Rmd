@@ -1,0 +1,35 @@
+---
+title: "Cartofriches"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(r.apifoncier)
+```
+
+On peut accéder aux friches, soit par département, commune ou encore à partir d'une emprise au format WGS84
+
+```{r}
+cartofriches_friches(coddep = 59)
+```
+
+```{r}
+cartofriches_friches(code_insee = 59350)
+```
+
+```{r}
+cartofriches_friches(in_bbox = '2.827642,50.495958,3.32616,50.767734')
+```
+
+On peut également accéder aux objets géographiques associés.
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+cartofriches_geofriches(code_insee = 59350) %>% 
+  mapview::mapview()
+```

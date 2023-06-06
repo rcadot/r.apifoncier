@@ -1,0 +1,19 @@
+---
+title: "Indicateurs de prix"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(r.apifoncier)
+```
+
+```{r}
+ind_dv3f_com_annuel('59350') %>% 
+  dplyr::select(1:10) # Le résultat contient 617 colonnes
+```
