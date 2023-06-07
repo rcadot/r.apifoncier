@@ -24,7 +24,12 @@
 <li class="nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
+    <a class="dropdown-item" href="../articles/Cartofriches.html">Cartofriches</a>
     <a class="dropdown-item" href="../articles/Consommation-ENAF.html">Consommation ENAF</a>
+    <a class="dropdown-item" href="../articles/DV3F.html">DV3F</a>
+    <a class="dropdown-item" href="../articles/DVF.html">DVF</a>
+    <a class="dropdown-item" href="../articles/Fichiers-Fonciers.html">Fichiers Fonciers</a>
+    <a class="dropdown-item" href="../articles/Indicateurs-de-prix.html">Indicateurs de prix</a>
   </div>
 </li>
 <li class="nav-item">
@@ -50,9 +55,40 @@
     </div>
 
     <div class="section level2">
-      <h2 id="toutes-les-fonctions">Toutes les fonctions<a class="anchor" aria-label="anchor" href="#toutes-les-fonctions"></a></h2>
+      <h2 id="consommation-d-espace">Consommation d’espace<a class="anchor" aria-label="anchor" href="#consommation-d-espace"></a></h2>
+      
+      <p class="section-desc"></p><p>Fonctions permettant l’accès aux données de consommation d’ENAF</p>
+
+      
+    </div><div id="" class="section level2">
       
       
+      
+
+      <dl><dt>
+          
+          <code><a href="ind_conso_espace_communes.html">ind_conso_espace_communes()</a></code> 
+        </dt>
+        <dd>Consommation d'espace par commune</dd>
+      </dl><dl><dt>
+          
+          <code><a href="ind_conso_espace_communes_g.html">ind_conso_espace_communes_g()</a></code> 
+        </dt>
+        <dd>Consommation d'espace par commune (Graphique)</dd>
+      </dl><dl><dt>
+          
+          <code><a href="ind_conso_espace_dep.html">ind_conso_espace_dep()</a></code> 
+        </dt>
+        <dd>Consommation d'espace par département</dd>
+      </dl><dl><dt>
+          
+          <code><a href="ind_conso_espace_dep_g.html">ind_conso_espace_dep_g()</a></code> 
+        </dt>
+        <dd>Consommation d'espace par département (Graphique)</dd>
+      </dl></div><div class="section level2">
+      <h2 id="cartofriches">Cartofriches<a class="anchor" aria-label="anchor" href="#cartofriches"></a></h2>
+      
+      <p class="section-desc"></p><p>Fonctions permettant l’accès aux données issues de cartofriches</p>
 
       
     </div><div id="" class="section level2">
@@ -75,107 +111,18 @@
           <code><a href="cartofriches_geofriches.html">cartofriches_geofriches()</a></code> 
         </dt>
         <dd>Retourne, en GeoJSON, les friches issues de Cartofriches pour la commune, le département ou l'emprise rectangulaire demandée (paramètre code_insee, coddep ou in_bbox obligatoire)</dd>
-      </dl><dl><dt>
-          
-          <code><a href="dv3f_geomutations.html">dv3f_geomutations()</a></code> 
-        </dt>
-        <dd>Géomutations</dd>
-      </dl><dl><dt>
-          
-          <code><a href="dv3f_mutations.html">dv3f_mutations()</a></code> 
-        </dt>
-        <dd>Mutations</dd>
-      </dl><dl><dt>
-          
-          <code><a href="dv3f_mutations_idmutation.html">dv3f_mutations_idmutation()</a></code> 
-        </dt>
-        <dd>Mutation issue de DV3F pour l'identifiant de mutation demandé</dd>
-      </dl><dl><dt>
-          
-          <code><a href="dvf_opendata_geomutations.html">dvf_opendata_geomutations()</a></code> 
-        </dt>
-        <dd>Géomutations open</dd>
-      </dl><dl><dt>
-          
-          <code><a href="dvf_opendata_mutations.html">dvf_opendata_mutations()</a></code> 
-        </dt>
-        <dd>Mutations open</dd>
-      </dl><dl><dt>
-          
-          <code><a href="dvf_opendata_mutations_idmutation.html">dvf_opendata_mutations_idmutation()</a></code> 
-        </dt>
-        <dd>Mutation issue de DV3F pour l'identifiant de mutation demandé</dd>
-      </dl><dl><dt>
-          
-          <code><a href="ff_geoparcelles.html">ff_geoparcelles()</a></code> 
-        </dt>
-        <dd>Parcelles</dd>
-      </dl><dl><dt>
-          
-          <code><a href="ff_geotups.html">ff_geotups()</a></code> 
-        </dt>
-        <dd>GeoTUP</dd>
-      </dl><dl><dt>
-          
-          <code><a href="ff_locaux.html">ff_locaux()</a></code> 
-        </dt>
-        <dd>Locaux</dd>
-      </dl><dl><dt>
-          
-          <code><a href="ff_locaux_idpk.html">ff_locaux_idpk()</a></code> 
-        </dt>
-        <dd>Locaux pour un identifiant fiscal du local demandé</dd>
-      </dl><dl><dt>
-          
-          <code><a href="ff_parcelles.html">ff_parcelles()</a></code> 
-        </dt>
-        <dd>Parcelles</dd>
-      </dl><dl><dt>
-          
-          <code><a href="ff_parcelles_idpar.html">ff_parcelles_idpar()</a></code> 
-        </dt>
-        <dd>Locaux pour un identifiant fiscal du local demandé</dd>
-      </dl><dl><dt>
-          
-          <code><a href="ff_parcelles_idprodroit.html">ff_parcelles_idprodroit()</a></code> 
-        </dt>
-        <dd>Droit de propriété des Fichiers fonciers pour l'identifiant idprodroit demandé</dd>
-      </dl><dl><dt>
-          
-          <code><a href="ff_proprios.html">ff_proprios()</a></code> 
-        </dt>
-        <dd>Propriétaires</dd>
-      </dl><dl><dt>
-          
-          <code><a href="ff_tups.html">ff_tups()</a></code> 
-        </dt>
-        <dd>TUP</dd>
-      </dl><dl><dt>
-          
-          <code><a href="ff_tups_idetup.html">ff_tups_idetup()</a></code> 
-        </dt>
-        <dd>TUP des Fichiers fonciers pour l'identifiant idtup demandé</dd>
-      </dl><dl><dt>
-          
-          <code><a href="ind_conso_espace_communes.html">ind_conso_espace_communes()</a></code> 
-        </dt>
-        <dd>Consommation d'espace par commune</dd>
-      </dl><dl><dt>
-          
-          <code><a href="ind_conso_espace_communes_g.html">ind_conso_espace_communes_g()</a></code> 
-        </dt>
-        <dd>Consommation d'espace par commune (Graphique)</dd>
-      </dl><dl><dt>
-          
-          <code><a href="ind_conso_espace_dep.html">ind_conso_espace_dep()</a></code> 
-        </dt>
-        <dd>Consommation d'espace par département</dd>
-      </dl><dl><dt>
-          
-          <code><a href="ind_conso_espace_dep_g.html">ind_conso_espace_dep_g()</a></code> 
-        </dt>
-        <dd>Consommation d'espace par département (Graphique)</dd>
-      </dl><dl><dt>
+      </dl></div><div class="section level2">
+      <h2 id="indicateurs-de-prix">Indicateurs de prix<a class="anchor" aria-label="anchor" href="#indicateurs-de-prix"></a></h2>
+      
+      <p class="section-desc"></p><p>Fonctions permettant l’accès aux indicateurs de prix</p>
+
+      
+    </div><div id="" class="section level2">
+      
+      
+      
+
+      <dl><dt>
           
           <code><a href="ind_dv3f_aav_annuel.html">ind_dv3f_aav_annuel()</a></code> 
         </dt>
@@ -225,8 +172,122 @@
           <code><a href="ind_dv3f_reg_triennal.html">ind_dv3f_reg_triennal()</a></code> 
         </dt>
         <dd>Indicateurs triennaux DV3F à l'échelle de la région</dd>
+      </dl></div><div class="section level2">
+      <h2 id="dvf-">DVF+<a class="anchor" aria-label="anchor" href="#dvf-"></a></h2>
+      
+      <p class="section-desc"></p><p>Fonctions permettant l’accès aux données issues de DVF+</p>
+
+      
+    </div><div id="" class="section level2">
+      
+      
+      
+
+      <dl><dt>
+          
+          <code><a href="dvf_opendata_geomutations.html">dvf_opendata_geomutations()</a></code> 
+        </dt>
+        <dd>Géomutations open</dd>
+      </dl><dl><dt>
+          
+          <code><a href="dvf_opendata_mutations.html">dvf_opendata_mutations()</a></code> 
+        </dt>
+        <dd>Mutations open</dd>
+      </dl><dl><dt>
+          
+          <code><a href="dvf_opendata_mutations_idmutation.html">dvf_opendata_mutations_idmutation()</a></code> 
+        </dt>
+        <dd>Mutation issue de DV3F pour l'identifiant de mutation demandé</dd>
+      </dl></div><div class="section level2">
+      <h2 id="dv-f">DV3F<a class="anchor" aria-label="anchor" href="#dv-f"></a></h2>
+      
+      <p class="section-desc"></p><p>Fonctions permettant l’accès aux données issues de DV3F</p>
+
+      
+    </div><div id="" class="section level2">
+      
+      
+      
+
+      <dl><dt>
+          
+          <code><a href="dv3f_geomutations.html">dv3f_geomutations()</a></code> 
+        </dt>
+        <dd>Géomutations</dd>
+      </dl><dl><dt>
+          
+          <code><a href="dv3f_mutations.html">dv3f_mutations()</a></code> 
+        </dt>
+        <dd>Mutations</dd>
+      </dl><dl><dt>
+          
+          <code><a href="dv3f_mutations_idmutation.html">dv3f_mutations_idmutation()</a></code> 
+        </dt>
+        <dd>Mutation issue de DV3F pour l'identifiant de mutation demandé</dd>
+      </dl></div><div class="section level2">
+      <h2 id="fichiers-fonciers">Fichiers fonciers<a class="anchor" aria-label="anchor" href="#fichiers-fonciers"></a></h2>
+      
+      <p class="section-desc"></p><p>Fonctions permettant l’accès aux données issues des fichiers fonciers</p>
+
+      
+    </div><div id="" class="section level2">
+      
+      
+      
+
+      <dl><dt>
+          
+          <code><a href="ff_geoparcelles.html">ff_geoparcelles()</a></code> 
+        </dt>
+        <dd>Parcelles</dd>
+      </dl><dl><dt>
+          
+          <code><a href="ff_geotups.html">ff_geotups()</a></code> 
+        </dt>
+        <dd>GeoTUP</dd>
+      </dl><dl><dt>
+          
+          <code><a href="ff_locaux.html">ff_locaux()</a></code> 
+        </dt>
+        <dd>Locaux</dd>
+      </dl><dl><dt>
+          
+          <code><a href="ff_locaux_idpk.html">ff_locaux_idpk()</a></code> 
+        </dt>
+        <dd>Locaux pour un identifiant fiscal du local demandé</dd>
+      </dl><dl><dt>
+          
+          <code><a href="ff_parcelles.html">ff_parcelles()</a></code> 
+        </dt>
+        <dd>Parcelles</dd>
+      </dl><dl><dt>
+          
+          <code><a href="ff_parcelles_idpar.html">ff_parcelles_idpar()</a></code> 
+        </dt>
+        <dd>Locaux pour un identifiant fiscal du local demandé</dd>
+      </dl><dl><dt>
+          
+          <code><a href="ff_parcelles_idprodroit.html">ff_parcelles_idprodroit()</a></code> 
+        </dt>
+        <dd>Droit de propriété des Fichiers fonciers pour l'identifiant idprodroit demandé</dd>
+      </dl><dl><dt>
+          
+          <code><a href="ff_proprios.html">ff_proprios()</a></code> 
+        </dt>
+        <dd>Propriétaires</dd>
+      </dl><dl><dt>
+          
+          <code><a href="ff_tups.html">ff_tups()</a></code> 
+        </dt>
+        <dd>TUP</dd>
+      </dl><dl><dt>
+          
+          <code><a href="ff_tups_idetup.html">ff_tups_idetup()</a></code> 
+        </dt>
+        <dd>TUP des Fichiers fonciers pour l'identifiant idtup demandé</dd>
       </dl></div>
-  </main></div>
+  </main><aside class="col-md-3"><nav id="toc"><h2>Sur cette page</h2>
+    </nav></aside></div>
 
 
     <footer><div class="pkgdown-footer-left">

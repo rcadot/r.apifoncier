@@ -41,7 +41,12 @@
 <li class="nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
+    <a class="dropdown-item" href="articles/Cartofriches.html">Cartofriches</a>
     <a class="dropdown-item" href="articles/Consommation-ENAF.html">Consommation ENAF</a>
+    <a class="dropdown-item" href="articles/DV3F.html">DV3F</a>
+    <a class="dropdown-item" href="articles/DVF.html">DVF</a>
+    <a class="dropdown-item" href="articles/Fichiers-Fonciers.html">Fichiers Fonciers</a>
+    <a class="dropdown-item" href="articles/Indicateurs-de-prix.html">Indicateurs de prix</a>
   </div>
 </li>
 <li class="nav-item">
@@ -67,7 +72,14 @@
 </nav><div class="container template-home">
 <div class="row">
   <main id="main" class="col-md-9"><ul>
+<li><a href="#pr%C3%A9sentation-du-package" id="toc-présentation-du-package">Présentation du package</a></li>
 <li><a href="#installation" id="toc-installation">Installation</a></li>
+<li>
+<a href="#fonctions-et-donn%C3%A9es-disponibles" id="toc-fonctions-et-données-disponibles">Fonctions et données disponibles</a>
+<ul>
+<li>
+<a href="#en-acc%C3%A8s-libre" id="toc-en-accès-libre">En accès libre</a>
+<ul>
 <li><a href="#indicateurs-de-consommation-despace-acc%C3%A8s-libre" id="toc-indicateurs-de-consommation-despace-accès-libre">Indicateurs de consommation d’espace (accès libre)</a></li>
 <li><a href="#indicateurs-de-prix-acc%C3%A8s-libre" id="toc-indicateurs-de-prix-accès-libre">Indicateurs de prix (accès libre)</a></li>
 <li><a href="#cartofriches-acc%C3%A8s-libre" id="toc-cartofriches-accès-libre">Cartofriches (accès libre)</a></li>
@@ -75,35 +87,47 @@
 <li><a href="#dv3f-acc%C3%A8s-restreint" id="toc-dv3f-accès-restreint">DV3F (accès restreint)</a></li>
 <li><a href="#fichiers-fonciers-acc%C3%A8s-restreint" id="toc-fichiers-fonciers-accès-restreint">Fichiers fonciers (accès restreint)</a></li>
 </ul>
+</li>
+</ul>
+</li>
+</ul>
 <!-- README.md is generated from README.Rmd. Please edit that file --><blockquote>
 <p>🚧 Avertissement</p>
 <p>Il s’agit d’une version de développement. Des modifications sur les fonctions peuvent intervenir.</p>
 </blockquote>
-<blockquote>
-<p>📘</p>
-<p>Ce service permet l’interrogation des principales informations issues des différentes bases de données foncières produites par le Cerema et la DGALN. Une partie des données est interrogeable uniquement en tant que bénéficiaire des données foncières. Pour retrouver toutes les informations sur les données foncières : <a href="datafoncier.cerema.fr">datafoncier.cerema.fr</a> Dictionnaire et documentation sur toutes les variables :<a href="doc-datafoncier.cerema.fr">doc-datafoncier.cerema.fr</a></p>
-</blockquote>
-<blockquote>
-<p>Les wrappers d’API sont des outils qui facilitent l’utilisation des fonctionnalités offertes par une interface de programmation d’applications (API). Ils simplifient la communication entre une application et une API en gérant les détails techniques et en offrant une interface plus conviviale. Les wrappers d’API permettent aux développeurs de se concentrer sur la logique de leur application plutôt que sur les aspects techniques de l’intégration avec l’API. Ils accélèrent le développement et améliorent la productivité en réduisant la quantité de code nécessaire.</p>
-</blockquote>
-<p>Grâce à <a href="https://github.com/rcadot/r.apifoncier" class="external-link">r.apifoncier</a> vous pouvez accéder aux données disponibles par l’<a href="https://apidf-preprod.cerema.fr/swagger/" class="external-link">API données foncières du cerema</a>.</p>
 <div class="section level1">
-<div class="page-header"><h1 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+<div class="page-header"><h1 id="présentation-du-package">Présentation du package<a class="anchor" aria-label="anchor" href="#pr%C3%A9sentation-du-package"></a>
 </h1></div>
+<p>Grâce à <a href="https://github.com/rcadot/r.apifoncier" class="external-link">r.apifoncier</a>, vous pouvez interroger les principales informations issues des différentes bases de données foncières produites par le Cerema et la DGALN. Une partie des données est interrogeable uniquement en tant que bénéficiaire des données foncières.</p>
+<p>Pour retrouver toutes les informations sur les données foncières : <a href="datafoncier.cerema.fr">datafoncier.cerema.fr</a> Dictionnaire et documentation sur toutes les variables :<a href="doc-datafoncier.cerema.fr">doc-datafoncier.cerema.fr</a></p>
+<p><a href="https://apidf-preprod.cerema.fr/swagger/" class="external-link">Pour en savoir plus sur l’API données foncières du cerema.</a></p>
+</div>
+<div class="section level1">
+<h1 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h1>
 <p>Vous pouvez installer <a href="https://github.com/rcadot/r.apifoncier" class="external-link">r.apifoncier</a> depuis <a href="https://github.com/" class="external-link">GitHub</a> avec le code suivant :</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># install.packages("devtools")</span></span>
 <span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"rcadot/r.apifoncier"</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/rcadot/r.apifoncier" class="external-link">r.apifoncier</a></span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level1">
-<h1 id="indicateurs-de-consommation-despace-accès-libre">Indicateurs de consommation d’espace (accès libre)<a class="anchor" aria-label="anchor" href="#indicateurs-de-consommation-despace-acc%C3%A8s-libre"></a>
+<h1 id="fonctions-et-données-disponibles">Fonctions et données disponibles<a class="anchor" aria-label="anchor" href="#fonctions-et-donn%C3%A9es-disponibles"></a>
 </h1>
+<div class="section level2">
+<h2 id="en-accès-libre">En accès libre<a class="anchor" aria-label="anchor" href="#en-acc%C3%A8s-libre"></a>
+</h2>
+<div class="section level3">
+<h3 id="indicateurs-de-consommation-despace-accès-libre">Indicateurs de consommation d’espace (accès libre)<a class="anchor" aria-label="anchor" href="#indicateurs-de-consommation-despace-acc%C3%A8s-libre"></a>
+</h3>
+<p><em>La lutte contre la consommation excessive d’espace est un objectif prioritaire des dernières lois en matière d’urbanisme. Cependant, il est difficile de définir comme « excessive » la consommation sans disposer de moyens de mesure adaptés. Dans ce cadre, le Cerema produit annuellement des données sur la consommation d’espaces à l’aide des Fichiers fonciers.</em></p>
+<p><em><a href="https://artificialisation.developpement-durable.gouv.fr/suivi-consommation-espaces-naf" class="external-link">Pour plus d’informations sur la consommation d’espaces</a></em></p>
+<p>Le package <a href="https://github.com/rcadot/r.apifoncier" class="external-link">r.apifoncier</a> permet d’interroger l’ensemble du territoire français afin d’obtenir les indicateurs de consommation d’espace pour la période comprise entre une <code>annee_min</code> et <code>annee_max</code>, bornes incluses, à l’échelle communale ou départementale.</p>
+<p><strong>Plus d’informations sur les fonctions disponibles en allant sur : <code><a href="articles/Consommation-ENAF.html">vignette('Consommation-ENAF')</a></code></strong></p>
 </div>
-<div class="section level1">
-<h1 id="indicateurs-de-prix-accès-libre">Indicateurs de prix (accès libre)<a class="anchor" aria-label="anchor" href="#indicateurs-de-prix-acc%C3%A8s-libre"></a>
-</h1>
+<div class="section level3">
+<h3 id="indicateurs-de-prix-accès-libre">Indicateurs de prix (accès libre)<a class="anchor" aria-label="anchor" href="#indicateurs-de-prix-acc%C3%A8s-libre"></a>
+</h3>
+<p><em>La base de données DV3F facilite l’observation des marchés et permet de produire des indicateurs de prix et de volumes de transactions à différentes échelles géographiques afin d’apprécier et d’étudier les marchés fonciers et immobiliers d’un territoire.</em></p>
 <p>Les indicateurs de prix sont disponibles annuellement et de manière triennale à plusieurs échelles :</p>
 <ul>
 <li>Régions ;</li>
@@ -112,122 +136,53 @@
 <li>EPCI ;</li>
 <li>Communes.</li>
 </ul>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/ind_dv3f_com_annuel.html">ind_dv3f_com_annuel</a></span><span class="op">(</span><span class="st">'59350'</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span> <span class="co"># Le résultat contient 617 colonnes</span></span>
-<span><span class="co">#&gt;    annee codgeo libgeo nbtrans_cod1 valeurfonc_sum_cod1 nbtrans_cod2</span></span>
-<span><span class="co">#&gt; 1   2010  59350  Lille         5120           837659942           57</span></span>
-<span><span class="co">#&gt; 2   2011  59350  Lille         4474           882766180           52</span></span>
-<span><span class="co">#&gt; 3   2012  59350  Lille         4200           813426374           78</span></span>
-<span><span class="co">#&gt; 4   2013  59350  Lille         3971           781613569           45</span></span>
-<span><span class="co">#&gt; 5   2014  59350  Lille         3931           804964493           40</span></span>
-<span><span class="co">#&gt; 6   2015  59350  Lille         4472           913893573           36</span></span>
-<span><span class="co">#&gt; 7   2016  59350  Lille         4708          1016164793           43</span></span>
-<span><span class="co">#&gt; 8   2017  59350  Lille         5387          1315158597           49</span></span>
-<span><span class="co">#&gt; 9   2018  59350  Lille         5587          1533348525           50</span></span>
-<span><span class="co">#&gt; 10  2019  59350  Lille         5914          1316236006           45</span></span>
-<span><span class="co">#&gt; 11  2020  59350  Lille         5115          1338281971           52</span></span>
-<span><span class="co">#&gt; 12  2021  59350  Lille         5638          1368565071           74</span></span>
-<span><span class="co">#&gt; 13  2022  59350  Lille         5188          1793537471           44</span></span>
-<span><span class="co">#&gt;    valeurfonc_sum_cod2 nbtrans_cod11 valeurfonc_sum_cod11 nbtrans_cod111</span></span>
-<span><span class="co">#&gt; 1             11280409          1018            191957219           1009</span></span>
-<span><span class="co">#&gt; 2             12029527          1007            193464212           1001</span></span>
-<span><span class="co">#&gt; 3             10470981           898            185220834            888</span></span>
-<span><span class="co">#&gt; 4              9220512           900            176372788            891</span></span>
-<span><span class="co">#&gt; 5              9204725           809            158841064            800</span></span>
-<span><span class="co">#&gt; 6              5374163           950            190094699            939</span></span>
-<span><span class="co">#&gt; 7             18337891          1074            218153085           1058</span></span>
-<span><span class="co">#&gt; 8             21091314          1066            218596803           1045</span></span>
-<span><span class="co">#&gt; 9              8863366           999            209565961            986</span></span>
-<span><span class="co">#&gt; 10            21399434          1129            260309641           1125</span></span>
-<span><span class="co">#&gt; 11            22967299          1068            266500635           1057</span></span>
-<span><span class="co">#&gt; 12            18772045          1102            286547302           1092</span></span>
-<span><span class="co">#&gt; 13            19906913          1030            281169115           1020</span></span></code></pre></div>
+<p>La période proposée court de 2010 à 2022 avec une exhaustivité moindre sur les derniers semestres.</p>
+<p>Les indicateurs proposés dans la version 2023-1 de DV3F utilisent les périmètres administratifs au 1er janvier 2022.</p>
+<p>Retrouvez l’ensemble de la documentation en suivant <a href="https://doc-datafoncier.cerema.fr/dv3f/tuto/indicateurs_agreges" class="external-link">ce lien</a>.</p>
+<p><strong>Plus d’informations sur les fonctions disponibles en allant sur : <code><a href="articles/Indicateurs-de-prix.html">vignette('Indicateurs-de-prix')</a></code></strong></p>
 </div>
-<div class="section level1">
-<h1 id="cartofriches-accès-libre">Cartofriches (accès libre)<a class="anchor" aria-label="anchor" href="#cartofriches-acc%C3%A8s-libre"></a>
-</h1>
-<p>On peut accéder aux friches, soit par département, commune ou encore à partir d’une emprise au format WGS84</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/cartofriches_friches.html">cartofriches_friches</a></span><span class="op">(</span>coddep <span class="op">=</span> <span class="fl">59</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 1,429 × 15</span></span>
-<span><span class="co">#&gt;    site_id site_nom site_type site_adresse site_statut comm_nom comm_insee dep  </span></span>
-<span><span class="co">#&gt;    &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;     &lt;lgl&gt;        &lt;chr&gt;       &lt;chr&gt;    &lt;chr&gt;      &lt;chr&gt;</span></span>
-<span><span class="co">#&gt;  1 59002_… carrièr… inconnu   NA           friche pot… ABSCON   59002      59   </span></span>
-<span><span class="co">#&gt;  2 59002_… Atelier… inconnu   NA           friche pot… ABSCON   59002      59   </span></span>
-<span><span class="co">#&gt;  3 59005_… Distill… inconnu   NA           friche pot… ALLENNE… 59005      59   </span></span>
-<span><span class="co">#&gt;  4 59007_… l'Air L… inconnu   NA           inconnu     ANHIERS  59007      59   </span></span>
-<span><span class="co">#&gt;  5 59008_… Expanver inconnu   NA           friche pot… ANICHE   59008      59   </span></span>
-<span><span class="co">#&gt;  6 59008_… Le Mont… inconnu   NA           friche pot… ANICHE   59008      59   </span></span>
-<span><span class="co">#&gt;  7 59008_… SARL MI… inconnu   NA           friche pot… ANICHE   59008      59   </span></span>
-<span><span class="co">#&gt;  8 59008_… Terril … inconnu   NA           friche pot… ANICHE   59008      59   </span></span>
-<span><span class="co">#&gt;  9 59008_… Usine d… inconnu   NA           friche pot… ANICHE   59008      59   </span></span>
-<span><span class="co">#&gt; 10 59008_… 59008_1… inconnu   NA           inconnu     ANICHE   59008      59   </span></span>
-<span><span class="co">#&gt; # ℹ 1,419 more rows</span></span>
-<span><span class="co">#&gt; # ℹ 7 more variables: proprio_personne &lt;chr&gt;, unite_fonciere_surface &lt;dbl&gt;,</span></span>
-<span><span class="co">#&gt; #   unite_fonciere_refcad &lt;chr&gt;, source_nom &lt;chr&gt;, proprio_type_lib &lt;list&gt;,</span></span>
-<span><span class="co">#&gt; #   source_nature &lt;chr&gt;, urba_zone_type &lt;chr&gt;</span></span></code></pre></div>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/cartofriches_friches.html">cartofriches_friches</a></span><span class="op">(</span>code_insee <span class="op">=</span> <span class="fl">59350</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 135 × 15</span></span>
-<span><span class="co">#&gt;    site_id site_nom site_type site_adresse site_statut comm_nom comm_insee dep  </span></span>
-<span><span class="co">#&gt;    &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;     &lt;lgl&gt;        &lt;chr&gt;       &lt;chr&gt;    &lt;chr&gt;      &lt;chr&gt;</span></span>
-<span><span class="co">#&gt;  1 59350_… Teintur… inconnu   NA           friche pot… LILLE    59350      59   </span></span>
-<span><span class="co">#&gt;  2 59350_… WILVIA … inconnu   NA           friche pot… LILLE    59350      59   </span></span>
-<span><span class="co">#&gt;  3 59350_… Atelier… inconnu   NA           friche pot… LILLE    59350      59   </span></span>
-<span><span class="co">#&gt;  4 59350_… Station… inconnu   NA           friche pot… LILLE    59350      59   </span></span>
-<span><span class="co">#&gt;  5 59350_… Assitan… inconnu   NA           friche pot… LILLE    59350      59   </span></span>
-<span><span class="co">#&gt;  6 59350_… Constru… inconnu   NA           inconnu     LILLE    59350      59   </span></span>
-<span><span class="co">#&gt;  7 59350_… Atelier… inconnu   NA           friche pot… LILLE    59350      59   </span></span>
-<span><span class="co">#&gt;  8 59350_… Appel à… inconnu   NA           friche ave… LILLE    59350      59   </span></span>
-<span><span class="co">#&gt;  9 59350_… Cie Eur… inconnu   NA           inconnu     LILLE    59350      59   </span></span>
-<span><span class="co">#&gt; 10 59350_… Appel à… inconnu   NA           friche ave… LILLE    59350      59   </span></span>
-<span><span class="co">#&gt; # ℹ 125 more rows</span></span>
-<span><span class="co">#&gt; # ℹ 7 more variables: proprio_personne &lt;chr&gt;, unite_fonciere_surface &lt;dbl&gt;,</span></span>
-<span><span class="co">#&gt; #   unite_fonciere_refcad &lt;chr&gt;, source_nom &lt;chr&gt;, proprio_type_lib &lt;list&gt;,</span></span>
-<span><span class="co">#&gt; #   source_nature &lt;chr&gt;, urba_zone_type &lt;chr&gt;</span></span></code></pre></div>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/cartofriches_friches.html">cartofriches_friches</a></span><span class="op">(</span>in_bbox <span class="op">=</span> <span class="st">'2.827642,50.495958,3.32616,50.767734'</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 744 × 15</span></span>
-<span><span class="co">#&gt;    site_id site_nom site_type site_adresse site_statut comm_nom comm_insee dep  </span></span>
-<span><span class="co">#&gt;    &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;     &lt;lgl&gt;        &lt;chr&gt;       &lt;chr&gt;    &lt;chr&gt;      &lt;chr&gt;</span></span>
-<span><span class="co">#&gt;  1 59005_… "Distil… inconnu   NA           friche pot… ALLENNE… 59005      59   </span></span>
-<span><span class="co">#&gt;  2 59009_… "SA Ate… inconnu   NA           inconnu     VILLENE… 59009      59   </span></span>
-<span><span class="co">#&gt;  3 59009_… "Appel … inconnu   NA           friche ave… VILLENE… 59009      59   </span></span>
-<span><span class="co">#&gt;  4 59009_… "Carrel… inconnu   NA           friche pot… VILLENE… 59009      59   </span></span>
-<span><span class="co">#&gt;  5 59009_… "Fabriq… inconnu   NA           friche pot… VILLENE… 59009      59   </span></span>
-<span><span class="co">#&gt;  6 59009_… "Colle … inconnu   NA           friche pot… VILLENE… 59009      59   </span></span>
-<span><span class="co">#&gt;  7 59009_… "Vernis… inconnu   NA           friche pot… VILLENE… 59009      59   </span></span>
-<span><span class="co">#&gt;  8 59009_… "Tanner… inconnu   NA           friche pot… VILLENE… 59009      59   </span></span>
-<span><span class="co">#&gt;  9 59009_… "Atelie… inconnu   NA           friche pot… VILLENE… 59009      59   </span></span>
-<span><span class="co">#&gt; 10 59009_… "Usine … inconnu   NA           friche pot… VILLENE… 59009      59   </span></span>
-<span><span class="co">#&gt; # ℹ 734 more rows</span></span>
-<span><span class="co">#&gt; # ℹ 7 more variables: proprio_personne &lt;chr&gt;, unite_fonciere_surface &lt;dbl&gt;,</span></span>
-<span><span class="co">#&gt; #   unite_fonciere_refcad &lt;chr&gt;, source_nom &lt;chr&gt;, proprio_type_lib &lt;list&gt;,</span></span>
-<span><span class="co">#&gt; #   source_nature &lt;chr&gt;, urba_zone_type &lt;chr&gt;</span></span></code></pre></div>
-<p>On peut également accéder aux objets géographiques associés.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/cartofriches_geofriches.html">cartofriches_geofriches</a></span><span class="op">(</span>code_insee <span class="op">=</span> <span class="fl">59350</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu">mapview</span><span class="fu">::</span><span class="fu">mapview</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-unnamed-chunk-6-1.png" width="50%"></p>
+<div class="section level3">
+<h3 id="cartofriches-accès-libre">Cartofriches (accès libre)<a class="anchor" aria-label="anchor" href="#cartofriches-acc%C3%A8s-libre"></a>
+</h3>
+<p><em>Les travaux effectués par le Cerema pour constituer un premier inventaire national ont permis de montrer la possibilité de pré-identifier une partie des friches, mais ils montrent aussi les limites de l’approche nationale. En effet, sur un sujet aussi complexe que les friches, les bases nationales manquent d’exhaustivité et de mise à jour. La comparaison de la base nationale avec des inventaires locaux met en évidence l’absence de définition réglementaire d’une friche, et le peu de mise à jour de certaines informations nationales.</em></p>
+<p><em>Ainsi, si une base nationale permet d’avoir des informations homogènes sur le territoire métropolitain, une base de données consolidées nécessite la contribution large de nombreux acteurs proches du terrain, et l’agglomération de données issues d’observatoires locaux, en partageant un minimum de concepts.</em></p>
+<p><a href="https://artificialisation.developpement-durable.gouv.fr/cartofriches/donnees-utilisees" class="external-link">Plus d’informations sur cartofriches</a></p>
+<p><strong>Plus d’informations sur les fonctions disponibles en allant sur : <code><a href="articles/Cartofriches.html">vignette('Cartofriches')</a></code></strong></p>
 </div>
-<div class="section level1">
-<h1 id="dvf-accès-libre">DVF+ (accès libre)<a class="anchor" aria-label="anchor" href="#dvf-acc%C3%A8s-libre"></a>
-</h1>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/dvf_opendata_geomutations.html">dvf_opendata_geomutations</a></span><span class="op">(</span>code_insee<span class="op">=</span><span class="fl">59001</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">geometry</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu">mapview</span><span class="fu">::</span><span class="fu">mapview</span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "84 / 84"</span></span></code></pre></div>
-<p><img src="reference/figures/README-unnamed-chunk-7-1.png" width="50%"></p>
+<div class="section level3">
+<h3 id="dvf-accès-libre">DVF+ (accès libre)<a class="anchor" aria-label="anchor" href="#dvf-acc%C3%A8s-libre"></a>
+</h3>
+<p><em>La DGALN et le Cerema propose “DVF+ open-data”, qui permet d’accéder librement aux données DV3F sous la forme d’une base de données géolocalisée aisément exploitable pour l’observation des marchés fonciers et immobiliers.</em></p>
+<p><em>La structuration de la donnée DVF proposée s’appuie sur le modèle de données partagé dit “DVF+”, issu des travaux menés à l’initiative du groupe national DVF et qui existe depuis 2013. Ce modèle, développé pour faciliter les analyses, fournit notamment une table des mutations dans laquelle chaque ligne correspond aux informations et à la localisation d’une transaction.</em></p>
+<p><em>La géolocalisation s’appuie sur les différents millésimes du Plan cadastral informatisé également disponibles en open-data sur data.gouv.fr.</em></p>
+<p><em>Chacune des variables du modèle DVF+ est calculée uniquement à partir des données brutes de DVF. Les variables calculées s’appliquent sur l’ensemble du territoire et relèvent d’une méthodologie partagée. Il n’y a pas de données exogènes à ce stade hormis les données de géolocalisation issue du PCI Vecteur.</em></p>
+<p><em>A noter que le modèle DVF+ constitue également le socle pour la constitution de la base de données DV3F.</em></p>
+<p><a href="http://doc-datafoncier.cerema.fr/dv3f/tuto/objectif_tutoriel" class="external-link">Pour en savoir plus sur DVF+</a></p>
+<p><strong>Plus d’informations sur les fonctions disponibles en allant sur : <code><a href="articles/DVF.html">vignette('DVF')</a></code></strong> ## En accès restreint</p>
 </div>
-<div class="section level1">
-<h1 id="dv3f-accès-restreint">DV3F (accès restreint)<a class="anchor" aria-label="anchor" href="#dv3f-acc%C3%A8s-restreint"></a>
-</h1>
+<div class="section level3">
+<h3 id="dv3f-accès-restreint">DV3F (accès restreint)<a class="anchor" aria-label="anchor" href="#dv3f-acc%C3%A8s-restreint"></a>
+</h3>
+<p><em>L’amélioration du fonctionnement des marchés fonciers et immobiliers en France, la recherche d’une meilleure transparence sur les prix des transactions, nécessite aujourd’hui l’accès à une donnée large et aussi complète que possible sur les transactions, les biens et les prix.</em></p>
+<p><em>La Direction Générale des Finances Publiques (DGFiP) propose gratuitement et en open-data le fichier “Demande de Valeurs Foncières” (DVF) qui recense l’ensemble des mutations foncières à titre onéreux publiées dans les services de la publicité foncière.</em></p>
+<p><em>Cette donnée est riche et précise mais reste néanmoins difficilement exploitable.</em></p>
+<p><em>C’est pourquoi le Ministère du Logement a missionné le Cerema pour travailler à une structuration de la donnée DVF en y associant des données foncières complémentaires permettant des analyses plus fines.</em></p>
+<p><em>Ces travaux ont conduit à la constitution de la base de données DV3F ainsi qu’à des outils facilitant son exploitation.</em></p>
+<p><em>Pour les acteurs ne pouvant bénéficier de DV3F, les données open-data sont également disponibles librement sous un format “DVF+ - open-data” structuré et géolocalisé.</em></p>
+<p><a href="https://datafoncier.cerema.fr/dv3f" class="external-link">Plus d’informations sur DV3F</a></p>
+<p><strong>Plus d’informations sur les fonctions disponibles en allant sur : <code><a href="articles/DV3F.html">vignette('DV3F')</a></code></strong></p>
 </div>
-<div class="section level1">
-<h1 id="fichiers-fonciers-accès-restreint">Fichiers fonciers (accès restreint)<a class="anchor" aria-label="anchor" href="#fichiers-fonciers-acc%C3%A8s-restreint"></a>
-</h1>
+<div class="section level3">
+<h3 id="fichiers-fonciers-accès-restreint">Fichiers fonciers (accès restreint)<a class="anchor" aria-label="anchor" href="#fichiers-fonciers-acc%C3%A8s-restreint"></a>
+</h3>
+<p><em>Depuis 2009, le Cerema retraite, géolocalise et enrichit les Fichiers fonciers de la Direction Générale des Finances Publiques (DGFiP) pour le compte du ministère en charge du Logement, des services de la Direction Générale de l’Aménagement, du Logement et de la Nature (DGALN), afin de permettre aux acteurs publics de réaliser facilement des analyses fines et comparables sur leur territoire.</em></p>
+<p><em>Les nouvelles politiques publiques et les stratégies d’aménagement foncier amènent de nombreux acteurs publics à se saisir de cette base de données nationale et complète.</em></p>
+<p><em>Les Fichiers fonciers décrivent de manière détaillée le foncier, les locaux ainsi que les différents droits de propriété qui leur sont liés. Ils sont aujourd’hui devenus essentiels dans de nombreux domaines tels que l’occupation du sol, l’aménagement, le logement, le risque et l’énergie.</em></p>
+<p><em>La base est disponible sous forme de millésimes via deux produits : - les tables principales - les tables agrégées (tables communales, carroyages, etc.).</em></p>
+<p><a href="https://datafoncier.cerema.fr/fichiers-fonciers" class="external-link">Plus d’informations sur les fichiers fonciers</a></p>
+<p><strong>Plus d’informations sur les fonctions disponibles en allant sur : <code><a href="articles/Fichiers-Fonciers.html">vignette('Fichiers-Fonciers')</a></code></strong></p>
+</div>
+</div>
 </div>
 
   </main><aside class="col-md-3"><div class="liens">
