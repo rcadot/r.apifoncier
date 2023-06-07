@@ -77,8 +77,8 @@ français afin d’obtenir les indicateurs de consommation d’espace pour la
 période comprise entre une `annee_min` et `annee_max`, bornes incluses,
 à l’échelle communale ou départementale.
 
-**Plus d’informations sur les fonctions disponibles en allant sur :
-`vignette('Consommation-ENAF')`**
+Plus d’informations sur les fonctions disponibles en allant l’[article
+dédidé](https://rcadot.github.io/r.apifoncier/articles/Consommation-ENAF.html)
 
 ### Indicateurs de prix (accès libre)
 
@@ -105,8 +105,9 @@ périmètres administratifs au 1er janvier 2022.
 Retrouvez l’ensemble de la documentation en suivant [ce
 lien](https://doc-datafoncier.cerema.fr/dv3f/tuto/indicateurs_agreges).
 
-**Plus d’informations sur les fonctions disponibles en allant sur :
-`vignette('Indicateurs-de-prix')`**
+Plus d’informations sur les fonctions disponibles en allant sur
+l’[article
+dédié](https://rcadot.github.io/r.apifoncier/articles/Indicateurs-de-prix.html).
 
 ### Cartofriches (accès libre)
 
@@ -128,8 +129,9 @@ partageant un minimum de concepts.*
 [Plus d’informations sur
 cartofriches](https://artificialisation.developpement-durable.gouv.fr/cartofriches/donnees-utilisees)
 
-**Plus d’informations sur les fonctions disponibles en allant sur :
-`vignette('Cartofriches')`**
+\*\*Plus d’informations sur les fonctions disponibles en allant sur
+l’[article
+dédié](https://rcadot.github.io/r.apifoncier/articles/Cartofriches.html)
 
 ### DVF+ (accès libre)
 
@@ -161,8 +163,9 @@ constitution de la base de données DV3F.*
 [Pour en savoir plus sur
 DVF+](http://doc-datafoncier.cerema.fr/dv3f/tuto/objectif_tutoriel)
 
-**Plus d’informations sur les fonctions disponibles en allant sur :
-`vignette('DVF')`**
+Plus d’informations sur les fonctions disponibles en allant sur
+l’[article
+dédié](https://rcadot.github.io/r.apifoncier/articles/DVF.html)
 
 ## En accès restreint
 
@@ -194,8 +197,9 @@ structuré et géolocalisé.*
 
 [Plus d’informations sur DV3F](https://datafoncier.cerema.fr/dv3f)
 
-**Plus d’informations sur les fonctions disponibles en allant sur :
-`vignette('DV3F')`**
+Plus d’informations sur les fonctions disponibles en allant sur
+l’[article
+dédié](https://rcadot.github.io/r.apifoncier/articles/DV3F.html).
 
 ### Fichiers fonciers (accès restreint)
 
@@ -223,5 +227,6 @@ carroyages, etc.).*
 [Plus d’informations sur les fichiers
 fonciers](https://datafoncier.cerema.fr/fichiers-fonciers)
 
-**Plus d’informations sur les fonctions disponibles en allant sur :
-`vignette('Fichiers-Fonciers')`**
+Plus d’informations sur les fonctions disponibles en allant sur
+l’[article
+dédié](https://rcadot.github.io/r.apifoncier/articles/Fichiers-Fonciers.html).
