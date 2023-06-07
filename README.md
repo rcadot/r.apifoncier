@@ -49,8 +49,8 @@ d’espaces](https://artificialisation.developpement-durable.gouv.fr/suivi-conso
 
 Le package `{r.apifoncier}` permet d’interroger l’ensemble du territoire
 français afin d’obtenir les indicateurs de consommation d’espace pour la
-période comprise entre une `annee_min` et `annee_max`, bornes incluses,
-à l’échelle communale ou départementale.
+période comprise entre une deux années à l’échelle communale ou
+départementale.
 
 Plus d’informations sur les fonctions disponibles en allant l’[article
 dédidé](https://rcadot.github.io/r.apifoncier/articles/Consommation-ENAF.html)
