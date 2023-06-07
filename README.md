@@ -94,6 +94,7 @@ dédié](https://rcadot.github.io/r.apifoncier/articles/Indicateurs-de-prix.html
 > mise à jour. La comparaison de la base nationale avec des inventaires
 > locaux met en évidence l’absence de définition réglementaire d’une
 > friche, et le peu de mise à jour de certaines informations nationales.
+>
 > Ainsi, si une base nationale permet d’avoir des informations homogènes
 > sur le territoire métropolitain, une base de données consolidées
 > nécessite la contribution large de nombreux acteurs proches du
@@ -112,21 +113,26 @@ dédié](https://rcadot.github.io/r.apifoncier/articles/Cartofriches.html)
 > La DGALN et le Cerema propose “DVF+ open-data”, qui permet d’accéder
 > librement aux données DV3F sous la forme d’une base de données
 > géolocalisée aisément exploitable pour l’observation des marchés
-> fonciers et immobiliers. La structuration de la donnée DVF proposée
-> s’appuie sur le modèle de données partagé dit “DVF+”, issu des travaux
-> menés à l’initiative du groupe national DVF et qui existe depuis 2013.
-> Ce modèle, développé pour faciliter les analyses, fournit notamment
-> une table des mutations dans laquelle chaque ligne correspond aux
-> informations et à la localisation d’une transaction. La
-> géolocalisation s’appuie sur les différents millésimes du Plan
+> fonciers et immobiliers.
+>
+> La structuration de la donnée DVF proposée s’appuie sur le modèle de
+> données partagé dit “DVF+”, issu des travaux menés à l’initiative du
+> groupe national DVF et qui existe depuis 2013. Ce modèle, développé
+> pour faciliter les analyses, fournit notamment une table des mutations
+> dans laquelle chaque ligne correspond aux informations et à la
+> localisation d’une transaction.
+>
+> La géolocalisation s’appuie sur les différents millésimes du Plan
 > cadastral informatisé également disponibles en open-data sur
-> data.gouv.fr. Chacune des variables du modèle DVF+ est calculée
-> uniquement à partir des données brutes de DVF. Les variables calculées
-> s’appliquent sur l’ensemble du territoire et relèvent d’une
-> méthodologie partagée. Il n’y a pas de données exogènes à ce stade
-> hormis les données de géolocalisation issue du PCI Vecteur. A noter
-> que le modèle DVF+ constitue également le socle pour la constitution
-> de la base de données DV3F.
+> data.gouv.fr.
+>
+> Chacune des variables du modèle DVF+ est calculée uniquement à partir
+> des données brutes de DVF. Les variables calculées s’appliquent sur
+> l’ensemble du territoire et relèvent d’une méthodologie partagée. Il
+> n’y a pas de données exogènes à ce stade hormis les données de
+> géolocalisation issue du PCI Vecteur. A noter que le modèle DVF+
+> constitue également le socle pour la constitution de la base de
+> données DV3F.
 
 [Pour en savoir plus sur
 DVF+](http://doc-datafoncier.cerema.fr/dv3f/tuto/objectif_tutoriel)
@@ -143,19 +149,26 @@ dédié](https://rcadot.github.io/r.apifoncier/articles/DVF.html)
 > en France, la recherche d’une meilleure transparence sur les prix des
 > transactions, nécessite aujourd’hui l’accès à une donnée large et
 > aussi complète que possible sur les transactions, les biens et les
-> prix. La Direction Générale des Finances Publiques (DGFiP) propose
+> prix.
+>
+> La Direction Générale des Finances Publiques (DGFiP) propose
 > gratuitement et en open-data le fichier “Demande de Valeurs Foncières”
 > (DVF) qui recense l’ensemble des mutations foncières à titre onéreux
-> publiées dans les services de la publicité foncière. Cette donnée est
-> riche et précise mais reste néanmoins difficilement exploitable. C’est
-> pourquoi le Ministère du Logement a missionné le Cerema pour
+> publiées dans les services de la publicité foncière.
+>
+> Cette donnée est riche et précise mais reste néanmoins difficilement
+> exploitable.
+>
+> C’est pourquoi le Ministère du Logement a missionné le Cerema pour
 > travailler à une structuration de la donnée DVF en y associant des
 > données foncières complémentaires permettant des analyses plus fines.
+>
 > Ces travaux ont conduit à la constitution de la base de données DV3F
-> ainsi qu’à des outils facilitant son exploitation. Pour les acteurs ne
-> pouvant bénéficier de DV3F, les données open-data sont également
-> disponibles librement sous un format “DVF+ - open-data” structuré et
-> géolocalisé.
+> ainsi qu’à des outils facilitant son exploitation.
+>
+> Pour les acteurs ne pouvant bénéficier de DV3F, les données open-data
+> sont également disponibles librement sous un format “DVF+ - open-data”
+> structuré et géolocalisé.
 
 [Plus d’informations sur DV3F](https://datafoncier.cerema.fr/dv3f)
 
@@ -171,20 +184,21 @@ dédié](https://rcadot.github.io/r.apifoncier/articles/DV3F.html).
 > Direction Générale de l’Aménagement, du Logement et de la Nature
 > (DGALN), afin de permettre aux acteurs publics de réaliser facilement
 > des analyses fines et comparables sur leur territoire.
-
+>
 > Les nouvelles politiques publiques et les stratégies d’aménagement
 > foncier amènent de nombreux acteurs publics à se saisir de cette base
 > de données nationale et complète.
-
+>
 > Les Fichiers fonciers décrivent de manière détaillée le foncier, les
 > locaux ainsi que les différents droits de propriété qui leur sont
 > liés. Ils sont aujourd’hui devenus essentiels dans de nombreux
 > domaines tels que l’occupation du sol, l’aménagement, le logement, le
 > risque et l’énergie.
-
+>
 > La base est disponible sous forme de millésimes via deux produits :
-> \> - les tables principales - les tables agrégées (tables communales,
-> carroyages, etc.).
+>
+> - les tables principales
+> - les tables agrégées (tables communales, carroyages, etc.).
 
 [Plus d’informations sur les fichiers
 fonciers](https://datafoncier.cerema.fr/fichiers-fonciers)
