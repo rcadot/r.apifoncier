@@ -15,7 +15,6 @@ L'ensemble des fonctions liées aux indicateurs de prix (présentes dans l'ongle
 
 ```{r setup}
 library(r.apifoncier)
-library(dplyr)
 ```
 
 ```{r}

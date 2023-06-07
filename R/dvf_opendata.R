@@ -137,7 +137,14 @@ dvf_opendata_geomutations <- function(
 
   }
 
-  all_data
+  all_data %>%
+  dplyr::group_by(idopendata) %>%
+    dplyr::mutate(
+      l_codinsee = l_codinsee %>% paste0(collapse = ","),
+      l_idpar    = l_idpar %>% paste0(collapse = ","),
+      l_idparmut = l_idparmut %>% paste0(collapse = ","),
+      l_idlocmut = l_idlocmut %>% paste0(collapse = ",")
+    )
 
 }
 

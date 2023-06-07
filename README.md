@@ -16,6 +16,8 @@
       id="toc-cartofriches-accès-libre">Cartofriches (accès libre)</a>
     - <a href="#dvf-accès-libre" id="toc-dvf-accès-libre">DVF+ (accès
       libre)</a>
+  - <a href="#en-accès-restreint" id="toc-en-accès-restreint">En accès
+    restreint</a>
     - <a href="#dv3f-accès-restreint" id="toc-dv3f-accès-restreint">DV3F
       (accès restreint)</a>
     - <a href="#fichiers-fonciers-accès-restreint"
@@ -160,7 +162,9 @@ constitution de la base de données DV3F.*
 DVF+](http://doc-datafoncier.cerema.fr/dv3f/tuto/objectif_tutoriel)
 
 **Plus d’informations sur les fonctions disponibles en allant sur :
-`vignette('DVF')`** \## En accès restreint
+`vignette('DVF')`**
+
+## En accès restreint
 
 ### DV3F (accès restreint)
 

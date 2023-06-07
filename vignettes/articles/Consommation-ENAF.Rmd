@@ -35,3 +35,5 @@ ind_conso_espace_communes_g(
   legende = FALSE
 )
 ```
+
+Retrouvez toutes les fonctions liées aux données de consommation d'ENAF directement dans [l'onglet Référence](https://rcadot.github.io/r.apifoncier/reference/index.html#consommation-d-espace).

@@ -97,7 +97,9 @@ _A noter que le modèle DVF+ constitue également le socle pour la constitution 
 
 [Pour en savoir plus sur DVF+](http://doc-datafoncier.cerema.fr/dv3f/tuto/objectif_tutoriel)
 
-**Plus d'informations sur les fonctions disponibles en allant sur : `vignette('DVF')`** \## En accès restreint
+**Plus d'informations sur les fonctions disponibles en allant sur : `vignette('DVF')`** 
+
+## En accès restreint
 
 ### DV3F (accès restreint)
 

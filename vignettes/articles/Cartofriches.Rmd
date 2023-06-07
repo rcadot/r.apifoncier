@@ -11,8 +11,6 @@ knitr::opts_chunk$set(
 
 ```{r setup}
 library(r.apifoncier)
-library(dplyr)
-library(mapview)
 ```
 
 On peut accéder aux friches, soit par département, commune ou encore à partir d'une emprise au format WGS84
@@ -35,3 +33,5 @@ On peut également accéder aux objets géographiques associés.
 cartofriches_geofriches(code_insee = 59350) %>% 
   mapview::mapview()
 ```
+
+Retrouvez toutes les fonctions liées aux données de ccartofriches directement dans [l'onglet Référence](https://rcadot.github.io/r.apifoncier/reference/index.html#cartofriches).

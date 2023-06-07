@@ -9,6 +9,14 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup}
-library(r.apifoncier)
-```
+Les données DV3F nécessitent d'avoir un `token` disponible en se rendant sur [ConsultDF](https://consultdf.cerema.fr/consultdf/services/apidf). Ce `token` est valable durant un mois.
+
+Vous pourrez ensuite accéder aux fonctions permettant de filtrer les mutations (avec données géographiques ou non) sur un territoire précis et avec des paramètres tels que :
+
+- les années de mutations ;
+- les surfaces en jeu ;
+- les valeurs foncières ;
+- les typologies d'acheteurs, vendeurs et du bien ;
+- avec ou sans géométrie.
+
+Retrouvez l'ensemble des fonctions `dv3f_*` dans [l'onglet référence](https://rcadot.github.io/r.apifoncier/reference/index.html#dv-f).

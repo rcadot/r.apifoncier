@@ -9,11 +9,14 @@ knitr::opts_chunk$set(
 )
 ```
 
-Les fonctions présentes dans le package commencent par `ff_` et permettent d'interroger 
+Les données Fichiers Fonciers nécessitent d'avoir un `token` disponible en se rendant sur [ConsultDF](https://consultdf.cerema.fr/consultdf/services/apidf). Ce `token` est valable durant un mois.
+
+Les fonctions présentes dans le package commencent par `ff_` et permettent d'interroger :
+
 - les parcelles ;
 - les tups ;
 - les locaux ;
 - les propriétaires ;
 - avec ou sans géométrie.
 
-Retrouvez l'ensemble des fonctions disponibles directement dans l'onglet référence.
+Retrouvez l'ensemble des fonctions disponibles directement dans [l'onglet référence](https://rcadot.github.io/r.apifoncier/reference/index.html#fichiers-fonciers).

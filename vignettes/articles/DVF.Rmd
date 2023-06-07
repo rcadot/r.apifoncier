@@ -19,17 +19,17 @@ De nombreux paramètres de filtre sont présents tels que :
 - les typologies d'acheteurs, vendeurs et du bien ;
 - avec ou sans géométrie.
 
-Retrouvez l'ensemble des fonctions `dvf_opendata` dans l'onglet référence.
+Retrouvez l'ensemble des fonctions `dvf_opendata_*` dans [l'onglet référence](https://rcadot.github.io/r.apifoncier/reference/index.html#dvf-).
  
 
 ```{r setup}
 library(r.apifoncier)
-library(dplyr)
-library(mapview)
 ```
 
-```{r eval=FALSE, message=FALSE, warning=FALSE, include=FALSE}
+La fonction suivante affiche toutes les mutations recensées dans la base de données pour la commune `59001`.
+En cliquant sur un polygone, on obtient l'ensemble des attributs associés.
+
+```{r message=FALSE, warning=FALSE}
 dvf_opendata_geomutations(code_insee=59001) %>% 
-  dplyr::select(geometry) %>% 
   mapview::mapview()
 ```
