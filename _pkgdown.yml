@@ -5,4 +5,23 @@ template:
 lang: fr
 development:
   mode: auto
+reference:
+- title: Consommation d'espace
+  desc: Fonctions permettant l'accès aux données de consommation d'ENAF
+  contents: starts_with("ind_conso")
+- title: Cartofriches
+  desc: Fonctions permettant l'accès aux données issues de cartofriches
+  contents: starts_with("cartofriches")
+- title: Indicateurs de prix
+  desc: Fonctions permettant l'accès aux indicateurs de prix
+  contents: starts_with("ind_dv3f")
+- title: DVF+
+  desc: Fonctions permettant l'accès aux données issues de DVF+
+  contents: starts_with("dvf_opendata")
+- title: DV3F
+  desc: Fonctions permettant l'accès aux données issues de DV3F
+  contents: starts_with("dv3f")
+- title: Fichiers fonciers
+  desc: Fonctions permettant l'accès aux données issues des fichiers fonciers
+  contents: starts_with("ff_")
 
