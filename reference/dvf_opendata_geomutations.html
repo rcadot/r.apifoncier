@@ -101,7 +101,7 @@
 
 
 <dt>code_insee</dt>
-<dd><p>Code INSEE communal ou d'arrondissement municipal (il est possible d'en demander plusieurs (10 maximum), séparés par des virgules, dans le même département)</p></dd>
+<dd><p>Code INSEE communal ou d'arrondissement municipal (possibilité de passer un vecteur de code insee sans limite maximum)</p></dd>
 
 
 <dt>codtypbien</dt>
@@ -178,6 +178,7 @@
     <div class="section level2">
     <h2 id="ref-examples">Exemples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">dvf_opendata_geomutations</span><span class="op">(</span>code_insee<span class="op">=</span><span class="fl">59001</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 59001</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> No encoding supplied: defaulting to UTF-8.</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>GDAL Message 6: driver GeoJSON does not support open option ENCODING</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "84 / 84"</span>

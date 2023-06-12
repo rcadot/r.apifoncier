@@ -82,7 +82,7 @@
 
 
 <dt>code_insee</dt>
-<dd><p>Code INSEE communal ou d'arrondissement municipal (il est possible d'en demander plusieurs (10 maximum), séparés par des virgules, dans le même département)</p></dd>
+<dd><p>Code INSEE communal ou d'arrondissement municipal (possibilité de passer un vecteur de code insee sans limite maximum)</p></dd>
 
 
 <dt>contains_geom</dt>
@@ -123,24 +123,9 @@
     <div class="section level2">
     <h2 id="ref-examples">Exemples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">cartofriches_friches</span><span class="op">(</span>coddep <span class="op">=</span> <span class="fl">59</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1,429 × 15</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    site_id site_nom site_type site_adresse site_statut comm_nom comm_insee dep  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 59002_… carrièr… inconnu   <span style="color: #BB0000;">NA</span>           friche pot… ABSCON   59002      59   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 59002_… Atelier… inconnu   <span style="color: #BB0000;">NA</span>           friche pot… ABSCON   59002      59   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 59005_… Distill… inconnu   <span style="color: #BB0000;">NA</span>           friche pot… ALLENNE… 59005      59   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 59007_… l'Air L… inconnu   <span style="color: #BB0000;">NA</span>           inconnu     ANHIERS  59007      59   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 59008_… Expanver inconnu   <span style="color: #BB0000;">NA</span>           friche pot… ANICHE   59008      59   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 59008_… Le Mont… inconnu   <span style="color: #BB0000;">NA</span>           friche pot… ANICHE   59008      59   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 59008_… SARL MI… inconnu   <span style="color: #BB0000;">NA</span>           friche pot… ANICHE   59008      59   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 59008_… Terril … inconnu   <span style="color: #BB0000;">NA</span>           friche pot… ANICHE   59008      59   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 59008_… Usine d… inconnu   <span style="color: #BB0000;">NA</span>           friche pot… ANICHE   59008      59   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 59008_… 59008_1… inconnu   <span style="color: #BB0000;">NA</span>           inconnu     ANICHE   59008      59   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 1,419 more rows</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 7 more variables: proprio_personne &lt;chr&gt;, unite_fonciere_surface &lt;dbl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   unite_fonciere_refcad &lt;chr&gt;, source_nom &lt;chr&gt;, proprio_type_lib &lt;list&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   source_nature &lt;chr&gt;, urba_zone_type &lt;chr&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
 <span class="r-in"><span><span class="fu">cartofriches_friches</span><span class="op">(</span>code_insee <span class="op">=</span> <span class="fl">59350</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 59350</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 135 × 15</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    site_id site_nom site_type site_adresse site_statut comm_nom comm_insee dep  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
@@ -159,23 +144,7 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   unite_fonciere_refcad &lt;chr&gt;, source_nom &lt;chr&gt;, proprio_type_lib &lt;list&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   source_nature &lt;chr&gt;, urba_zone_type &lt;chr&gt;</span></span>
 <span class="r-in"><span><span class="fu">cartofriches_friches</span><span class="op">(</span>in_bbox <span class="op">=</span> <span class="st">'2.827642,50.495958,3.32616,50.767734'</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 744 × 15</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    site_id site_nom site_type site_adresse site_statut comm_nom comm_insee dep  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 59005_… <span style="color: #949494;">"</span>Distil… inconnu   <span style="color: #BB0000;">NA</span>           friche pot… ALLENNE… 59005      59   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 59009_… <span style="color: #949494;">"</span>SA Ate… inconnu   <span style="color: #BB0000;">NA</span>           inconnu     VILLENE… 59009      59   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 59009_… <span style="color: #949494;">"</span>Appel … inconnu   <span style="color: #BB0000;">NA</span>           friche ave… VILLENE… 59009      59   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 59009_… <span style="color: #949494;">"</span>Carrel… inconnu   <span style="color: #BB0000;">NA</span>           friche pot… VILLENE… 59009      59   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 59009_… <span style="color: #949494;">"</span>Fabriq… inconnu   <span style="color: #BB0000;">NA</span>           friche pot… VILLENE… 59009      59   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 59009_… <span style="color: #949494;">"</span>Colle … inconnu   <span style="color: #BB0000;">NA</span>           friche pot… VILLENE… 59009      59   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 59009_… <span style="color: #949494;">"</span>Vernis… inconnu   <span style="color: #BB0000;">NA</span>           friche pot… VILLENE… 59009      59   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 59009_… <span style="color: #949494;">"</span>Tanner… inconnu   <span style="color: #BB0000;">NA</span>           friche pot… VILLENE… 59009      59   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 59009_… <span style="color: #949494;">"</span>Atelie… inconnu   <span style="color: #BB0000;">NA</span>           friche pot… VILLENE… 59009      59   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 59009_… <span style="color: #949494;">"</span>Usine … inconnu   <span style="color: #BB0000;">NA</span>           friche pot… VILLENE… 59009      59   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 734 more rows</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 7 more variables: proprio_personne &lt;chr&gt;, unite_fonciere_surface &lt;dbl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   unite_fonciere_refcad &lt;chr&gt;, source_nom &lt;chr&gt;, proprio_type_lib &lt;list&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   source_nature &lt;chr&gt;, urba_zone_type &lt;chr&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>Sur cette page</h2>
