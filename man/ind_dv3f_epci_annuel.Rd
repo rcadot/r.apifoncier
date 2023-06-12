@@ -13,7 +13,7 @@ ind_dv3f_epci_annuel(
 )
 }
 \arguments{
-\item{code_epci}{Code INSEE de l'EPCI}
+\item{code_epci}{Code INSEE de l'EPCI (possibilité de passer un vecteur de code insee sans limite maximum)}
 
 \item{annee}{Année de mutation}
 

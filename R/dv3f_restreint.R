@@ -5,7 +5,7 @@
 #' @param anneemut Annee de la mutation (>= 2010) - cf anneemut
 #' @param anneemut_max Annee de la mutation maximale - cf anneemut
 #' @param anneemut_min Annee de la mutation minimale - cf anneemut
-#' @param code_insee Code INSEE communal ou d'arrondissement municipal (il est possible d'en demander plusieurs (10 maximum), séparés par des virgules, dans le même département)
+#' @param code_insee Code INSEE communal ou d'arrondissement municipal (possibilité de passer un vecteur de code insee sans limite maximum)
 #' @param codtypbien Code(s) de la typologie de bien à sélectionner (il est possible de ne specifier que les premiers niveaux et de séparer par une virgule) - exemple : codtypbien=11,121 - cf codtypbien
 #' @param codtypproa Code(s) de la typologie de l'acheteur (il est possible de ne specifier que les premiers niveaux et de séparer par une virgule) - exemple : codtypproa=P,F7 - cf codtypproa
 #' @param codtypprov Code(s) de la typologie du vendeur (il est possible de ne specifier que les premiers niveaux et de séparer par une virgule) - exemple : codtypprov=P,F7 - cf codtypprov
@@ -66,6 +66,13 @@ dv3f_geomutations <- function(
 
   headers <- c('Authorization' = paste("Bearer", token))
 
+  return_data <- NULL                # MAJ LISTE INSEE
+
+  for (code_insee_i in code_insee) { # MAJ LISTE INSEE
+
+
+    print(code_insee_i)              # MAJ LISTE INSEE
+
   page <- 1
   all_data <- list()
   has_more_data <- TRUE
@@ -76,7 +83,7 @@ dv3f_geomutations <- function(
       anneemut=anneemut,
       anneemut_max=anneemut_max,
       anneemut_min=anneemut_min,
-      code_insee=code_insee,
+      code_insee=code_insee_i,   # MAJ LISTE INSEE
       codtypbien=codtypbien,
       codtypproa=codtypproa,
       codtypprov=codtypprov,
@@ -141,7 +148,11 @@ dv3f_geomutations <- function(
 
   }
 
-  all_data
+  return_data <- dplyr::bind_rows(all_data,return_data)  # MAJ LISTE INSEE
+
+  }                                                        # MAJ LISTE INSEE
+
+  return_data                                              # MAJ LISTE INSEE
 
 }
 
@@ -193,6 +204,14 @@ dv3f_mutations <- function(
 
   headers <- c('Authorization' = paste("Bearer", token))
 
+  return_data <- NULL                # MAJ LISTE INSEE
+
+  for (code_insee_i in code_insee) { # MAJ LISTE INSEE
+
+
+    print(code_insee_i)              # MAJ LISTE INSEE
+
+
   page <- 1
   all_data <- list()
   has_more_data <- TRUE
@@ -203,7 +222,7 @@ dv3f_mutations <- function(
       anneemut=anneemut,
       anneemut_max=anneemut_max,
       anneemut_min=anneemut_min,
-      code_insee=code_insee,
+      code_insee=code_insee_i,   # MAJ LISTE INSEE
       codtypbien=codtypbien,
       codtypproa=codtypproa,
       codtypprov=codtypprov,
@@ -265,7 +284,11 @@ dv3f_mutations <- function(
 
   }
 
-  all_data
+  return_data <- dplyr::bind_rows(all_data,return_data)  # MAJ LISTE INSEE
+
+  }                                                        # MAJ LISTE INSEE
+
+  return_data                                              # MAJ LISTE INSEE
 
 
 }

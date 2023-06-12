@@ -34,7 +34,7 @@ dvf_opendata_mutations(
 
 \item{anneemut_min}{Annee de la mutation minimale - cf anneemut}
 
-\item{code_insee}{Code INSEE communal ou d'arrondissement municipal (il est possible d'en demander plusieurs (10 maximum), séparés par des virgules, dans le même département)}
+\item{code_insee}{Code INSEE communal ou d'arrondissement municipal (possibilité de passer un vecteur de code insee sans limite maximum)}
 
 \item{codtypbien}{Code(s) de la typologie de bien à sélectionner (il est possible de ne specifier que les premiers niveaux et de séparer par une virgule) - exemple : codtypbien=11,121 - cf codtypbien}
 

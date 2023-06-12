@@ -13,7 +13,7 @@ ind_dv3f_dep_annuel(
 )
 }
 \arguments{
-\item{coddep}{Code INSEE du département}
+\item{coddep}{Code INSEE du département (possibilité de passer un vecteur de code insee sans limite maximum)}
 
 \item{annee}{Année de mutation}
 

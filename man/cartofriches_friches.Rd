@@ -19,7 +19,7 @@ cartofriches_friches(
 \arguments{
 \item{coddep}{Code INSEE départemental}
 
-\item{code_insee}{Code INSEE communal ou d'arrondissement municipal (il est possible d'en demander plusieurs (10 maximum), séparés par des virgules, dans le même département)}
+\item{code_insee}{Code INSEE communal ou d'arrondissement municipal (possibilité de passer un vecteur de code insee sans limite maximum)}
 
 \item{contains_geom}{Renvoie les entités dont la géometrie contient celle précisée dans le filtre (en format GeoJSON, WKT, HEXEWKB, WKB). Exemple : /?contains_geom={'type':'Point', 'coordinates':[2.17,46.75]}}
 

@@ -13,7 +13,7 @@ ind_dv3f_reg_annuel(
 )
 }
 \arguments{
-\item{codreg}{Code INSEE de la région}
+\item{codreg}{Code INSEE de la région (possibilité de passer un vecteur de code insee sans limite maximum)}
 
 \item{annee}{Année de mutation}
 

@@ -13,7 +13,7 @@ ind_dv3f_epci_triennal(
 )
 }
 \arguments{
-\item{code_epci}{Code INSEE de l'EPCI}
+\item{code_epci}{Code INSEE de l'EPCI (possibilité de passer un vecteur de code insee sans limite maximum)}
 
 \item{annee}{Année de mutation centrale de la période triennale (par exemple, 2011 pour la période 2010-2012)}
 

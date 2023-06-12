@@ -13,7 +13,7 @@ ind_dv3f_com_annuel(
 )
 }
 \arguments{
-\item{code_insee}{Code INSEE de la commune}
+\item{code_insee}{Code INSEE communal ou d'arrondissement municipal (possibilité de passer un vecteur de code insee sans limite maximum)}
 
 \item{annee}{Année de mutation}
 

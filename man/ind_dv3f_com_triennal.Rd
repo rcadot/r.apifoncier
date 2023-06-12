@@ -13,7 +13,7 @@ ind_dv3f_com_triennal(
 )
 }
 \arguments{
-\item{code_insee}{Code INSEE de la commune}
+\item{code_insee}{Code INSEE communal ou d'arrondissement municipal (possibilité de passer un vecteur de code insee sans limite maximum)}
 
 \item{annee}{Année de mutation centrale de la période triennale (par exemple, 2011 pour la période 2010-2012)}
 

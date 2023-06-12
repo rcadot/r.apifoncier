@@ -14,7 +14,7 @@ ind_conso_espace_dep(
 )
 }
 \arguments{
-\item{coddep}{Code INSEE du département}
+\item{coddep}{Code INSEE du département (possibilité de passer un vecteur de code insee sans limite maximum)}
 
 \item{annee_max}{Année jusqu'à laquelle renvoyer les indicateurs d'artificialisation (incluse)}
 

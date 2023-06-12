@@ -1,7 +1,7 @@
 #' Retourne, en GeoJSON, les friches issues de Cartofriches pour la commune, le département ou l'emprise rectangulaire demandée (paramètre code_insee, coddep ou in_bbox obligatoire)
 #'
 #' @param coddep Code INSEE départemental
-#' @param code_insee Code INSEE communal ou d'arrondissement municipal (il est possible d'en demander plusieurs (10 maximum), séparés par des virgules, dans le même département)
+#' @param code_insee Code INSEE communal ou d'arrondissement municipal (possibilité de passer un vecteur de code insee sans limite maximum)
 #' @param contains_geom Renvoie les entités dont la géometrie contient celle précisée dans le filtre (en format GeoJSON, WKT, HEXEWKB, WKB). Exemple : /?contains_geom={'type':'Point', 'coordinates':\[2.17,46.75\]}
 #' @param fields Retourne tous les champs associés si fields=all, sinon retourne uniquement une selection de champs.
 #' @param in_bbox Emprise rectangulaire (via Longitude min,Latitude min,Longitude max,Latitude max). L'emprise demandée ne doit pas excéder un carré de 1.0 deg. x 1.0 deg.
@@ -44,7 +44,12 @@ cartofriches_geofriches <- function(
   # Chek for internet
   # check_internet()
 
+  return_data <- NULL                # MAJ LISTE INSEE
 
+  for (code_insee_i in code_insee) { # MAJ LISTE INSEE
+
+
+    print(code_insee_i)              # MAJ LISTE INSEE
 
   page <- 1
   all_data <- list()
@@ -54,7 +59,7 @@ cartofriches_geofriches <- function(
 
     args <- list(
       coddep=coddep,
-      code_insee=code_insee,
+      code_insee=code_insee_i,   # MAJ LISTE INSEE
       contains_geom=contains_geom,
       fields=fields,
       in_bbox=in_bbox,
@@ -96,7 +101,11 @@ cartofriches_geofriches <- function(
 
   }
 
-  all_data
+  return_data <- dplyr::bind_rows(all_data,return_data)  # MAJ LISTE INSEE
+
+  }                                                        # MAJ LISTE INSEE
+
+  return_data                                              # MAJ LISTE INSEE
 
 }
 
@@ -104,7 +113,7 @@ cartofriches_geofriches <- function(
 #' Retourne les friches issues de Cartofriches pour la commune, le département ou l'emprise rectangulaire demandée
 #'
 #' @param coddep Code INSEE départemental
-#' @param code_insee Code INSEE communal ou d'arrondissement municipal (il est possible d'en demander plusieurs (10 maximum), séparés par des virgules, dans le même département)
+#' @param code_insee Code INSEE communal ou d'arrondissement municipal (possibilité de passer un vecteur de code insee sans limite maximum)
 #' @param contains_geom Renvoie les entités dont la géometrie contient celle précisée dans le filtre (en format GeoJSON, WKT, HEXEWKB, WKB). Exemple : /?contains_geom={'type':'Point', 'coordinates':\[2.17,46.75\]}
 #' @param fields Retourne tous les champs associés si fields=all, sinon retourne uniquement une selection de champs.
 #' @param in_bbox Emprise rectangulaire (via Longitude min,Latitude min,Longitude max,Latitude max). L'emprise demandée ne doit pas excéder un carré de 1.0 deg. x 1.0 deg.
@@ -144,6 +153,13 @@ cartofriches_friches <- function(
     .sep = "/"
   )
 
+  return_data <- NULL                # MAJ LISTE INSEE
+
+  for (code_insee_i in code_insee) { # MAJ LISTE INSEE
+
+
+    print(code_insee_i)              # MAJ LISTE INSEE
+
   page <- 1
   all_data <- list()
   has_more_data <- TRUE
@@ -152,7 +168,7 @@ cartofriches_friches <- function(
 
     args <- list(
       coddep=coddep,
-      code_insee=code_insee,
+      code_insee=code_insee_i,   # MAJ LISTE INSEE
       contains_geom=contains_geom,
       fields=fields,
       in_bbox=in_bbox,
@@ -193,7 +209,11 @@ cartofriches_friches <- function(
 
   }
 
-  all_data
+  return_data <- dplyr::bind_rows(all_data,return_data)  # MAJ LISTE INSEE
+
+  }                                                        # MAJ LISTE INSEE
+
+  return_data                                              # MAJ LISTE INSEE
 
 }
 

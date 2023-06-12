@@ -1,7 +1,7 @@
 #' Parcelles
 #'
 #' @param token token
-#' @param code_insee Code INSEE communal ou d'arrondissement municipal (il est possible d'en demander plusieurs (10 maximum), séparés par des virgules, dans le même département)
+#' @param code_insee Code INSEE communal ou d'arrondissement municipal (possibilité de passer un vecteur de code insee sans limite maximum)
 #' @param contains_geom Renvoie les entités dont la géometrie contient celle précisée dans le filtre (en format GeoJSON, WKT, HEXEWKB, WKB). Exemple : /?contains_geom={'type':'Point', 'coordinates':\[2.17,46.75\]}
 #' @param ctpdl Type de pdl (type de copropriété) - cf ctpdl
 #' @param dcntarti_max Surface artificialisée maximale de la parcelle (m2) - cf dcntarti
@@ -76,6 +76,15 @@ ff_geoparcelles <- function(
 
   headers <- c('Authorization' = paste("Bearer", token))
 
+
+  return_data <- NULL                # MAJ LISTE INSEE
+
+  for (code_insee_i in code_insee) { # MAJ LISTE INSEE
+
+
+    print(code_insee_i)              # MAJ LISTE INSEE
+
+
   page <- 1
   all_data <- list()
   has_more_data <- TRUE
@@ -83,7 +92,7 @@ ff_geoparcelles <- function(
   while (has_more_data) {
 
     args <- list(
-      code_insee=code_insee,
+      code_insee=code_insee_i,   # MAJ LISTE INSEE
       contains_geom=contains_geom,
       ctpdl=ctpdl,
       dcntarti_max=dcntarti_max,
@@ -154,9 +163,14 @@ ff_geoparcelles <- function(
 
     # all_data
 
+
   }
 
-  all_data
+  return_data <- dplyr::bind_rows(all_data,return_data)  # MAJ LISTE INSEE
+
+  }                                                        # MAJ LISTE INSEE
+
+  return_data                                              # MAJ LISTE INSEE
 
 
 }
@@ -169,7 +183,7 @@ ff_geoparcelles <- function(
 #' GeoTUP
 #'
 #' @param token token
-#' @param code_insee Code INSEE communal ou d'arrondissement municipal (il est possible d'en demander plusieurs (10 maximum), séparés par des virgules, dans le même département)
+#' @param code_insee Code INSEE communal ou d'arrondissement municipal (possibilité de passer un vecteur de code insee sans limite maximum)
 #' @param contains_geom Renvoie les entités dont la géometrie contient celle précisée dans le filtre (en format GeoJSON, WKT, HEXEWKB, WKB). Exemple : /?contains_geom={'type':'Point', 'coordinates':\[2.17,46.75\]}
 #' @param typetup Type de l’entité : SIMPLE, PDLMP ou UF - cf typetup
 #' @param fields Retourne tous les champs associés si fields=all, sinon retourne uniquement une selection de champs.
@@ -192,8 +206,6 @@ ff_geotups <- function(
     in_bbox=NULL,
     catpro3=NULL
 ){
-
-
   base_url='https://apidf-preprod.cerema.fr'
   donnees='ff'
   indicateur_1='geotups'
@@ -206,63 +218,76 @@ ff_geotups <- function(
 
   headers <- c('Authorization' = paste("Bearer", token))
 
-  page <- 1
-  all_data <- list()
-  has_more_data <- TRUE
+  return_data <- NULL                # MAJ LISTE INSEE
 
-  while (has_more_data) {
+  for (code_insee_i in code_insee) { # MAJ LISTE INSEE
 
-    args <- list(
-      code_insee=code_insee,
-      contains_geom=contains_geom,
-      typetup=typetup,
-      fields=fields,
-      in_bbox=in_bbox,
-      catpro3=catpro3,
-      page=page,
-      page_size=5000
-    )
 
-    statut <-
-      httr::GET(
-        url,
-        query = purrr::compact(args),
-        httr::add_headers(headers)
+    print(code_insee_i)              # MAJ LISTE INSEE
+
+    page <- 1
+    all_data <- list()
+    has_more_data <- TRUE
+
+
+
+    while (has_more_data) {
+
+      args <- list(
+        code_insee=code_insee_i,
+        contains_geom=contains_geom,
+        typetup=typetup,
+        fields=fields,
+        in_bbox=in_bbox,
+        catpro3=catpro3,
+        page=page,
+        page_size=5000
       )
 
-    if (statut$status_code == 404){
+      statut <-
+        httr::GET(
+          url,
+          query = purrr::compact(args),
+          httr::add_headers(headers)
+        )
 
-      has_more_data <- FALSE
-      # print('has_more_data=FALSE')
+      if (statut$status_code == 404){
 
-    } else {
+        has_more_data <- FALSE
+        # print('has_more_data=FALSE')
 
-      data <-
-        sf::st_read(
-          httr::GET(
-            url,
-            query = purrr::compact(args),
-            httr::add_headers(headers)
-          ),quiet=TRUE
-        ) %>%
-        sf::st_make_valid()
+      } else {
 
-      # print(page)
-      pour_total <- jsonlite::fromJSON(rawToChar(statut$content))
-      total <- pour_total$count
+        data <-
+          sf::st_read(
+            httr::GET(
+              url,
+              query = purrr::compact(args),
+              httr::add_headers(headers)
+            ),quiet=TRUE
+          ) %>%
+          sf::st_make_valid()
 
-      all_data <- dplyr::bind_rows(all_data, data)
+        # print(page)
+        pour_total <- jsonlite::fromJSON(rawToChar(statut$content))
+        total <- pour_total$count
 
-      page <- page + 1
-      # print(page)
-      print(paste(nrow(all_data),"/",total))
+        all_data <- dplyr::bind_rows(all_data, data)
+
+        page <- page + 1
+        # print(page)
+        print(paste(nrow(all_data),"/",total))
+      }
+
+      # all_data
+
     }
 
-    # all_data
+    return_data <- dplyr::bind_rows(all_data,return_data)  # MAJ LISTE INSEE
 
-  }
+  }                                                        # MAJ LISTE INSEE
 
-  all_data
+  return_data                                              # MAJ LISTE INSEE
 
 
 }
@@ -272,7 +297,7 @@ ff_geotups <- function(
 #' Locaux
 #'
 #' @param token token
-#' @param code_insee Code INSEE communal ou d'arrondissement municipal (il est possible d'en demander plusieurs (10 maximum), séparés par des virgules, dans le même département)
+#' @param code_insee Code INSEE communal ou d'arrondissement municipal (possibilité de passer un vecteur de code insee sans limite maximum)
 #' @param dteloc Type(s) de local (il est possible de spécifier plusieurs types et de séparer par une virgule) - exemple : dteloc=1,2 - cf dteloc
 #' @param fields Retourne tous les champs associés si fields=all, sinon retourne uniquement une selection de champs.
 #' @param idpar Identifiant de parcelle - cf idpar
@@ -325,6 +350,13 @@ ff_locaux <- function(
 
   headers <- c('Authorization' = paste("Bearer", token))
 
+  return_data <- NULL                # MAJ LISTE INSEE
+
+  for (code_insee_i in code_insee) { # MAJ LISTE INSEE
+
+
+    print(code_insee_i)              # MAJ LISTE INSEE
+
   page <- 1
   all_data <- list()
   has_more_data <- TRUE
@@ -332,7 +364,7 @@ ff_locaux <- function(
   while (has_more_data) {
 
     args <- list(
-      code_insee=code_insee,
+      code_insee=code_insee_i,   # MAJ LISTE INSEE
       dteloc=dteloc,
       fields=fields,
       idpar=idpar,
@@ -386,7 +418,11 @@ ff_locaux <- function(
 
   }
 
-  all_data
+  return_data <- dplyr::bind_rows(all_data,return_data)  # MAJ LISTE INSEE
+
+  }                                                        # MAJ LISTE INSEE
+
+  return_data                                              # MAJ LISTE INSEE
 
 
 }
@@ -495,6 +531,13 @@ ff_parcelles <- function(
 
   headers <- c('Authorization' = paste("Bearer", token))
 
+  return_data <- NULL                # MAJ LISTE INSEE
+
+  for (code_insee_i in code_insee) { # MAJ LISTE INSEE
+
+
+    print(code_insee_i)              # MAJ LISTE INSEE
+
   page <- 1
   all_data <- list()
   has_more_data <- TRUE
@@ -502,7 +545,7 @@ ff_parcelles <- function(
   while (has_more_data) {
 
     args <- list(
-      code_insee=code_insee,
+      code_insee=code_insee_i,   # MAJ LISTE INSEE
       contains_geom=contains_geom,
       ctpdl=ctpdl,
       dcntarti_max=dcntarti_max,
@@ -572,7 +615,11 @@ ff_parcelles <- function(
 
   }
 
-  all_data
+  return_data <- dplyr::bind_rows(all_data,return_data)  # MAJ LISTE INSEE
+
+  }                                                        # MAJ LISTE INSEE
+
+  return_data                                              # MAJ LISTE INSEE
 
 
 }
@@ -629,7 +676,7 @@ ff_parcelles_idpar <- function(
 #'
 #' @param token token
 #' @param ccodro Code(s) du droit réel ou particulier (il est possible de spécifier plusieurs valeurs et de séparer par une virgule) - exemple : ccodro=A,B - cf ccodro
-#' @param code_insee Code INSEE communal ou d'arrondissement municipal (il est possible d'en demander plusieurs (10 maximum), séparés par des virgules, dans le même département)
+#' @param code_insee Code INSEE communal ou d'arrondissement municipal (possibilité de passer un vecteur de code insee sans limite maximum)
 #' @param fields Retourne tous les champs associés si fields=all, sinon retourne uniquement une selection de champs.
 #' @param gtoper Indicateur de personne physique ou morale - cf gtoper
 #' @param idprocpte Identifiant de compte communal - cf idprocpte
@@ -670,6 +717,13 @@ ff_proprios <- function(
 
   headers <- c('Authorization' = paste("Bearer", token))
 
+  return_data <- NULL                # MAJ LISTE INSEE
+
+  for (code_insee_i in code_insee) { # MAJ LISTE INSEE
+
+
+    print(code_insee_i)              # MAJ LISTE INSEE
+
   page <- 1
   all_data <- list()
   has_more_data <- TRUE
@@ -678,7 +732,7 @@ ff_proprios <- function(
 
     args <- list(
       ccodro=ccodro,
-      code_insee=code_insee,
+      code_insee=code_insee_i,   # MAJ LISTE INSEE
       fields=fields,
       gtoper=gtoper,
       idprocpte=idprocpte,
@@ -731,7 +785,11 @@ ff_proprios <- function(
 
   }
 
-  all_data
+  return_data <- dplyr::bind_rows(all_data,return_data)  # MAJ LISTE INSEE
+
+  }                                                        # MAJ LISTE INSEE
+
+  return_data                                              # MAJ LISTE INSEE
 
 
 }
@@ -819,6 +877,13 @@ ff_tups <- function(
 
   headers <- c('Authorization' = paste("Bearer", token))
 
+  return_data <- NULL                # MAJ LISTE INSEE
+
+  for (code_insee_i in code_insee) { # MAJ LISTE INSEE
+
+
+    print(code_insee_i)              # MAJ LISTE INSEE
+
   page <- 1
   all_data <- list()
   has_more_data <- TRUE
@@ -826,7 +891,7 @@ ff_tups <- function(
   while (has_more_data) {
 
     args <- list(
-      code_insee=code_insee,
+      code_insee=code_insee_i,   # MAJ LISTE INSEE
       contains_geom=contains_geom,
       typetup=typetup,
       fields=fields,
@@ -876,7 +941,11 @@ ff_tups <- function(
 
   }
 
-  all_data
+  return_data <- dplyr::bind_rows(all_data,return_data)  # MAJ LISTE INSEE
+
+  }                                                        # MAJ LISTE INSEE
+
+  return_data                                              # MAJ LISTE INSEE
 
 
 }

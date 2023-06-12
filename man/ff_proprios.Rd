@@ -22,7 +22,7 @@ ff_proprios(
 
 \item{ccodro}{Code(s) du droit réel ou particulier (il est possible de spécifier plusieurs valeurs et de séparer par une virgule) - exemple : ccodro=A,B - cf ccodro}
 
-\item{code_insee}{Code INSEE communal ou d'arrondissement municipal (il est possible d'en demander plusieurs (10 maximum), séparés par des virgules, dans le même département)}
+\item{code_insee}{Code INSEE communal ou d'arrondissement municipal (possibilité de passer un vecteur de code insee sans limite maximum)}
 
 \item{fields}{Retourne tous les champs associés si fields=all, sinon retourne uniquement une selection de champs.}
 

@@ -1,6 +1,6 @@
 #' Consommation d'espace par commune (Graphique)
 #'
-#' @param code_insee Code INSEE de la commune
+#' @param code_insee Code INSEE communal ou d'arrondissement municipal (possibilité de passer un vecteur de code insee sans limite maximum)
 #' @param annee_max Année jusqu'à laquelle renvoyer les indicateurs d'artificialisation (incluse)
 #' @param annee_min Année à partir de laquelle renvoyer les indicateurs d'artificialisation (incluse)
 #' @param ordering Which field to use when ordering the results.
@@ -33,41 +33,61 @@ ind_conso_espace_communes_g <- function(
     hectare=TRUE
 ) {
 
-  args <- list(
-    coddep=code_insee,
-    annee_max=annee_max,
-    annee_min=annee_min,
-    ordering=ordering,
-    page=page,
-    page_size=page_size)
 
-  base_url='https://apidf-preprod.cerema.fr'
-  donnees='indicateurs'
-  indicateur_1='conso_espace'
-  indicateur_2='communes'
+  return_data <- NULL                # MAJ LISTE INSEE
 
-  code_insee <- stringr::str_pad(code_insee,width = 5,pad = "0",side = "left")
+  for (code_insee_i in code_insee) { # MAJ LISTE INSEE
 
-  url=glue::glue(
-    base_url,donnees,indicateur_1,indicateur_2,code_insee,'/',
-    .sep = "/"
-  )
 
-  # Chek for internet
-  # check_internet()
+    print(code_insee_i)              # MAJ LISTE INSEE
 
-  res <- httr::GET(url, query = purrr::compact(args))
 
-  # Check the result
-  # check_status(res)
+    args <- list(
+      code_insee=code_insee_i,   # MAJ LISTE INSEE
+      annee_max=annee_max,
+      annee_min=annee_min,
+      ordering=ordering,
+      page=page,
+      page_size=page_size)
 
-  res <- jsonlite::fromJSON(rawToChar(res$content))$results
+    base_url='https://apidf-preprod.cerema.fr'
+    donnees='indicateurs'
+    indicateur_1='conso_espace'
+    indicateur_2='communes'
+
+
+    # MAJ LISTE INSEE
+    code_insee_i <- stringr::str_pad(code_insee_i,width = 5,pad = "0",side = "left")
+    # MAJ LISTE INSEE
+    url=glue::glue(
+      base_url,donnees,indicateur_1,indicateur_2,code_insee_i,'/',
+      .sep = "/"
+    )
+
+
+
+    # Chek for internet
+    # check_internet()
+
+    res <- httr::GET(url, query = purrr::compact(args))
+
+    # Check the result
+    # check_status(res)
+
+    res <- jsonlite::fromJSON(rawToChar(res$content))$results
+
+
+    return_data <- dplyr::bind_rows(res,return_data)  # MAJ LISTE INSEE
+
+  }                                                        # MAJ LISTE INSEE
+
+
 
 
   if (affichage=='total'){
 
     prep_graph <-
-      res %>%
+      return_data %>%                                     # MAJ LISTE INSEE
       dplyr::rename(conso=naf_arti) %>%
       dplyr::mutate(type='total')
 
@@ -75,7 +95,7 @@ ind_conso_espace_communes_g <- function(
   } else if (affichage=='type'){
 
     prep_graph <-
-      res %>%
+      return_data %>%                                     # MAJ LISTE INSEE
       dplyr::rename(
         "Activite"=conso_act,
         "Habitat"=conso_hab,
@@ -119,7 +139,7 @@ ind_conso_espace_communes_g <- function(
 
 #' Consommation d'espace par commune
 #'
-#' @param code_insee Code INSEE de la commune
+#' @param code_insee Code INSEE communal ou d'arrondissement municipal (possibilité de passer un vecteur de code insee sans limite maximum)
 #' @param annee_max Année jusqu'à laquelle renvoyer les indicateurs d'artificialisation (incluse)
 #' @param annee_min Année à partir de laquelle renvoyer les indicateurs d'artificialisation (incluse)
 #' @param ordering Which field to use when ordering the results.
@@ -140,8 +160,15 @@ ind_conso_espace_communes <- function(
     page_size=NULL
 ) {
 
+  return_data <- NULL                # MAJ LISTE INSEE
+
+  for (code_insee_i in code_insee) { # MAJ LISTE INSEE
+
+
+    print(code_insee_i)              # MAJ LISTE INSEE
+
   args <- list(
-    coddep=code_insee,
+    code_insee=code_insee_i,   # MAJ LISTE INSEE
     annee_max=annee_max,
     annee_min=annee_min,
     ordering=ordering,
@@ -152,11 +179,11 @@ ind_conso_espace_communes <- function(
   donnees='indicateurs'
   indicateur_1='conso_espace'
   indicateur_2='communes'
-
-  code_insee <- stringr::str_pad(code_insee,width = 5,pad = "0",side = "left")
-
+  # MAJ LISTE INSEE
+  code_insee_i <- stringr::str_pad(code_insee_i,width = 5,pad = "0",side = "left")
+  # MAJ LISTE INSEE
   url=glue::glue(
-    base_url,donnees,indicateur_1,indicateur_2,code_insee,'/',
+    base_url,donnees,indicateur_1,indicateur_2,code_insee_i,'/',
     .sep = "/"
   )
 
@@ -168,13 +195,21 @@ ind_conso_espace_communes <- function(
   # Check the result
   # check_status(res)
 
-  jsonlite::fromJSON(rawToChar(res$content))$results
+  res <- jsonlite::fromJSON(rawToChar(res$content))$results
+
+  return_data <- dplyr::bind_rows(res,return_data)  # MAJ LISTE INSEE
+
+  }                                                        # MAJ LISTE INSEE
+
+  return_data                                              # MAJ LISTE INSEE
+
+
 
 }
 
 #' Consommation d'espace par département
 #'
-#' @param coddep Code INSEE du département
+#' @param coddep Code INSEE du département (possibilité de passer un vecteur de code insee sans limite maximum)
 #' @param annee_max Année jusqu'à laquelle renvoyer les indicateurs d'artificialisation (incluse)
 #' @param annee_min Année à partir de laquelle renvoyer les indicateurs d'artificialisation (incluse)
 #' @param ordering Which field to use when ordering the results.
@@ -197,8 +232,15 @@ ind_conso_espace_dep <- function(
 
   # if (!is.numeric(code_insee)) {stop("x should be numeric")}
 
+  return_data <- NULL                # MAJ LISTE INSEE
+
+  for (coddep_i in coddep) { # MAJ LISTE INSEE
+
+
+    print(coddep_i)              # MAJ LISTE INSEE
+
   args <- list(
-    coddep=coddep,
+    coddep=coddep_i,  # MAJ LISTE INSEE
     annee_max=annee_max,
     annee_min=annee_min,
     ordering=ordering,
@@ -209,11 +251,11 @@ ind_conso_espace_dep <- function(
   donnees='indicateurs'
   indicateur_1='conso_espace'
   indicateur_2='departements'
-
-  coddep <- stringr::str_pad(coddep,width = 2,pad = "0",side = "left")
-
+  # MAJ LISTE INSEE
+  coddep_i <- stringr::str_pad(coddep_i,width = 2,pad = "0",side = "left")
+  # MAJ LISTE INSEE
   url=glue::glue(
-    base_url,donnees,indicateur_1,indicateur_2,coddep,'/',
+    base_url,donnees,indicateur_1,indicateur_2,coddep_i,'/',
     .sep = "/"
   )
 
@@ -225,13 +267,19 @@ ind_conso_espace_dep <- function(
   # Check the result
   # check_status(res)
 
-  jsonlite::fromJSON(rawToChar(res$content))$results
+  res <- jsonlite::fromJSON(rawToChar(res$content))$results
+
+  return_data <- dplyr::bind_rows(res,return_data)  # MAJ LISTE INSEE
+
+  }                                                        # MAJ LISTE INSEE
+
+  return_data                                              # MAJ LISTE INSEE
 
 }
 
 #' Consommation d'espace par département (Graphique)
 #'
-#' @param coddep Code INSEE du département
+#' @param coddep Code INSEE du département (possibilité de passer un vecteur de code insee sans limite maximum)
 #' @param annee_max Année jusqu'à laquelle renvoyer les indicateurs d'artificialisation (incluse)
 #' @param annee_min Année à partir de laquelle renvoyer les indicateurs d'artificialisation (incluse)
 #' @param ordering Which field to use when ordering the results.
@@ -260,40 +308,53 @@ ind_conso_espace_dep_g <- function(
 
   # if (!is.numeric(code_insee)) {stop("x should be numeric")}
 
-  args <- list(
-    coddep=coddep,
-    annee_max=annee_max,
-    annee_min=annee_min,
-    ordering=ordering,
-    page=page,
-    page_size=page_size)
+  return_data <- NULL                # MAJ LISTE INSEE
 
-  base_url='https://apidf-preprod.cerema.fr'
-  donnees='indicateurs'
-  indicateur_1='conso_espace'
-  indicateur_2='departements'
+  for (coddep_i in coddep) { # MAJ LISTE INSEE
 
-  coddep <- stringr::str_pad(coddep,width = 2,pad = "0",side = "left")
 
-  url=glue::glue(
-    base_url,donnees,indicateur_1,indicateur_2,coddep,'/',
-    .sep = "/"
-  )
+    print(coddep_i)              # MAJ LISTE INSEE
 
-  # Chek for internet
-  # check_internet()
+    args <- list(
+      coddep=coddep_i,  # MAJ LISTE INSEE
+      annee_max=annee_max,
+      annee_min=annee_min,
+      ordering=ordering,
+      page=page,
+      page_size=page_size)
 
-  res <- httr::GET(url, query = purrr::compact(args))
+    base_url='https://apidf-preprod.cerema.fr'
+    donnees='indicateurs'
+    indicateur_1='conso_espace'
+    indicateur_2='departements'
+    # MAJ LISTE INSEE
+    coddep_i <- stringr::str_pad(coddep_i,width = 2,pad = "0",side = "left")
+    # MAJ LISTE INSEE
+    url=glue::glue(
+      base_url,donnees,indicateur_1,indicateur_2,coddep_i,'/',
+      .sep = "/"
+    )
 
-  # Check the result
-  # check_status(res)
+    # Chek for internet
+    # check_internet()
 
-  res <- jsonlite::fromJSON(rawToChar(res$content))$results
+    res <- httr::GET(url, query = purrr::compact(args))
+
+    # Check the result
+    # check_status(res)
+
+    res <- jsonlite::fromJSON(rawToChar(res$content))$results
+
+    return_data <- dplyr::bind_rows(res,return_data)  # MAJ LISTE INSEE
+
+  }                                                        # MAJ LISTE INSEE
+
+  return_data                                              # MAJ LISTE INSEE
 
   if (affichage=='total'){
 
     prep_graph <-
-      res %>%
+      return_data %>%                                         # MAJ LISTE INSEE
       dplyr::rename(conso=naf_arti) %>%
       dplyr::mutate(type='total')
 
@@ -301,7 +362,7 @@ ind_conso_espace_dep_g <- function(
   } else if (affichage=='type'){
 
     prep_graph <-
-      res %>%
+      return_data %>%                             # MAJ LISTE INSEE
       dplyr::rename(
         "Activite"=conso_act,
         "Habitat"=conso_hab,

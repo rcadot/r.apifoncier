@@ -25,7 +25,7 @@ ff_locaux(
 \arguments{
 \item{token}{token}
 
-\item{code_insee}{Code INSEE communal ou d'arrondissement municipal (il est possible d'en demander plusieurs (10 maximum), séparés par des virgules, dans le même département)}
+\item{code_insee}{Code INSEE communal ou d'arrondissement municipal (possibilité de passer un vecteur de code insee sans limite maximum)}
 
 \item{dteloc}{Type(s) de local (il est possible de spécifier plusieurs types et de séparer par une virgule) - exemple : dteloc=1,2 - cf dteloc}
 

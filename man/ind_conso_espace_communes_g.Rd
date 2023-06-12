@@ -17,7 +17,7 @@ ind_conso_espace_communes_g(
 )
 }
 \arguments{
-\item{code_insee}{Code INSEE de la commune}
+\item{code_insee}{Code INSEE communal ou d'arrondissement municipal (possibilité de passer un vecteur de code insee sans limite maximum)}
 
 \item{annee_max}{Année jusqu'à laquelle renvoyer les indicateurs d'artificialisation (incluse)}
 
