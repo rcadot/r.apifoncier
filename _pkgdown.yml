@@ -24,4 +24,7 @@ reference:
 - title: Fichiers fonciers
   desc: Fonctions permettant l'accès aux données issues des fichiers fonciers
   contents: starts_with("ff_")
-
+- title: Graphiques
+  desc: Fonctions permettant de générer des illustrations
+  contents:
+  - matches("graph")
