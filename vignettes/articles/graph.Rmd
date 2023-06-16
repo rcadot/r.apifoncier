@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
 library(r.apifoncier)
 ```
 
-Grâce à la fonction `graph()`, vous pouvez générer des graphiques {{plotly}} pour l'ensemble des données importées via les fonctions du package.
+Grâce à la fonction `graph()`, vous pouvez générer des graphiques {plotly} pour l'ensemble des données importées via les fonctions du package.
 
 Pour cela, c'est simple, il suffit de télécharger les données de son choix avec une fonction dédiée et de les passer dans la fonction graph comme les exemples ci-dessous.
 

@@ -30,5 +30,5 @@ Renvoie les indicateurs triennaux DV3F à l'échelle communale
 Indicateurs triennaux DV3F à l'échelle de la commune
 }
 \examples{
-ind_dv3f_com_triennal('59350')
+ind_dv3f_com_triennal('59002')
 }

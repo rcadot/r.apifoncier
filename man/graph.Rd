@@ -7,7 +7,7 @@
 graph(data, x, y, couleur = NULL, titre = NULL, titre_x = NULL, titre_y = NULL)
 }
 \arguments{
-\item{data}{Mes données d'entrées}
+\item{data}{Les données d'entrées}
 
 \item{x}{une variable en abscisse (catégorielle)}
 

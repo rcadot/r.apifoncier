@@ -1,0 +1,35 @@
+---
+title: "Cartographies"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(r.apifoncier)
+```
+
+Grâce à la fonction `carte()`, vous pouvez générer des cartographies dynamiques {leaflet} pour l'ensemble des données importées via les fonctions du package.
+
+Pour cela, c'est simple, il suffit de télécharger les données de son choix avec une fonction dédiée et de les passer dans la fonction `carte()` comme les exemples ci-dessous.
+
+```{r message=FALSE, warning=FALSE}
+cartofriches_geofriches(code_insee = 59350) %>% 
+  carte(couleur = 'site_statut')
+```
+
+Il est possible de personnaliser le rendu de la carte en ajoutant des paramètres en provenance de la fonction `addPolygons()`.
+
+```{r message=FALSE, warning=FALSE}
+cartofriches_geofriches(code_insee = 59350) %>% 
+  carte(
+    couleur = 'site_statut',
+    weight=3 # paramètre supplémentaire pour changer l'épaisseur du contour
+  )
+```
+
+Le résultat étant un objet leaflet, il est possible d'utiliser l'ensemble des fonctions du package {leaflet} pour traiter cet objet (sauvegarde, personnalisation, etc.)

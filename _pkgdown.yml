@@ -28,3 +28,4 @@ reference:
   desc: Fonctions permettant de générer des illustrations
   contents:
   - matches("graph")
+  - matches("carte")
