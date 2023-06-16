@@ -47,6 +47,7 @@
     <a class="dropdown-item" href="../articles/DVF.html">DVF</a>
     <a class="dropdown-item" href="../articles/Fichiers-Fonciers.html">Fichiers Fonciers</a>
     <a class="dropdown-item" href="../articles/Indicateurs-de-prix.html">Indicateurs de prix</a>
+    <a class="dropdown-item" href="../articles/graph.html">Graphiques</a>
   </div>
 </li>
 <li class="nav-item">
@@ -96,37 +97,37 @@ dédié</a>.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/rcadot/r.apifoncier" class="external-link">r.apifoncier</a></span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/ind_dv3f_com_annuel.html">ind_dv3f_com_annuel</a></span><span class="op">(</span><span class="st">'59350'</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/ind_dv3f_com_annuel.html">ind_dv3f_com_annuel</a></span><span class="op">(</span><span class="st">'59002'</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span> <span class="co"># Le résultat contient 617 colonnes</span></span>
-<span><span class="co">#&gt; [1] "59350"</span></span>
+<span><span class="co">#&gt; [1] "59002"</span></span>
 <span><span class="co">#&gt;    annee codgeo libgeo nbtrans_cod1 valeurfonc_sum_cod1 nbtrans_cod2</span></span>
-<span><span class="co">#&gt; 1   2010  59350  Lille         5120           837659942           57</span></span>
-<span><span class="co">#&gt; 2   2011  59350  Lille         4474           882766180           52</span></span>
-<span><span class="co">#&gt; 3   2012  59350  Lille         4200           813426374           78</span></span>
-<span><span class="co">#&gt; 4   2013  59350  Lille         3971           781613569           45</span></span>
-<span><span class="co">#&gt; 5   2014  59350  Lille         3931           804964493           40</span></span>
-<span><span class="co">#&gt; 6   2015  59350  Lille         4472           913893573           36</span></span>
-<span><span class="co">#&gt; 7   2016  59350  Lille         4708          1016164793           43</span></span>
-<span><span class="co">#&gt; 8   2017  59350  Lille         5387          1315158597           49</span></span>
-<span><span class="co">#&gt; 9   2018  59350  Lille         5587          1533348525           50</span></span>
-<span><span class="co">#&gt; 10  2019  59350  Lille         5914          1316236006           45</span></span>
-<span><span class="co">#&gt; 11  2020  59350  Lille         5115          1338281971           52</span></span>
-<span><span class="co">#&gt; 12  2021  59350  Lille         5638          1368565071           74</span></span>
-<span><span class="co">#&gt; 13  2022  59350  Lille         5188          1793537471           44</span></span>
+<span><span class="co">#&gt; 1   2010  59002 Abscon           49             6021115           NA</span></span>
+<span><span class="co">#&gt; 2   2011  59002 Abscon           46             5352150           NA</span></span>
+<span><span class="co">#&gt; 3   2012  59002 Abscon           46             5852550           NA</span></span>
+<span><span class="co">#&gt; 4   2013  59002 Abscon           39             4408530           NA</span></span>
+<span><span class="co">#&gt; 5   2014  59002 Abscon           39             4240600           NA</span></span>
+<span><span class="co">#&gt; 6   2015  59002 Abscon           46             5037006           NA</span></span>
+<span><span class="co">#&gt; 7   2016  59002 Abscon           34             3614280           NA</span></span>
+<span><span class="co">#&gt; 8   2017  59002 Abscon           47             4522487           NA</span></span>
+<span><span class="co">#&gt; 9   2018  59002 Abscon           45             5651685           NA</span></span>
+<span><span class="co">#&gt; 10  2019  59002 Abscon           39             4511490           NA</span></span>
+<span><span class="co">#&gt; 11  2020  59002 Abscon           56             6287621           NA</span></span>
+<span><span class="co">#&gt; 12  2021  59002 Abscon           47             5927218           NA</span></span>
+<span><span class="co">#&gt; 13  2022  59002 Abscon           56             7370551           NA</span></span>
 <span><span class="co">#&gt;    valeurfonc_sum_cod2 nbtrans_cod11 valeurfonc_sum_cod11 nbtrans_cod111</span></span>
-<span><span class="co">#&gt; 1             11280409          1018            191957219           1009</span></span>
-<span><span class="co">#&gt; 2             12029527          1007            193464212           1001</span></span>
-<span><span class="co">#&gt; 3             10470981           898            185220834            888</span></span>
-<span><span class="co">#&gt; 4              9220512           900            176372788            891</span></span>
-<span><span class="co">#&gt; 5              9204725           809            158841064            800</span></span>
-<span><span class="co">#&gt; 6              5374163           950            190094699            939</span></span>
-<span><span class="co">#&gt; 7             18337891          1074            218153084           1058</span></span>
-<span><span class="co">#&gt; 8             21091314          1066            218596803           1045</span></span>
-<span><span class="co">#&gt; 9              8863366           999            209565961            986</span></span>
-<span><span class="co">#&gt; 10            21399434          1129            260309641           1125</span></span>
-<span><span class="co">#&gt; 11            22967299          1068            266500635           1057</span></span>
-<span><span class="co">#&gt; 12            18772045          1102            286547302           1092</span></span>
-<span><span class="co">#&gt; 13            19906913          1030            281169115           1020</span></span></code></pre></div>
+<span><span class="co">#&gt; 1                   NA            41              5581493             41</span></span>
+<span><span class="co">#&gt; 2                   NA            42              5153650             41</span></span>
+<span><span class="co">#&gt; 3                   NA            38              4961550             38</span></span>
+<span><span class="co">#&gt; 4                   NA            37              4314730             37</span></span>
+<span><span class="co">#&gt; 5                   NA            34              3875100             33</span></span>
+<span><span class="co">#&gt; 6                   NA            43              4889006             43</span></span>
+<span><span class="co">#&gt; 7                   NA            29              3277180             29</span></span>
+<span><span class="co">#&gt; 8                   NA            44              4392787             44</span></span>
+<span><span class="co">#&gt; 9                   NA            35              4621185             34</span></span>
+<span><span class="co">#&gt; 10                  NA            37              4376490             36</span></span>
+<span><span class="co">#&gt; 11                  NA            51              5875621             50</span></span>
+<span><span class="co">#&gt; 12                  NA            40              5025068             38</span></span>
+<span><span class="co">#&gt; 13                  NA            54              7144051             54</span></span></code></pre></div>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/ind_dv3f_epci_annuel.html">ind_dv3f_epci_annuel</a></span><span class="op">(</span><span class="st">'200093201'</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span> <span class="co"># Le résultat contient 617 colonnes</span></span>

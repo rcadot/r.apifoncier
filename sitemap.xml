@@ -28,6 +28,9 @@
     <loc>https://rcadot.github.io/r.apifoncier/articles/Indicateurs-de-prix.html</loc>
   </url>
   <url>
+    <loc>https://rcadot.github.io/r.apifoncier/articles/graph.html</loc>
+  </url>
+  <url>
     <loc>https://rcadot.github.io/r.apifoncier/articles/index.html</loc>
   </url>
   <url>
@@ -95,6 +98,9 @@
   </url>
   <url>
     <loc>https://rcadot.github.io/r.apifoncier/reference/ff_tups_idetup.html</loc>
+  </url>
+  <url>
+    <loc>https://rcadot.github.io/r.apifoncier/reference/graph.html</loc>
   </url>
   <url>
     <loc>https://rcadot.github.io/r.apifoncier/reference/ind_conso_espace_communes.html</loc>
