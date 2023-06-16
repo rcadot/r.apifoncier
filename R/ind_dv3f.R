@@ -138,7 +138,7 @@ return_data                                             # MAJ LISTE INSEE
 #' @return Renvoie les indicateurs annuels DV3F à l'échelle communale
 #' @export
 #'
-#' @examples ind_dv3f_com_annuel('59350')
+#' @examples ind_dv3f_com_annuel('59002')
 ind_dv3f_com_annuel <- function(
     code_insee,
     annee=NULL,
@@ -203,7 +203,7 @@ ind_dv3f_com_annuel <- function(
 #' @return Renvoie les indicateurs triennaux DV3F à l'échelle communale
 #' @export
 #'
-#' @examples ind_dv3f_com_triennal('59350')
+#' @examples ind_dv3f_com_triennal('59002')
 ind_dv3f_com_triennal <- function(
     code_insee,
     annee=NULL,
