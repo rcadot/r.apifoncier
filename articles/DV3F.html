@@ -49,6 +49,7 @@
     <a class="dropdown-item" href="../articles/Indicateurs-de-prix.html">Indicateurs de prix</a>
     <a class="dropdown-item" href="../articles/cartes.html">Cartographies</a>
     <a class="dropdown-item" href="../articles/graph.html">Graphiques</a>
+    <a class="dropdown-item" href="../articles/tableau.html">Tableaux</a>
   </div>
 </li>
 <li class="nav-item">
@@ -100,8 +101,14 @@ et avec des paramètres tels que :</p>
 <li>les typologies d’acheteurs, vendeurs et du bien ;</li>
 <li>avec ou sans géométrie.</li>
 </ul>
-<p>Retrouvez l’ensemble des fonctions <code>dv3f_*</code> dans <a href="https://rcadot.github.io/r.apifoncier/reference/index.html#dv-f">l’onglet
-référence</a>.</p>
+<p>L’ensemble des requêtes nécessitant un <em>token</em> sont sous la
+forme suivante.</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">token</span><span class="op">=</span><span class="st">"le_token_copie_via_consultdf"</span></span>
+<span></span>
+<span><span class="fu"><a href="../reference/dv3f_geomutations.html">dv3f_geomutations</a></span><span class="op">(</span>code_insee<span class="op">=</span><span class="fl">59001</span>,token<span class="op">=</span><span class="va">token</span><span class="op">)</span></span></code></pre></div>
+<p><em>Retrouvez l’ensemble des fonctions <code>dv3f_*</code> dans <a href="https://rcadot.github.io/r.apifoncier/reference/index.html#dv-f">l’onglet
+référence</a>.</em></p>
   </main>
 </div>
 

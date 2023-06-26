@@ -37,6 +37,9 @@
     <loc>https://rcadot.github.io/r.apifoncier/articles/index.html</loc>
   </url>
   <url>
+    <loc>https://rcadot.github.io/r.apifoncier/articles/tableau.html</loc>
+  </url>
+  <url>
     <loc>https://rcadot.github.io/r.apifoncier/authors.html</loc>
   </url>
   <url>
@@ -52,10 +55,16 @@
     <loc>https://rcadot.github.io/r.apifoncier/reference/cartofriches_friches.html</loc>
   </url>
   <url>
+    <loc>https://rcadot.github.io/r.apifoncier/reference/cartofriches_friches_dep.html</loc>
+  </url>
+  <url>
     <loc>https://rcadot.github.io/r.apifoncier/reference/cartofriches_friches_site.html</loc>
   </url>
   <url>
     <loc>https://rcadot.github.io/r.apifoncier/reference/cartofriches_geofriches.html</loc>
+  </url>
+  <url>
+    <loc>https://rcadot.github.io/r.apifoncier/reference/cartofriches_geofriches_dep.html</loc>
   </url>
   <url>
     <loc>https://rcadot.github.io/r.apifoncier/reference/dv3f_geomutations.html</loc>
@@ -155,5 +164,8 @@
   </url>
   <url>
     <loc>https://rcadot.github.io/r.apifoncier/reference/pipe.html</loc>
+  </url>
+  <url>
+    <loc>https://rcadot.github.io/r.apifoncier/reference/tableau.html</loc>
   </url>
 </urlset>

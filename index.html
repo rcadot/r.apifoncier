@@ -49,6 +49,7 @@
     <a class="dropdown-item" href="articles/Indicateurs-de-prix.html">Indicateurs de prix</a>
     <a class="dropdown-item" href="articles/cartes.html">Cartographies</a>
     <a class="dropdown-item" href="articles/graph.html">Graphiques</a>
+    <a class="dropdown-item" href="articles/tableau.html">Tableaux</a>
   </div>
 </li>
 <li class="nav-item">
@@ -73,46 +74,50 @@
   </div>
 </nav><div class="container template-home">
 <div class="row">
-  <main id="main" class="col-md-9"><blockquote>
+  <main id="main" class="col-md-9"><p>   </p>
+<blockquote>
 <p>🚧 Avertissement</p>
 <p>Il s’agit d’une version de développement. Des modifications sur les fonctions peuvent intervenir.</p>
+<p>Consultez l’article <a href="https://rcadot.github.io/r.apifoncier/news/index.html">Changements</a> pour plus d’informations.</p>
 </blockquote>
 <div class="section level1">
 <div class="page-header"><h1 id="présentation-du-package">Présentation du package<a class="anchor" aria-label="anchor" href="#pr%C3%A9sentation-du-package"></a>
 </h1></div>
-<p>Grâce à <a href="https://github.com/rcadot/r.apifoncier" class="external-link">r.apifoncier</a>, vous pouvez interroger les principales informations issues des différentes bases de données foncières produites par le Cerema et la DGALN. Une partie des données est interrogeable uniquement en tant que bénéficiaire des données foncières.</p>
-<p>Pour retrouver toutes les informations sur les données foncières : <a href="datafoncier.cerema.fr">datafoncier.cerema.fr</a> Dictionnaire et documentation sur toutes les variables :<a href="doc-datafoncier.cerema.fr">doc-datafoncier.cerema.fr</a></p>
-<p><a href="https://apidf-preprod.cerema.fr/swagger/" class="external-link">Pour en savoir plus sur l’API données foncières du cerema.</a></p>
+<p>Grâce au package <a href="https://github.com/rcadot/r.apifoncier" class="external-link">r.apifoncier</a>, vous pouvez interroger les différentes bases de données foncières produites par le Cerema et la DGALN directement depuis <code>R</code> ! <em>Une partie des données est interrogeable uniquement avec un accès restreint lié à vos droits. Pensez à vous rendre sur <a href="https://consultdf.cerema.fr/consultdf/services/apidf" class="external-link">ConsultDF</a> pour obtenir un accès.</em></p>
 </div>
 <div class="section level1">
 <h1 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h1>
 <p>Vous pouvez installer <a href="https://github.com/rcadot/r.apifoncier" class="external-link">r.apifoncier</a> depuis <a href="https://github.com/" class="external-link">GitHub</a> avec le code suivant :</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># install.packages("devtools")</span></span>
+<code class="sourceCode R"><span><span class="co"># install.packages("devtools") # à décommenter si vous n'avez pas {devtools} d'installé</span></span>
 <span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"rcadot/r.apifoncier"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level1">
 <h1 id="fonctions-et-données-disponibles">Fonctions et données disponibles<a class="anchor" aria-label="anchor" href="#fonctions-et-donn%C3%A9es-disponibles"></a>
 </h1>
+<p>Vous trouverez ci-dessous l’ensemble des informations sur les jeux de données disponibles grâce à ce package. N’hésitez pas à parcourir l’ensemble des articles de la documentation ainsi que les pages dédiées à chaque fonction.</p>
+<p>Retrouvez également des fonctions de valorisation des données telles que des <a href="https://rcadot.github.io/r.apifoncier/articles/graph.html">graphiques</a>, <a href="https://rcadot.github.io/r.apifoncier/articles/cartes.html">cartographies dynamiques</a> ou encore <a href="https://rcadot.github.io/r.apifoncier/articles/tableau.html">tableaux</a>.</p>
+<blockquote>
+<h3 id="à-noter">À noter</h3>
+<p>À la différence de l’utilisation de l’API en directe, le package permet d’obtenir les données pour le périmètre de votre choix. Vous pouvez ainsi fournir une liste ou un vecteur de <code>code_insee</code>, <code>code_epci</code>, etc. sans limite de volume, ni de pagination.</p>
+</blockquote>
 <div class="section level2">
-<h2 id="en-accès-libre">En accès libre<a class="anchor" aria-label="anchor" href="#en-acc%C3%A8s-libre"></a>
+<h2 id="indicateurs-de-consommation-despace-accès-libre">Indicateurs de consommation d’espace (accès libre)<a class="anchor" aria-label="anchor" href="#indicateurs-de-consommation-despace-acc%C3%A8s-libre"></a>
 </h2>
-<div class="section level3">
-<h3 id="indicateurs-de-consommation-despace-accès-libre">Indicateurs de consommation d’espace (accès libre)<a class="anchor" aria-label="anchor" href="#indicateurs-de-consommation-despace-acc%C3%A8s-libre"></a>
-</h3>
 <blockquote>
 <p>La lutte contre la consommation excessive d’espace est un objectif prioritaire des dernières lois en matière d’urbanisme. Cependant, il est difficile de définir comme « excessive » la consommation sans disposer de moyens de mesure adaptés. Dans ce cadre, le Cerema produit annuellement des données sur la consommation d’espaces à l’aide des Fichiers fonciers.</p>
-</blockquote>
 <p><em><a href="https://artificialisation.developpement-durable.gouv.fr/suivi-consommation-espaces-naf" class="external-link">Pour plus d’informations sur la consommation d’espaces</a></em></p>
+</blockquote>
 <p>Le package <a href="https://github.com/rcadot/r.apifoncier" class="external-link">r.apifoncier</a> permet d’interroger l’ensemble du territoire français afin d’obtenir les indicateurs de consommation d’espace pour la période comprise entre une deux années à l’échelle communale ou départementale.</p>
-<p>Plus d’informations sur les fonctions disponibles en allant l’<a href="https://rcadot.github.io/r.apifoncier/articles/Consommation-ENAF.html">article dédidé</a></p>
+<p><strong>Plus d’informations sur les fonctions disponibles en allant l’<a href="https://rcadot.github.io/r.apifoncier/articles/Consommation-ENAF.html">article dédidé</a></strong></p>
 </div>
-<div class="section level3">
-<h3 id="indicateurs-de-prix-accès-libre">Indicateurs de prix (accès libre)<a class="anchor" aria-label="anchor" href="#indicateurs-de-prix-acc%C3%A8s-libre"></a>
-</h3>
+<div class="section level2">
+<h2 id="indicateurs-de-prix-accès-libre">Indicateurs de prix (accès libre)<a class="anchor" aria-label="anchor" href="#indicateurs-de-prix-acc%C3%A8s-libre"></a>
+</h2>
 <blockquote>
 <p>La base de données DV3F facilite l’observation des marchés et permet de produire des indicateurs de prix et de volumes de transactions à différentes échelles géographiques afin d’apprécier et d’étudier les marchés fonciers et immobiliers d’un territoire.</p>
+<p>Retrouvez l’ensemble de la documentation en suivant <a href="https://doc-datafoncier.cerema.fr/dv3f/tuto/indicateurs_agreges" class="external-link">ce lien</a>.</p>
 </blockquote>
 <p>Les indicateurs de prix sont disponibles annuellement et de manière triennale à plusieurs échelles :</p>
 <ul>
@@ -124,38 +129,33 @@
 </ul>
 <p>La période proposée court de 2010 à 2022 avec une exhaustivité moindre sur les derniers semestres.</p>
 <p>Les indicateurs proposés dans la version 2023-1 de DV3F utilisent les périmètres administratifs au 1er janvier 2022.</p>
-<p>Retrouvez l’ensemble de la documentation en suivant <a href="https://doc-datafoncier.cerema.fr/dv3f/tuto/indicateurs_agreges" class="external-link">ce lien</a>.</p>
-<p>Plus d’informations sur les fonctions disponibles en allant sur l’<a href="https://rcadot.github.io/r.apifoncier/articles/Indicateurs-de-prix.html">article dédié</a>.</p>
+<p><strong>Plus d’informations sur les fonctions disponibles en allant sur l’<a href="https://rcadot.github.io/r.apifoncier/articles/Indicateurs-de-prix.html">article dédié</a>.</strong></p>
 </div>
-<div class="section level3">
-<h3 id="cartofriches-accès-libre">Cartofriches (accès libre)<a class="anchor" aria-label="anchor" href="#cartofriches-acc%C3%A8s-libre"></a>
-</h3>
+<div class="section level2">
+<h2 id="cartofriches-accès-libre">Cartofriches (accès libre)<a class="anchor" aria-label="anchor" href="#cartofriches-acc%C3%A8s-libre"></a>
+</h2>
 <blockquote>
 <p>Les travaux effectués par le Cerema pour constituer un premier inventaire national ont permis de montrer la possibilité de pré-identifier une partie des friches, mais ils montrent aussi les limites de l’approche nationale. En effet, sur un sujet aussi complexe que les friches, les bases nationales manquent d’exhaustivité et de mise à jour. La comparaison de la base nationale avec des inventaires locaux met en évidence l’absence de définition réglementaire d’une friche, et le peu de mise à jour de certaines informations nationales.</p>
 <p>Ainsi, si une base nationale permet d’avoir des informations homogènes sur le territoire métropolitain, une base de données consolidées nécessite la contribution large de nombreux acteurs proches du terrain, et l’agglomération de données issues d’observatoires locaux, en partageant un minimum de concepts.</p>
-</blockquote>
 <p><a href="https://artificialisation.developpement-durable.gouv.fr/cartofriches/donnees-utilisees" class="external-link">Plus d’informations sur cartofriches</a></p>
-<p>Plus d’informations sur les fonctions disponibles en allant sur l’<a href="https://rcadot.github.io/r.apifoncier/articles/Cartofriches.html">article dédié</a></p>
+</blockquote>
+<p><strong>Plus d’informations sur les fonctions disponibles en allant sur l’<a href="https://rcadot.github.io/r.apifoncier/articles/Cartofriches.html">article dédié</a></strong></p>
 </div>
-<div class="section level3">
-<h3 id="dvf-accès-libre">DVF+ (accès libre)<a class="anchor" aria-label="anchor" href="#dvf-acc%C3%A8s-libre"></a>
-</h3>
+<div class="section level2">
+<h2 id="dvf-accès-libre">DVF+ (accès libre)<a class="anchor" aria-label="anchor" href="#dvf-acc%C3%A8s-libre"></a>
+</h2>
 <blockquote>
 <p>La DGALN et le Cerema propose “DVF+ open-data”, qui permet d’accéder librement aux données DV3F sous la forme d’une base de données géolocalisée aisément exploitable pour l’observation des marchés fonciers et immobiliers.</p>
 <p>La structuration de la donnée DVF proposée s’appuie sur le modèle de données partagé dit “DVF+”, issu des travaux menés à l’initiative du groupe national DVF et qui existe depuis 2013. Ce modèle, développé pour faciliter les analyses, fournit notamment une table des mutations dans laquelle chaque ligne correspond aux informations et à la localisation d’une transaction.</p>
 <p>La géolocalisation s’appuie sur les différents millésimes du Plan cadastral informatisé également disponibles en open-data sur data.gouv.fr.</p>
 <p>Chacune des variables du modèle DVF+ est calculée uniquement à partir des données brutes de DVF. Les variables calculées s’appliquent sur l’ensemble du territoire et relèvent d’une méthodologie partagée. Il n’y a pas de données exogènes à ce stade hormis les données de géolocalisation issue du PCI Vecteur. A noter que le modèle DVF+ constitue également le socle pour la constitution de la base de données DV3F.</p>
-</blockquote>
 <p><a href="http://doc-datafoncier.cerema.fr/dv3f/tuto/objectif_tutoriel" class="external-link">Pour en savoir plus sur DVF+</a></p>
-<p>Plus d’informations sur les fonctions disponibles en allant sur l’<a href="https://rcadot.github.io/r.apifoncier/articles/DVF.html">article dédié</a></p>
-</div>
+</blockquote>
+<p><strong>Plus d’informations sur les fonctions disponibles en allant sur l’<a href="https://rcadot.github.io/r.apifoncier/articles/DVF.html">article dédié</a></strong></p>
 </div>
 <div class="section level2">
-<h2 id="en-accès-restreint">En accès restreint<a class="anchor" aria-label="anchor" href="#en-acc%C3%A8s-restreint"></a>
+<h2 id="dv3f-accès-restreint">DV3F (accès restreint)<a class="anchor" aria-label="anchor" href="#dv3f-acc%C3%A8s-restreint"></a>
 </h2>
-<div class="section level3">
-<h3 id="dv3f-accès-restreint">DV3F (accès restreint)<a class="anchor" aria-label="anchor" href="#dv3f-acc%C3%A8s-restreint"></a>
-</h3>
 <blockquote>
 <p>L’amélioration du fonctionnement des marchés fonciers et immobiliers en France, la recherche d’une meilleure transparence sur les prix des transactions, nécessite aujourd’hui l’accès à une donnée large et aussi complète que possible sur les transactions, les biens et les prix.</p>
 <p>La Direction Générale des Finances Publiques (DGFiP) propose gratuitement et en open-data le fichier “Demande de Valeurs Foncières” (DVF) qui recense l’ensemble des mutations foncières à titre onéreux publiées dans les services de la publicité foncière.</p>
@@ -163,13 +163,13 @@
 <p>C’est pourquoi le Ministère du Logement a missionné le Cerema pour travailler à une structuration de la donnée DVF en y associant des données foncières complémentaires permettant des analyses plus fines.</p>
 <p>Ces travaux ont conduit à la constitution de la base de données DV3F ainsi qu’à des outils facilitant son exploitation.</p>
 <p>Pour les acteurs ne pouvant bénéficier de DV3F, les données open-data sont également disponibles librement sous un format “DVF+ - open-data” structuré et géolocalisé.</p>
-</blockquote>
 <p><a href="https://datafoncier.cerema.fr/dv3f" class="external-link">Plus d’informations sur DV3F</a></p>
-<p>Plus d’informations sur les fonctions disponibles en allant sur l’<a href="https://rcadot.github.io/r.apifoncier/articles/DV3F.html">article dédié</a>.</p>
+</blockquote>
+<p><strong>Plus d’informations sur les fonctions disponibles en allant sur l’<a href="https://rcadot.github.io/r.apifoncier/articles/DV3F.html">article dédié</a>.</strong></p>
 </div>
-<div class="section level3">
-<h3 id="fichiers-fonciers-accès-restreint">Fichiers fonciers (accès restreint)<a class="anchor" aria-label="anchor" href="#fichiers-fonciers-acc%C3%A8s-restreint"></a>
-</h3>
+<div class="section level2">
+<h2 id="fichiers-fonciers-accès-restreint">Fichiers fonciers (accès restreint)<a class="anchor" aria-label="anchor" href="#fichiers-fonciers-acc%C3%A8s-restreint"></a>
+</h2>
 <blockquote>
 <p>Depuis 2009, le Cerema retraite, géolocalise et enrichit les Fichiers fonciers de la Direction Générale des Finances Publiques (DGFiP) pour le compte du ministère en charge du Logement, des services de la Direction Générale de l’Aménagement, du Logement et de la Nature (DGALN), afin de permettre aux acteurs publics de réaliser facilement des analyses fines et comparables sur leur territoire.</p>
 <p>Les nouvelles politiques publiques et les stratégies d’aménagement foncier amènent de nombreux acteurs publics à se saisir de cette base de données nationale et complète.</p>
@@ -179,11 +179,17 @@
 <li>les tables principales</li>
 <li>les tables agrégées (tables communales, carroyages, etc.).</li>
 </ul>
-</blockquote>
 <p><a href="https://datafoncier.cerema.fr/fichiers-fonciers" class="external-link">Plus d’informations sur les fichiers fonciers</a></p>
-<p>Plus d’informations sur les fonctions disponibles en allant sur l’<a href="https://rcadot.github.io/r.apifoncier/articles/Fichiers-Fonciers.html">article dédié</a>.</p>
+</blockquote>
+<p><strong>Plus d’informations sur les fonctions disponibles en allant sur l’<a href="https://rcadot.github.io/r.apifoncier/articles/Fichiers-Fonciers.html">article dédié</a>.</strong></p>
 </div>
 </div>
+<div class="section level1">
+<h1 id="ressources">Ressources<a class="anchor" aria-label="anchor" href="#ressources"></a>
+</h1>
+<p>Pour retrouver toutes les informations sur les données foncières : <a href="datafoncier.cerema.fr">datafoncier.cerema.fr</a></p>
+<p>Dictionnaire et documentation sur toutes les variables : <a href="doc-datafoncier.cerema.fr">doc-datafoncier.cerema.fr</a></p>
+<p><a href="https://apidf-preprod.cerema.fr/swagger/" class="external-link">Pour en savoir plus sur l’API données foncières du cerema.</a></p>
 </div>
 
   </main><aside class="col-md-3"><div class="liens">
