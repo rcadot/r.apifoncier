@@ -1,6 +1,6 @@
 # r.apifoncier 0.3
 
-* Ajout de fonctionnalités de visualisation des données (graphiques et cartes)
+* Ajout de fonctionnalités de visualisation des données (graphiques et cartes et tableaux)
 
 # r.apifoncier 0.2
 

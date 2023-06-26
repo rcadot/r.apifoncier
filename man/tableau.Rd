@@ -4,10 +4,12 @@
 \alias{tableau}
 \title{Générer un tableau des données dynamique}
 \usage{
-tableau(.data)
+tableau(.data, ...)
 }
 \arguments{
 \item{.data}{Données à afficher}
+
+\item{...}{Autres variables de la fonction DT()}
 }
 \value{
 Retourne un tableau au format DT::datatable
@@ -17,8 +19,8 @@ Générer un tableau des données dynamique
 }
 \examples{
 cartofriches_geofriches(code_insee = 59350) \%>\%
- dplyr::select(id:unite_fonciere_surface) \%>\%
- dplyr::arrange(desc(unite_fonciere_surface)) \%>\%
- tableau()
+dplyr::select(id:unite_fonciere_surface) \%>\%
+dplyr::arrange(dplyr::desc(unite_fonciere_surface)) \%>\%
+tableau()
 
 }

@@ -19,8 +19,8 @@ Pour cela, c'est simple, il suffit de télécharger les données de son choix av
 
 ```{r}
 cartofriches_geofriches(code_insee = 59350) %>%
-  select(id:unite_fonciere_surface) %>%
-  arrange(desc(unite_fonciere_surface)) %>%
+  dplyr::select(id:unite_fonciere_surface) %>%
+  dplyr::arrange(dplyr::desc(unite_fonciere_surface)) %>%
   tableau()
 ```
 
@@ -33,7 +33,7 @@ Vous pouvez également reprendre les arguments de la fonction `DT::datatable()` 
 
 ```{r}
 cartofriches_geofriches(code_insee = 59350) %>%
-  select(id:site_type) %>%
+  dplyr::select(id:site_type) %>%
   tableau(
     colnames=c('identifiant','Nom du projet','Type de projet')
   )

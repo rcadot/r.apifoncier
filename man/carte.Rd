@@ -13,7 +13,7 @@ carte(.data, couleur = NULL, titre_legende = NULL, ...)
 
 \item{titre_legende}{Titre de la légende}
 
-\item{...}{AUtres variables de la fonction addPolygons()}
+\item{...}{Autres variables de la fonction addPolygons()}
 }
 \value{
 Une carte leaflet avec une analyse thématique

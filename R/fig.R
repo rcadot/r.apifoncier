@@ -110,9 +110,9 @@ graph <- function(
 #'
 #' @examples
 #' cartofriches_geofriches(code_insee = 59350) %>%
-#'  dplyr::select(id:unite_fonciere_surface) %>%
-#'  dplyr::arrange(desc(unite_fonciere_surface)) %>%
-#'  tableau()
+#' dplyr::select(id:unite_fonciere_surface) %>%
+#' dplyr::arrange(dplyr::desc(unite_fonciere_surface)) %>%
+#' tableau()
 #'
 tableau <- function(.data,...){
 
