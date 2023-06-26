@@ -49,7 +49,7 @@ Vous trouverez ci-dessous l'ensemble des informations sur les jeux de données d
 Retrouvez également des fonctions de valorisation des données telles que des [graphiques](https://rcadot.github.io/r.apifoncier/articles/graph.html), [cartographies dynamiques](https://rcadot.github.io/r.apifoncier/articles/cartes.html) ou encore [tableaux](https://rcadot.github.io/r.apifoncier/articles/tableau.html).
 
 > ### À noter
-> À la différence de l'utilisation de l'API en directe, le package permet d'obtenir les données pour le périmètre de votre choix. Vous pouvez ainsi fournir une liste ou un vecteur de `code_insee`, `code_epci`, etc. sans limite de volume, ni de pagination.
+> À la différence de l'utilisation de l'API en directe, le package permet d'obtenir les données pour le périmètre de votre choix. Vous pouvez ainsi fournir une liste ou un vecteur de `code_insee`, `code_epci`, etc. sans limite de volume.
 
 ## Indicateurs de consommation d'espace (accès libre)
 
