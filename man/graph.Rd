@@ -2,7 +2,7 @@
 % Please edit documentation in R/fig.R
 \name{graph}
 \alias{graph}
-\title{Graph}
+\title{Générer des graphiques dynamiques}
 \usage{
 graph(data, x, y, couleur = NULL, titre = NULL, titre_x = NULL, titre_y = NULL)
 }

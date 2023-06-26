@@ -19,4 +19,13 @@ Les fonctions présentes dans le package commencent par `ff_` et permettent d'in
 - les propriétaires ;
 - avec ou sans géométrie.
 
-Retrouvez l'ensemble des fonctions disponibles directement dans [l'onglet référence](https://rcadot.github.io/r.apifoncier/reference/index.html#fichiers-fonciers).
+L'ensemble des requêtes nécessitant un *token* sont sous la forme suivante.
+
+```r
+token="le_token_copie_via_consultdf"
+
+ff_geotups(code_insee=59001,token=token)
+```
+
+
+*Retrouvez l'ensemble des fonctions disponibles directement dans [l'onglet référence](https://rcadot.github.io/r.apifoncier/reference/index.html#fichiers-fonciers).*

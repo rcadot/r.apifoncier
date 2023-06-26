@@ -19,15 +19,30 @@ Pour cela, c'est simple, il suffit de télécharger les données de son choix av
 
 ```{r message=FALSE, warning=FALSE}
 cartofriches_geofriches(code_insee = 59350) %>% 
-  carte(couleur = 'site_statut')
+  carte(
+    couleur = 'site_statut',
+    titre_legende = "Staut du site"
+  )
 ```
 
+Vous retrouverez de nombreux outils et couches (cadastre/documents d'urbanisme/etc.) directement accessibles via le gestionnaire de couches en haut à droite de la carte.
+
 Il est possible de personnaliser le rendu de la carte en ajoutant des paramètres en provenance de la fonction `addPolygons()`.
+
+Sans analyse thématique :
+
+```{r}
+cartofriches_geofriches(code_insee = 59350) %>% 
+  carte()
+```
+
+Avec analyse thématique sur le statut du site et l'étiquette sur le nom du site.
 
 ```{r message=FALSE, warning=FALSE}
 cartofriches_geofriches(code_insee = 59350) %>% 
   carte(
     couleur = 'site_statut',
+    label=.$site_nom, # champ permettant d'afficher une étiquette sur chaque Polygon
     weight=3 # paramètre supplémentaire pour changer l'épaisseur du contour
   )
 ```

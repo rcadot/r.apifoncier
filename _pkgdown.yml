@@ -29,3 +29,5 @@ reference:
   contents:
   - matches("graph")
   - matches("carte")
+  - matches("tableau")
+

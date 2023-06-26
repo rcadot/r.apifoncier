@@ -100,6 +100,58 @@ graph <- function(
 }
 
 
+#' Générer un tableau des données dynamique
+#'
+#' @param .data Données à afficher
+#' @param ... Autres variables de la fonction DT()
+#'
+#' @return Retourne un tableau au format DT::datatable
+#' @export
+#'
+#' @examples
+#' cartofriches_geofriches(code_insee = 59350) %>%
+#'  dplyr::select(id:unite_fonciere_surface) %>%
+#'  dplyr::arrange(desc(unite_fonciere_surface)) %>%
+#'  tableau()
+#'
+tableau <- function(.data,...){
+
+  .data %>%
+    sf::st_drop_geometry() %>%
+    DT::datatable(
+      plugins = c('scrollResize','accent-neutralise','diacritics-neutralise'),
+      extensions = c('Buttons'),
+      rownames= FALSE,
+      selection = 'single',
+      escape = FALSE,
+      filter = "top",
+      ...,
+      options = list(
+        search = list(regex = TRUE, caseInsensitive = TRUE),
+        pageLength = 25,
+        language = list(url = '//cdn.datatables.net/plug-ins/1.10.11/i18n/French.json'),
+        dom = 'Btplr' ,
+        buttons = list(
+          # list(extend = "csv", text = "Download Current Page", filename = "page",
+          #      exportOptions = list(
+          #        modifier = list(page = "current")
+          #      )
+          # ),
+          list(extend = "excel",
+               text = "Telechargez les donnees du tableau",
+               filename = paste0("suivi_",Sys.Date()),
+               exportOptions = list(
+                 modifier = list(page = "all")
+               )
+          )
+        ),
+        autoWidth = TRUE
+      )
+    )
+
+}
+
+
 #' Générer des cartes dynamiques
 #'
 #' @description
@@ -108,15 +160,17 @@ graph <- function(
 #'
 #' @param .data Les données d'entrées
 #' @param couleur Variable catégorielle pour colorer la carte
-#' @param ... AUtres variables de la fonction addPolygons()
+#' @param titre_legende Titre de la légende
+#' @param ... Autres variables de la fonction addPolygons()
 #'
 #' @return Une carte leaflet avec une analyse thématique
 #' @export
 #'
 #' @examples
 #' cartofriches_geofriches(code_insee = 59350) %>% carte(couleur = 'site_statut')
+#' cartofriches_geofriches(code_insee = 59350) %>% carte(couleur = 'site_statut',label=.$site_nom)
 
-carte <- function(.data,couleur,...){
+carte <- function(.data,couleur=NULL,titre_legende=NULL,...){
 
 
   data <- .data
@@ -127,11 +181,12 @@ carte <- function(.data,couleur,...){
   #   )
   # )
 
-
+  if (!is.null(couleur)){
   factpal <- leaflet::colorFactor(topo.colors(5), data[[couleur]])
+  }
 
-
-  leaflet::leaflet() %>%
+  carto <-
+    leaflet::leaflet() %>%
     leaflet::addProviderTiles(leaflet::providers$CartoDB.Positron, group="Positron") %>%
     leaflet::addProviderTiles(leaflet::providers$Stamen.Toner, group = "Noir et blanc") %>%
     leaflet::addProviderTiles(leaflet::providers$OpenStreetMap.France, group = "OpenStreetMap",layerId = "OpenStreetMap" ) %>%
@@ -195,8 +250,9 @@ carte <- function(.data,couleur,...){
     leaflet::addPolygons(
       data=data,
       group='Donnees',
+      # label=data[[1]],
       ...,
-      color = ~factpal(data[[couleur]]),
+      color = ~{if (!is.null(couleur)){factpal(data[[couleur]])}else{"Blue"}},
       popup = leafpop::popupTable(
         data %>% sf::st_drop_geometry(),
         feature.id = F,
@@ -204,6 +260,22 @@ carte <- function(.data,couleur,...){
       )
 
     )
+
+  if (!is.null(couleur)){
+
+  carto %>%
+    leaflet::addLegend(
+      position = "bottomleft",
+      pal = factpal,
+      values = data[[couleur]],
+      title = titre_legende,
+      # labFormat = labelFormat(prefix = "$"),
+      opacity = 1
+    )
+  } else {
+
+    carto
+  }
 
 }
 

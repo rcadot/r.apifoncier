@@ -2,14 +2,16 @@
 % Please edit documentation in R/fig.R
 \name{carte}
 \alias{carte}
-\title{carte}
+\title{Générer des cartes dynamiques}
 \usage{
-carte(.data, couleur, ...)
+carte(.data, couleur = NULL, titre_legende = NULL, ...)
 }
 \arguments{
 \item{.data}{Les données d'entrées}
 
 \item{couleur}{Variable catégorielle pour colorer la carte}
+
+\item{titre_legende}{Titre de la légende}
 
 \item{...}{AUtres variables de la fonction addPolygons()}
 }
@@ -21,4 +23,5 @@ Génère une cartographie pour l'ensemble des données géographiques du package
 }
 \examples{
 cartofriches_geofriches(code_insee = 59350) \%>\% carte(couleur = 'site_statut')
+cartofriches_geofriches(code_insee = 59350) \%>\% carte(couleur = 'site_statut',label=.$site_nom)
 }

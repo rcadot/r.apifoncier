@@ -7,9 +7,7 @@
 cartofriches_friches(
   coddep = NULL,
   code_insee = NULL,
-  contains_geom = NULL,
   fields = NULL,
-  in_bbox = NULL,
   ordering = NULL,
   surface_max = NULL,
   surface_min = NULL,
@@ -21,11 +19,7 @@ cartofriches_friches(
 
 \item{code_insee}{Code INSEE communal ou d'arrondissement municipal (possibilité de passer un vecteur de code insee sans limite maximum)}
 
-\item{contains_geom}{Renvoie les entités dont la géometrie contient celle précisée dans le filtre (en format GeoJSON, WKT, HEXEWKB, WKB). Exemple : /?contains_geom={'type':'Point', 'coordinates':[2.17,46.75]}}
-
 \item{fields}{Retourne tous les champs associés si fields=all, sinon retourne uniquement une selection de champs.}
-
-\item{in_bbox}{Emprise rectangulaire (via Longitude min,Latitude min,Longitude max,Latitude max). L'emprise demandée ne doit pas excéder un carré de 1.0 deg. x 1.0 deg.}
 
 \item{ordering}{Which field to use when ordering the results.}
 
@@ -42,7 +36,5 @@ Retourne les friches issues de Cartofriches pour la commune, le département ou 
 Retourne les friches issues de Cartofriches pour la commune, le département ou l'emprise rectangulaire demandée
 }
 \examples{
-cartofriches_friches(coddep = 59)
 cartofriches_friches(code_insee = 59350)
-cartofriches_friches(in_bbox = '2.827642,50.495958,3.32616,50.767734')
 }
