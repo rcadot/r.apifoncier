@@ -52,7 +52,7 @@ ou encore
 > À la différence de l’utilisation de l’API en directe, le package
 > permet d’obtenir les données pour le périmètre de votre choix. Vous
 > pouvez ainsi fournir une liste ou un vecteur de `code_insee`,
-> `code_epci`, etc. sans limite de volume, ni de pagination.
+> `code_epci`, etc. sans limite de volume.
 
 ## Indicateurs de consommation d’espace (accès libre)
 

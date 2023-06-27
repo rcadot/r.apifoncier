@@ -427,21 +427,21 @@ ff_locaux <- function(
 
 }
 
-#' Locaux pour un identifiant fiscal du local demandé
+#' Locaux pour un identifiant local du local demandé
 #'
 #' @param token token
-#' @param idpk A unique value identifying this local.
+#' @param idlocal A unique value identifying this local.
 #'
 #' @return Retourne le local des Fichiers fonciers pour l'identifiant fiscal du local demandé
 #' @export
 #'
 #' @examples
 #' \dontrun{
-#' ff_locaux_idpk(idpk="?",token=token)
+#' ff_locaux_idlocal(idlocal="***",token=token)
 #' }
-ff_locaux_idpk <- function(
+ff_locaux_idlocal <- function(
     token,
-    idpk
+    idlocal
 ){
 
   base_url='https://apidf-preprod.cerema.fr'
@@ -450,7 +450,7 @@ ff_locaux_idpk <- function(
 
 
   url=glue::glue(
-    base_url,donnees,indicateur_1,idpk,'/',
+    base_url,donnees,indicateur_1,idlocal,'/',
     .sep = "/"
   )
 

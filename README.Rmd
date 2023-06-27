@@ -32,7 +32,6 @@ knitr::opts_chunk$set(
 Grâce au package `{r.apifoncier}`, vous pouvez interroger les  différentes bases de données foncières produites par le Cerema et la DGALN directement depuis `R` ! *Une partie des données est interrogeable uniquement avec un accès restreint lié à vos droits. Pensez à vous rendre sur [ConsultDF](https://consultdf.cerema.fr/consultdf/services/apidf) pour obtenir un accès.*
 
 
-
 # Installation
 
 Vous pouvez installer `{r.apifoncier}` depuis [GitHub](https://github.com/) avec le code suivant :
