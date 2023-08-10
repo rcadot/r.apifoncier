@@ -1,33 +1,32 @@
 url: https://rcadot.github.io/r.apifoncier/
 template:
   bootstrap: 5
-  bootswatch: united
+  bootswatch: cosmo
 lang: fr
 development:
   mode: auto
 reference:
-- title: Consommation d'espace
+- title: Indicateurs de consommation d’espace
   desc: Fonctions permettant l'accès aux données de consommation d'ENAF
-  contents: starts_with("ind_conso")
+  contents: starts_with("conso_enaf")
 - title: Cartofriches
   desc: Fonctions permettant l'accès aux données issues de cartofriches
   contents: starts_with("cartofriches")
 - title: Indicateurs de prix
   desc: Fonctions permettant l'accès aux indicateurs de prix
-  contents: starts_with("ind_dv3f")
-- title: DVF+
+  contents: starts_with("prix.")
+- title: DVF+ open-data
   desc: Fonctions permettant l'accès aux données issues de DVF+
-  contents: starts_with("dvf_opendata")
+  contents: starts_with("dvf.")
 - title: DV3F
   desc: Fonctions permettant l'accès aux données issues de DV3F
-  contents: starts_with("dv3f")
+  contents: starts_with("dv3f.")
 - title: Fichiers fonciers
   desc: Fonctions permettant l'accès aux données issues des fichiers fonciers
-  contents: starts_with("ff_")
-- title: Graphiques
-  desc: Fonctions permettant de générer des illustrations
+  contents: starts_with("ff.")
+- title: Configuration
+  desc: Fonctions permettant de configurer son token et son proxy
   contents:
-  - matches("graph")
-  - matches("carte")
-  - matches("tableau")
+  - matches("configure")
+  - matches("reset")
 

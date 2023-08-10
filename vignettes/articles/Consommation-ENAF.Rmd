@@ -1,5 +1,5 @@
 ---
-title: "Consommation ENAF"
+title: "Indicateurs de consommation d’espace"
 ---
 
 ```{r, include = FALSE}
@@ -9,31 +9,77 @@ knitr::opts_chunk$set(
 )
 ```
 
-Les données sont disponibles à deux échelles : communes et départements.
 
-En indiquant le code INSEE d'une commune au format `numeric` ou `character`, on obtient un dataframe des consommations.
+# Présentation
 
-```{r}
+`r.apifoncier` permet d’interroger librement les données de consommation d’espace annuelles produites par le Cerema et la DGALN. Plus de détails sur le [portail de l’artificialisation](https://artificialisation.developpement-durable.gouv.fr/).
+
+Les données proposées sont disponibles à **deux échelles** : communes et départements.
+
+# Description des fonctions
+
+## Pour les communes
+
+L’accès aux indicateurs annuels communaux s’effectue via les codes INSEE des communes, en limitant éventuellement la période :
+
+```r
 library(r.apifoncier)
 
-ind_conso_espace_communes(59001)
+conso_enaf.communes(code_insee="59350")
+conso_enaf.communes(code_insee=c("59350", "62041"), annee_min="2015")
 ```
 
-La fonction `g_ind_conso_espace_communes()` permet de générer un graphique `{plotly}` de la consommation sur la commune de son choix.
+## Pour les départements
 
-```{r}
-ind_conso_espace_communes_g(59350)
+L’accès aux indicateurs annuels départementaux s’effectue via les codes INSEE des départements, en limitant éventuellement la période :
+
+```r
+library(r.apifoncier)
+
+conso_enaf.departements(coddep="59")
+conso_enaf.departements(coddep=c("59", "62"), annee_max="2015")
 ```
 
-Par défaut, les consommations sont affichées en hectares, mais on peut les indiquer en m² en choisissant `hectare=FALSE`.
+_Retrouvez l'ensemble des fonctions disponibles directement dans [l'onglet référence](https://rcadot.github.io/r.apifoncier/reference/index.html#indicateurs-de-consommation-d-espace)._
+
+
+# Exemples
 
 ```{r message=FALSE, warning=FALSE}
-ind_conso_espace_communes_g(
-  code_insee = 59350,
-  hectare = FALSE,
-  affichage = 'total',
-  legende = FALSE
-)
+library(r.apifoncier)
+library(plotly)
+library(tidyr)
+
+df <- conso_enaf.communes(code_insee="59009")
+
+df %>% 
+  dplyr::rename(
+    "Activite"=conso_act,
+    "Habitat"=conso_hab,
+    "Mixte"=conso_mix,
+    "Inconnu"=conso_inc,
+    "Infrastructure"=conso_infra
+  ) %>%
+  tidyr::pivot_longer(
+    cols = c(5:9),
+    names_to = "type",
+    values_to = "conso"
+  ) %>%
+  plotly::plot_ly(
+    x=~annee,
+    y=~conso,
+    color=~type,
+    hovertemplate = paste('%{y:.2f}','m2'),
+    type="bar"
+  ) %>%
+  plotly::layout(title="Consommation d'espace",
+                 xaxis = list(title = 'Années',showticklabels=TRUE),
+                 yaxis = list(title = "Consommation d'ENAF en m²"),
+                 barmode = 'stack',
+                 hovermode = "x unified",
+                 showlegend=TRUE) %>%
+  plotly::config(displaylogo = FALSE)
+
 ```
 
-Retrouvez toutes les fonctions liées aux données de consommation d'ENAF directement dans [l'onglet Référence](https://rcadot.github.io/r.apifoncier/reference/index.html#consommation-d-espace).
+

@@ -1,467 +1,117 @@
-#' Retourne, en GeoJSON, les friches issues de Cartofriches pour la commune
+#' Retourne les friches issues de Cartofriches pour le périmètre demandé sous forme d’un dataframe
 #'
-#' @param coddep Code INSEE départemental
-#' @param code_insee Code INSEE communal ou d'arrondissement municipal (possibilité de passer un vecteur de code insee sans limite maximum)
+#' @param code_insee Codes INSEE communaux ou des arrondissements municipaux.
+#' @param coddep Codes INSEE des départements.
+#' @param in_bbox Emprise rectangulaire sous la forme d’un vecteur c(longitude_min, latitude_min, longitude_min, latitude_max)
+#' @param lon_lat Coordonnée du point au sein de la ou des friches renvoyées c(longitude, latitude)
+#' @param ordering Champs à utiliser pour ordonner le résultat. Default NULL
 #' @param fields Retourne tous les champs associés si fields=all, sinon retourne uniquement une selection de champs.
 #' @param surface_max Surface maximale de l'unité foncière
 #' @param surface_min Surface minimale de l'unité foncière
 #' @param urba_zone_type Type de zone d'urbanisme
 #'
-#' @return Retourne les friches issues de Cartofriches pour la commune, le département ou l'emprise rectangulaire demandée (paramètre code_insee, coddep ou in_bbox obligatoire)
+#' @return Retourne les friches issues de Cartofriches pour le périmètre demandé sous forme d’un dataframe
 #' @export
 #'
 #' @examples
-#' cartofriches_geofriches(code_insee = 59350)
-
-
-cartofriches_geofriches <- function(
+#' cartofriches.friches(code_insee="59350")
+#' cartofriches.friches(coddep="59")
+#' cartofriches.friches(in_bbox=c(3, 50, 4, 51))
+cartofriches.friches <- function(
     coddep=NULL,
     code_insee=NULL,
-    # contains_geom=NULL,
-    fields=NULL,
-    # in_bbox=NULL,
-    # page=NULL,
-    # page_size=NULL,
-    surface_max=NULL,
-    surface_min=NULL,
-    urba_zone_type=NULL
-){
+    lon_lat=NULL,
+    in_bbox=NULL,
+    ...){
 
-
-
-  base_url='https://apidf-preprod.cerema.fr'
-  donnees='cartofriches'
-  indicateur_1='geofriches'
-
-
-  url=glue::glue(
-    base_url,donnees,indicateur_1,'/',
-    .sep = "/"
+  resultat=list(
+    use_token=FALSE,
+    base_url=get_param("BASE_URL"),
+    url=glue::glue("{get_param('BASE_URL')}/cartofriches/friches/"),
+    lon_lat=lon_lat,
+    in_bbox=in_bbox,
+    code_insee=code_insee,
+    coddep=coddep,
+    params= list(...)
   )
 
-  # Chek for internet
-  # check_internet()
 
-  return_data <- NULL                # MAJ LISTE INSEE
-
-  for (code_insee_i in code_insee) { # MAJ LISTE INSEE
-
-
-    print(code_insee_i)              # MAJ LISTE INSEE
-
-    page <- 1
-    all_data <- list()
-    has_more_data <- TRUE
-
-    while (has_more_data) {
-
-      args <- list(
-        coddep=coddep,
-        code_insee=code_insee_i,   # MAJ LISTE INSEE
-        # contains_geom=contains_geom,
-        fields=fields,
-        # in_bbox=in_bbox,
-        page=page,
-        page_size=500,
-        surface_max=surface_max,
-        surface_min=surface_min,
-        urba_zone_type=urba_zone_type
-      )
-
-      statut <- httr::GET(url, query = purrr::compact(args))
-
-      if (statut$status_code == 404){
-
-        has_more_data <- FALSE
-        # print('has_more_data=FALSE')
-
-      } else {
-
-        data <-
-          sf::st_read(
-            httr::GET(url, query = purrr::compact(args)),
-            quiet=TRUE
-          ) %>%
-          sf::st_make_valid() %>%
-          dplyr::group_by(id) %>%
-          dplyr::mutate(proprio_type_lib=proprio_type_lib %>% paste0(collapse = ","))
-
-
-        # print(page)
-
-        all_data <- dplyr::bind_rows(all_data, data)
-
-        page <- page + 1
-        # print(page)
-      }
-
-      # all_data
-
-    }
-
-    return_data <- dplyr::bind_rows(all_data,return_data)  # MAJ LISTE INSEE
-
-  }                                                        # MAJ LISTE INSEE
-
-  return_data                                              # MAJ LISTE INSEE
+  get_dataframe(
+    self = resultat,
+    no_param_code = FALSE
+  )
 
 }
 
 
-
-#' Retourne, en GeoJSON, les friches issues de Cartofriches pour le département
+#' Renvoi la friche correpondant au site_id
 #'
-#' @param coddep Code INSEE départemental
-#' @param fields Retourne tous les champs associés si fields=all, sinon retourne uniquement une selection de champs.
-#' @param surface_max Surface maximale de l'unité foncière
-#' @param surface_min Surface minimale de l'unité foncière
-#' @param urba_zone_type Type de zone d'urbanisme
+#' @param id_site identifiant du site
+#' @param ... pour futurs developpements
 #'
-#' @return Retourne les friches issues de Cartofriches pour le département
+#' @return Renvoi la friche correpondant au site_id
 #' @export
 #'
-#' @examples
-#' cartofriches_geofriches_dep(coddep=59)
+cartofriches.friche <- function(
+    id_site=NULL,
+    ...){
 
-cartofriches_geofriches_dep <- function(
+  resultat=list(
+    use_token=FALSE,
+    base_url=get_param("BASE_URL"),
+    url=glue::glue("{get_param('BASE_URL')}/cartofriches/friches/{id_site}/"),
+    lon_lat=NULL,
+    in_bbox=NULL,
+    code_insee=NULL,
     coddep=NULL,
-    # code_insee=NULL,
-    # contains_geom=NULL,
-    fields=NULL,
-    # in_bbox=NULL,
-    # page=NULL,
-    # page_size=NULL,
-    surface_max=NULL,
-    surface_min=NULL,
-    urba_zone_type=NULL
-){
-
-
-
-  base_url='https://apidf-preprod.cerema.fr'
-  donnees='cartofriches'
-  indicateur_1='geofriches'
-
-
-  url=glue::glue(
-    base_url,donnees,indicateur_1,'/',
-    .sep = "/"
+    params= list(...)
   )
 
-  # Chek for internet
-  # check_internet()
 
-  return_data <- NULL                # MAJ LISTE INSEE
+  res <- get_api_response(
+    url = resultat$url,
+    params = resultat$params,
+    use_token = resultat$use_token,
+    attempt = 1
+  )
+  res <- lapply(res, function(x) if (is.null(x)) NA_character_ else x)
+  res <- purrr::list_flatten(res) %>% tibble::as_tibble()
 
-  for (coddep_i in coddep) { # MAJ LISTE INSEE
-
-
-    print(coddep_i)              # MAJ LISTE INSEE
-
-    page <- 1
-    all_data <- list()
-    has_more_data <- TRUE
-
-    while (has_more_data) {
-
-      args <- list(
-        coddep=coddep_i,
-        # code_insee=code_insee_i,   # MAJ LISTE INSEE
-        # contains_geom=contains_geom,
-        fields=fields,
-        # in_bbox=in_bbox,
-        page=page,
-        page_size=500,
-        surface_max=surface_max,
-        surface_min=surface_min,
-        urba_zone_type=urba_zone_type
-      )
-
-      statut <- httr::GET(url, query = purrr::compact(args))
-
-      if (statut$status_code == 404){
-
-        has_more_data <- FALSE
-        # print('has_more_data=FALSE')
-
-      } else {
-
-        data <-
-          sf::st_read(
-            httr::GET(url, query = purrr::compact(args)),
-            quiet=TRUE
-          ) %>%
-          sf::st_make_valid() %>%
-          dplyr::group_by(id) %>%
-          dplyr::mutate(proprio_type_lib=proprio_type_lib %>% paste0(collapse = ","))
-
-
-        # print(page)
-
-        all_data <- dplyr::bind_rows(all_data, data)
-
-        page <- page + 1
-        # print(page)
-      }
-
-      # all_data
-
-    }
-
-    return_data <- dplyr::bind_rows(all_data,return_data)  # MAJ LISTE INSEE
-
-  }                                                        # MAJ LISTE INSEE
-
-  return_data                                              # MAJ LISTE INSEE
+  res
 
 }
 
-
-
-#' Retourne les friches issues de Cartofriches pour la commune, le département ou l'emprise rectangulaire demandée
+#' Retourne les friches issues de Cartofriches pour le périmètre demandé sous forme d’un geodataframe
 #'
-#' @param coddep Code INSEE départemental
-#' @param code_insee Code INSEE communal ou d'arrondissement municipal (possibilité de passer un vecteur de code insee sans limite maximum)
-#' @param fields Retourne tous les champs associés si fields=all, sinon retourne uniquement une selection de champs.
-#' @param ordering Which field to use when ordering the results.
-#' @param surface_max Surface maximale de l'unité foncière
-#' @param surface_min Surface minimale de l'unité foncière
-#' @param urba_zone_type Type de zone d'urbanisme
+#' @inheritParams cartofriches.friches
 #'
-#' @return Retourne les friches issues de Cartofriches pour la commune, le département ou l'emprise rectangulaire demandée (paramètre code_insee, coddep ou in_bbox obligatoire)
+#' @return Retourne les friches issues de Cartofriches pour le périmètre demandé sous forme d’un geodataframe
 #' @export
 #'
 #' @examples
-#' cartofriches_friches(code_insee = 59350)
-
-cartofriches_friches <- function(
+#' cartofriches.geofriches(code_insee="59350")
+#' cartofriches.geofriches(coddep="59")
+#' cartofriches.geofriches(in_bbox=c(3, 50, 4, 51))
+cartofriches.geofriches <- function(
     coddep=NULL,
     code_insee=NULL,
-    # contains_geom=NULL,
-    fields=NULL,
-    # in_bbox=NULL,
-    ordering=NULL,
-    # page=NULL,
-    # page_size=NULL,
-    surface_max=NULL,
-    surface_min=NULL,
-    urba_zone_type=NULL
-){
+    lon_lat=NULL,
+    in_bbox=NULL,
+    ...){
 
-  base_url='https://apidf-preprod.cerema.fr'
-  donnees='cartofriches'
-  indicateur_1='friches'
-
-  url=glue::glue(
-    base_url,donnees,indicateur_1,'/',
-    .sep = "/"
+  resultat=list(
+    use_token=FALSE,
+    base_url=get_param("BASE_URL"),
+    url=glue::glue("{get_param('BASE_URL')}/cartofriches/geofriches/"),
+    lon_lat=lon_lat,
+    in_bbox=in_bbox,
+    coddep=coddep,
+    code_insee=code_insee,
+    params=list(...)
   )
 
-  return_data <- NULL                # MAJ LISTE INSEE
-
-  for (code_insee_i in code_insee) { # MAJ LISTE INSEE
-
-
-    print(code_insee_i)              # MAJ LISTE INSEE
-
-  page <- 1
-  all_data <- list()
-  has_more_data <- TRUE
-
-  while (has_more_data) {
-
-    args <- list(
-      coddep=coddep,
-      code_insee=code_insee_i,   # MAJ LISTE INSEE
-      # contains_geom=contains_geom,
-      fields=fields,
-      # in_bbox=in_bbox,
-      ordering=ordering,
-      page=page,
-      page_size=500,
-      surface_max=surface_max,
-      surface_min=surface_min,
-      urba_zone_type=urba_zone_type
-    )
-
-    statut <- httr::GET(url, query = purrr::compact(args))
-
-    if (statut$status_code == 404){
-
-      has_more_data <- FALSE
-      # print('has_more_data=FALSE')
-
-    } else {
-
-
-      # Chek for internet
-      # check_internet()
-
-      res <- httr::GET(url, query = purrr::compact(args))
-
-      # Check the result
-      # check_status(res)
-
-      data <- jsonlite::fromJSON(rawToChar(res$content))$results %>%
-        tibble::as_tibble()
-
-      all_data <- dplyr::bind_rows(all_data, data)
-
-      page <- page + 1
-
-    }
-
-  }
-
-  return_data <- dplyr::bind_rows(all_data,return_data)  # MAJ LISTE INSEE
-
-  }                                                        # MAJ LISTE INSEE
-
-  return_data                                              # MAJ LISTE INSEE
-
-}
-
-
-#' Retourne les friches issues de Cartofriches pour la commune, le département ou l'emprise rectangulaire demandée
-#'
-#' @param coddep Code INSEE départemental
-#' @param fields Retourne tous les champs associés si fields=all, sinon retourne uniquement une selection de champs.
-#' @param ordering Which field to use when ordering the results.
-#' @param surface_max Surface maximale de l'unité foncière
-#' @param surface_min Surface minimale de l'unité foncière
-#' @param urba_zone_type Type de zone d'urbanisme
-#'
-#' @return Retourne les friches issues de Cartofriches pour la commune, le département ou l'emprise rectangulaire demandée (paramètre code_insee, coddep ou in_bbox obligatoire)
-#' @export
-#'
-#' @examples
-#' cartofriches_friches(coddep = 59)
-
-cartofriches_friches_dep <- function(
-    coddep=NULL,
-    # code_insee=NULL,
-    # contains_geom=NULL,
-    fields=NULL,
-    # in_bbox=NULL,
-    ordering=NULL,
-    # page=NULL,
-    # page_size=NULL,
-    surface_max=NULL,
-    surface_min=NULL,
-    urba_zone_type=NULL
-){
-
-  base_url='https://apidf-preprod.cerema.fr'
-  donnees='cartofriches'
-  indicateur_1='friches'
-
-  url=glue::glue(
-    base_url,donnees,indicateur_1,'/',
-    .sep = "/"
+  get_geodataframe(
+    resultat
   )
-
-  return_data <- NULL                # MAJ LISTE INSEE
-
-  for (coddep_i in coddep) { # MAJ LISTE INSEE
-
-
-    print(coddep_i)              # MAJ LISTE INSEE
-
-    page <- 1
-    all_data <- list()
-    has_more_data <- TRUE
-
-    while (has_more_data) {
-
-      args <- list(
-        coddep=coddep,
-        # code_insee=code_insee_i,   # MAJ LISTE INSEE
-        # contains_geom=contains_geom,
-        fields=fields,
-        # in_bbox=in_bbox,
-        ordering=ordering,
-        page=page,
-        page_size=500,
-        surface_max=surface_max,
-        surface_min=surface_min,
-        urba_zone_type=urba_zone_type
-      )
-
-      statut <- httr::GET(url, query = purrr::compact(args))
-
-      if (statut$status_code == 404){
-
-        has_more_data <- FALSE
-        # print('has_more_data=FALSE')
-
-      } else {
-
-
-        # Chek for internet
-        # check_internet()
-
-        res <- httr::GET(url, query = purrr::compact(args))
-
-        # Check the result
-        # check_status(res)
-
-        data <- jsonlite::fromJSON(rawToChar(res$content))$results %>%
-          tibble::as_tibble()
-
-        all_data <- dplyr::bind_rows(all_data, data)
-
-        page <- page + 1
-
-      }
-
-    }
-
-    return_data <- dplyr::bind_rows(all_data,return_data)  # MAJ LISTE INSEE
-
-  }                                                        # MAJ LISTE INSEE
-
-  return_data                                              # MAJ LISTE INSEE
-
-}
-
-#' Retourne la friche pour l'identifiant de site demandé
-#'
-#' @param site_id A unique value identifying this cartofriches.
-#'
-#' @return Retourne la friche pour l'identifiant de site demandé
-#' @export
-#'
-#' @examples
-#' cartofriches_friches_site(site_id = '59002_10038')
-
-cartofriches_friches_site <- function(
-    site_id=NULL
-){
-
-
-
-  base_url='https://apidf-preprod.cerema.fr'
-  donnees='cartofriches'
-  indicateur_1='friches'
-
-
-
-  url=glue::glue(
-    base_url,donnees,indicateur_1,site_id %>% as.character(),'/',
-    .sep = "/"
-  )
-
-  # Chek for internet
-  # check_internet()
-
-  res <- httr::GET(url)
-
-  # Check the result
-  # check_status(res)
-
-  jsonlite::fromJSON(rawToChar(res$content)) %>%
-    dplyr::bind_rows() %>%
-    dplyr::mutate(l_idpar=paste(l_idpar,collapse = ",")) %>%
-    head(1)
 
 }

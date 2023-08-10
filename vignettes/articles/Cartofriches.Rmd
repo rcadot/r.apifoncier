@@ -9,34 +9,47 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup}
-library(r.apifoncier)
+
+# Présentation
+
+`r.apifoncier` permet d’interroger librement les **données des friches** produites par le Cerema. Plus de détails sur [Cartofriches](https://cartofriches.cerema.fr/).
+
+Les données proposées sont disponibles sous forme de dataframe ou sf, accessible soit via le code insee de la commune, du département ou une emprise geographique.
+
+# Description des fonctions
+
+## cartofriches.friches()
+
+Retourne les friches issues de Cartofriches pour le périmètre demandé sous forme d’un dataframe
+
+```r
+cartofriches.friches(code_insee="59350")
+cartofriches.friches(coddep="59")
+cartofriches.friches(in_bbox=c(3, 50, 4, 51))
 ```
 
-On peut accéder aux friches, soit par département, commune ou encore à partir d'une emprise au format WGS84.
 
-Pour un ou plusieurs département :
+## cartofriches.geofriches()
 
-```{r}
-cartofriches_friches_dep(coddep = 59)
+Retourne les friches issues de Cartofriches pour le périmètre demandé sous forme d’un sf
+
+```r
+cartofriches.geofriches(code_insee="59350")
+cartofriches.geofriches(coddep="59")
+cartofriches.geofriches(in_bbox=c(3, 50, 4, 51))
 ```
 
+## cartofriches.friche()
 
-Pour une ou plusieurs communes :
+Renvoi la friche correpondant au site_id
 
-```{r}
-cartofriches_friches(code_insee = c(59002,59008))
+```r
+cartofriches.friche(site_id="id_du_site")
 ```
 
-```{r eval=FALSE, include=FALSE}
-cartofriches_friches(in_bbox = '2.827642,50.495958,3.32616,50.767734')
-```
+_Retrouvez toutes les fonctions liées aux données de cartofriches directement dans [l'onglet Référence](https://rcadot.github.io/r.apifoncier/reference/index.html#cartofriches)._
 
-On peut également accéder aux objets géographiques associés.
 
-```{r echo=TRUE, message=FALSE, warning=FALSE}
-cartofriches_geofriches(code_insee = 59350) %>% 
-  carte()
-```
+# Exemples
 
-Retrouvez toutes les fonctions liées aux données de cartofriches directement dans [l'onglet Référence](https://rcadot.github.io/r.apifoncier/reference/index.html#cartofriches).
+La rubriques Exemples présente des usages de ce module : Exemples sur Cartofriches

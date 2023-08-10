@@ -9,23 +9,74 @@ knitr::opts_chunk$set(
 )
 ```
 
-Les données Fichiers Fonciers nécessitent d'avoir un `token` disponible en se rendant sur [ConsultDF](https://consultdf.cerema.fr/consultdf/services/apidf). Ce `token` est valable durant un mois.
+# Présentation
 
-Les fonctions présentes dans le package commencent par `ff_` et permettent d'interroger :
+`r.apifoncier` permet d’interroger les **parcelles, tup, locaux, propriétaires issues des Fichiers fonciers**, base de données enrichie par le Cerema. Plus de détails sur [Fichiers fonciers](https://datafoncier.cerema.fr/fichiers-fonciers)
 
-- les parcelles ;
-- les tups ;
-- les locaux ;
-- les propriétaires ;
-- avec ou sans géométrie.
+Les données proposées sont disponibles sous forme de dataframe ou sf, accessible soit via le code insee de la commune, du département ou une emprise geographique.
 
-L'ensemble des requêtes nécessitant un *token* sont sous la forme suivante.
+> *L’accès aux données DV3F nécessite d’appartenir à une structure publique bénéficiaire et d’avoir prélablement obtenu un jeton API. Rendez-vous sur [ConsultDF](https://consultdf.cerema.fr/consultdf/services/apidf) pour plus d’informations.*
+
+# Configuration du package
+
+L'ensemble des requêtes nécessitent un *token* qui se configure de la manière suivante :
 
 ```r
-token="le_token_copie_via_consultdf"
-
-ff_geotups(code_insee=59001,token=token)
+configure(TOKEN="mon_token")
 ```
 
 
-*Retrouvez l'ensemble des fonctions disponibles directement dans [l'onglet référence](https://rcadot.github.io/r.apifoncier/reference/index.html#fichiers-fonciers).*
+# Description des fonctions
+
+## Parcelles
+
+### ff.parcelles()
+
+Retourne les parcelles issues des Fichiers Fonciers pour le périmètre demandée sous forme d’un dataframe
+
+### ff.geoparcelles()
+
+Retourne les parcelles issues des Fichiers Fonciers pour le périmètre demandée sous forme d’un sf
+
+### ff.parcelle()
+
+Renvoie la parcelle correspondant à l’identifiant idpar
+
+## TUP
+
+### ff.tups()
+
+Retourne les tup issues des Fichiers Fonciers pour le périmètre demandée sous forme d’un dataframe
+
+### ff.geotups()
+
+Retourne les tup issues des Fichiers Fonciers pour le périmètre demandée sous forme d’un sf
+
+### ff.tup()
+
+Renvoie la tup correspondant à l’identifiant idtup
+
+## Locaux
+
+
+### ff.locaux()
+
+Retourne les locaux issues des Fichiers Fonciers pour le périmètre demandée sous forme d’un dataframe
+
+
+### ff.local()
+
+Renvoie le local correspondant à l’identifiant idlocal
+
+
+## Propriétaires
+
+### ff.proprios()
+
+Retourne les propriétaires issues des Fichiers Fonciers pour le périmètre demandée sous forme d’un dataframe
+
+### ff.proprio()
+
+Renvoie le propriétaire correspondant à l’identifiant idprodroit
+
+_Retrouvez l'ensemble des fonctions disponibles directement dans [l'onglet référence](https://rcadot.github.io/r.apifoncier/reference/index.html#fichiers-fonciers)._

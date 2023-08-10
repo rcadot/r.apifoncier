@@ -9,20 +9,61 @@ knitr::opts_chunk$set(
 )
 ```
 
-On peut extraire les données prix pour le périmètre de son choix tel que la commune ou l'epci comme dans les exemples ci-dessous.
 
-L'ensemble des fonctions liées aux indicateurs de prix (présentes dans l'onglet référence) commencent par le préfixe `ind_dv3f_PERI_FREQ` où `PERI`et `FREQ` désigne les périmètres et fréquences des données comme indiqué dans le [chapitre dédié](https://rcadot.github.io/r.apifoncier/index.html#indicateurs-de-prix-acc%C3%A8s-libre).
+# Présentation
 
-```{r setup}
-library(r.apifoncier)
+`r.apifoncier` permet d’interroger librement les **indicateurs de prix annuels et tri-annuels** produites par le Cerema à partir de DV3F. Plus de détails sur la [rubrique Datafoncier](https://datafoncier.cerema.fr/donnees/autres-donnees-foncieres/indicateurs-prix/)
+
+Les données proposées sont disponibles à **différentes échelles administratives** : communes, EPCI, départements, régions ainsi qu’à l’échelle des aires d’attraction des villes (AAV).
+
+
+# Description des fonctions
+
+L’accès aux indicateurs annuels ou triennaux s’effectue via les codes INSEE ou code AAV, en précisant éventuellement une année particulière :
+
+
+## Pour les communes
+
+```r
+prix.communes(code_insee="59350")
+prix.communes(code_insee=c("59350", "59646"), annee="2020")
+prix.communes(code_insee=c("59350", "59646"), periode="triennal")
 ```
 
-```{r}
-ind_dv3f_com_annuel('59002') %>% 
-  dplyr::select(1:10) # Le résultat contient 617 colonnes
+## Pour les EPCI
+
+```r
+prix.epci(code_insee="200093201")
+prix.epci(code_insee="200093201", periode="triennal")
 ```
 
-```{r}
-ind_dv3f_epci_annuel('200093201') %>% 
-  dplyr::select(1:10) # Le résultat contient 617 colonnes
+## Pour les départements
+
+```r
+prix.departements(coddep="59")
+prix.departements(coddep=c("59", "62"), annee="2020")
+prix.departements(coddep=c("59", "62"), periode="triennal")
 ```
+
+## Pour les régions
+
+```r
+prix.regions(code_insee="32")
+prix.regions(code_insee=c("32", "11"), annee="2020")
+prix.regions(code_insee=c("32", "11"), periode="triennal")
+```
+
+## Pour les aires d’attraction de la ville (AAV)
+
+```r
+prix.aav(code_insee="001")
+prix.aav(code_insee=c("001", "002"), annee="2020")
+prix.aav(code_insee=c("001", "002"), periode="triennal")
+```
+
+_Retrouvez l'ensemble des fonctions disponibles directement dans [l'onglet référence](https://rcadot.github.io/r.apifoncier/reference/index.html#indicateurs-de-prix)._
+
+
+# Exemples
+
+La rubriques Exemples présente des usages de ce module : Exemples sur Indicateurs de prix

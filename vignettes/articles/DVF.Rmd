@@ -1,5 +1,5 @@
 ---
-title: "DVF"
+title: "DVF+ open-data"
 ---
 
 ```{r, include = FALSE}
@@ -9,27 +9,49 @@ knitr::opts_chunk$set(
 )
 ```
 
-Grâce aux fonction commençant par le préfixe `dvf_opendata_`, on peut interroger l'API données foncières afin d'obtenir les parcelles ayant fait l'objet d'une mutation avec ou sans géométrie.
 
-De nombreux paramètres de filtres sont présents tels que :
+# Présentation
 
-- les années de mutations ;
-- les surfaces en jeu ;
-- les valeurs foncières ;
-- les typologies d'acheteurs, vendeurs et du bien ;
-- avec ou sans géométrie.
+`r.apifoncier` permet d’interroger librement les **mutations issues de DVF** selon le modèle de données du Cerema. Plus de détails sur [DVF+](https://datafoncier.cerema.fr/donnees/autres-donnees-foncieres/dvfplus-open-data)
 
-Retrouvez l'ensemble des fonctions `dvf_opendata_*` dans [l'onglet référence](https://rcadot.github.io/r.apifoncier/reference/index.html#dvf-).
+Les données proposées sont disponibles sous forme de dataframe ou sf, accessible soit via le code insee de la commune, du département ou une emprise geographique.
+
  
+# Description des fonctions
 
-```{r setup}
-library(r.apifoncier)
+## dvf.mutations()
+
+Retourne les mutations issues de DVF+ opendata pour le périmètre demandée sous forme d’un dataframe
+
+```r
+dvf.mutations(code_insee="59001")
+dvf.mutations(in_bbox=c(3, 50, 3.01, 50.01), fields="all")
+dvf.mutations(code_insee=c("59350", "59646"), valeurfonc_min=1000000)
 ```
 
-La fonction suivante affiche toutes les mutations recensées dans la base de données pour la commune `59001`.
-En cliquant sur un polygone, on obtient l'ensemble des attributs associés.
 
-```{r message=FALSE, warning=FALSE}
-dvf_opendata_geomutations(code_insee=59001) %>% 
-  mapview::mapview()
+## dvf.geomutations()
+
+Retourne les mutations issues de DVF+ opendata pour le périmètre demandée sous forme d’un sf
+
+```r
+dvf.geomutations(code_insee="59001")
+dvf.geomutations(in_bbox=c(3, 50, 3.01, 50.01), fields="all")
+dvf.geomutations(code_insee=c("59350", "59646"), valeurfonc_min=1000000)
 ```
+
+## dvf.mutation()
+
+Renvoi la mutation correspondant à l’identifiant idmutation
+
+```r
+dvf.mutation(site_id="id_du_site")
+```
+
+_Retrouvez l'ensemble des fonctions `dvf.*` dans [l'onglet référence](https://rcadot.github.io/r.apifoncier/reference/index.html#dvf-)_
+
+# Exemples
+
+La rubriques Exemples présente des usages de ce module : Exemples sur DVF+ open-data
+
+
