@@ -48,7 +48,7 @@ _Retrouvez l'ensemble des fonctions disponibles directement dans [l'onglet r√©f√
 ```{r message=FALSE, warning=FALSE}
 library(r.apifoncier)
 library(plotly)
-library(tidyr)
+library(tidyverse)
 
 df <- conso_enaf.communes(code_insee="59009")
 
