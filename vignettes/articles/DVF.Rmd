@@ -52,6 +52,95 @@ _Retrouvez l'ensemble des fonctions `dvf.*` dans [l'onglet référence](https://
 
 # Exemples
 
-La rubriques Exemples présente des usages de ce module : Exemples sur DVF+ open-data
+## Distribution des ventes de maison sur une commune
+
+```{r message=FALSE, warning=FALSE}
+library(apifoncier)
+library(tidyverse)
+library(plotly)
+library(sf)
+library(leaflet)
+library(leaflet.extras)
+```
+
+```{r}
+mutations <-
+  dvf.mutations(
+    code_insee="59646",
+    anneemut_min=2017,
+    codtypbien="111",
+    valeurfonc_max=1000000
+)
+```
+
+```{r}
+fig <- plot_ly(
+  data = mutations,
+  x = ~anneemut,
+  y = ~valeurfonc,
+  color = ~anneemut,
+  type = "violin",
+  box = list(visible = TRUE),
+  points = "all"
+) %>%
+layout(
+  title = "Distribution annuelle des prix des ventes de maison à partir de 2017",
+  xaxis = list(title = "Année"),
+  yaxis = list(title = "Prix en €"),
+  legend = list(title = "Année de mutation")
+)
+
+fig
+```
+
+
+
+## Carte de chaleur des ventes de maisons
+
+
+```{r message=FALSE, warning=FALSE}
+geomutations <- 
+  dvf.geomutations(
+    code_insee=c("62826", "62261"),
+    codtypbien="111",
+    anneemut_min=2017
+)
+
+# on converti les parcelles en centroids
+sf_use_s2(use_s2 = F)
+geomutations <- geomutations %>% drop_na() %>% st_centroid()
+```
+
+
+```{r}
+leaflet() %>%
+  addTiles() %>%
+  setView(1.60724,50.5335,13) %>% 
+  addHeatmap(
+    data = geomutations,
+    intensity = ~valeurfonc,
+    radius = 14
+  )
+```
+
+
+## Mutations de foncier nu
+
+```{r}
+# On récupère les mutations de foncier nu de plus de 1ha sur Lille
+gdf <- dvf.geomutations(code_insee="59350", codtypbien="2", sterr_min=10000)
+```
+
+```{r}
+leaflet() %>% 
+  setView(3.075,50.63,13) %>% 
+  addTiles() %>% 
+  addPolygons(
+    data=gdf,
+    popup = ~paste("Surface (m2) : ", sterr, "<br>",
+                   "Valeur foncière (€) : ", valeurfonc)
+  )
+```
+
 
 

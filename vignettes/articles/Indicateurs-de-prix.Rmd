@@ -66,3 +66,111 @@ _Retrouvez l'ensemble des fonctions disponibles directement dans [l'onglet réf�
 
 # Exemples
 
+## Evolution des prix et des volumes de transactions
+
+```{r message=FALSE, warning=FALSE}
+library(apifoncier)
+library(plotly)
+library(tidyverse)
+library(tmap)
+```
+
+```{r}
+library(plotly)
+
+df <- prix.communes(code_insee = "59646")
+
+fig <- subplot(
+  plot_ly(
+    df,
+    x = ~annee,
+    y = ~nbtrans_cod1113,
+    type = "bar",
+    name = "Maisons anciennes",
+    marker = list(color = "indianred", opacity = 0.7)
+  ) %>%
+    add_trace(
+      x = ~annee,
+      y = ~nbtrans_cod1213,
+      type = "bar",
+      name = "Appartements anciens",
+      marker = list(color = "lightsalmon", opacity = 0.7)
+    ),
+  plot_ly(
+    df,
+    x = ~annee,
+    y = ~pxm2_median_cod1113,
+    type = "scatter",
+    mode = "lines",
+    name = "Maisons anciennes",
+    line = list(color = "indianred")
+  ) %>%
+    add_trace(
+      x = ~annee,
+      y = ~pxm2_median_cod1213,
+      type = "scatter",
+      mode = "lines",
+      name = "Appartements anciens",
+      line = list(color = "lightsalmon")
+    ),
+  nrows = 2,
+  shareX = TRUE
+)
+
+# Mise à jour de la mise en page du graphique
+fig <- fig %>%
+  layout(
+    title = "Évolution annuelle des prix médian et du nombre de transaction (Wasquehal)",
+    xaxis = list(title = "Année"),
+    yaxis = list(title = "Nombre de ventes"),
+    yaxis2 = list(title = "Prix médian au m2", overlaying = "y", side = "right"),
+    legend = list(x = 0.5, y = 0.3, xanchor = "center", yanchor = "top")  # Centré et horizontal
+  )
+
+fig
+```
+
+
+## Carte communale à l’échelle d’un EPCI
+
+```{r message=FALSE, warning=FALSE}
+# on récupère les contours géographiques via l'api geo
+EPCI <- "245900758"
+url <- paste0("https://geo.api.gouv.fr/epcis/", EPCI, "/communes/?format=geojson&geometry=contour")
+communes <- sf::st_read(url,quiet = T)
+
+# on interroge apifoncier avec les codes communes associés
+res <- 
+  map(
+    .x=communes$code,
+    .f=~{prix.communes(code_insee = .x, periode = "triennal", annee = "2019")}
+  ) %>% 
+  bind_rows()
+
+# on calcule les médianes communales
+res <-
+  res %>% 
+  filter(valeurfonc_median_mmx>0,valeurfonc_median_mmx<99999999) %>% 
+  group_by(codgeo) %>% 
+  transmute(valeurfonc_median_mmx=median(valeurfonc_median_mmx))
+
+# on joint les deux données
+data <- left_join(communes,res,by=c("code"="codgeo"))
+
+
+map <- 
+  tm_shape(data)+
+  tm_fill(
+    col="valeurfonc_median_mmx",
+    title = "Prix médian (€) communal entre 2019 et 2021",
+    legend.format = list(
+      text.separator = "-",
+      fun = function(x) format(x,big.mark=" ")
+    )
+  )+
+  tm_borders()
+
+tmap_leaflet(map)
+
+```
+

@@ -52,4 +52,49 @@ _Retrouvez toutes les fonctions liées aux données de cartofriches directement 
 
 # Exemples
 
+## Communes ayant le plus de friches identifiées sur un département
+
+```{r message=FALSE, warning=FALSE}
+library(apifoncier)
+library(tidyverse)
+library(plotly)
+```
+
+On récupère les friches du département 59
+
+```{r}
+df <- cartofriches.friches(coddep="59")
+```
+
+```{r}
+# Décompte par commune
+result <-
+  df %>% 
+  group_by(comm_nom) %>% 
+  tally() %>% 
+  arrange(desc(n)) %>% 
+  head(15)
+
+# Génération du graphique
+result %>% 
+  plot_ly(
+    x=~n,
+    y=~comm_nom
+  ) %>% 
+  layout(
+  xaxis = list(title = "Nombre de friches"),
+  yaxis = list(title = "Communes",categoryorder = "total descending"),
+  title = "Communes ayant le plus de friches dans le département du Nord"
+)
+```
+
+## Affichage des friches dans une emprise rectangulaire
+
+```{r message=FALSE, warning=FALSE}
+library(mapview)
+
+sf <- cartofriches.geofriches(in_bbox=c(3, 50, 3.5, 50.5))
+
+mapview(sf)
+```
 
