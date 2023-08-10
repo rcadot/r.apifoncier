@@ -4,7 +4,30 @@
 \alias{dvf.mutations}
 \title{Retourne les mutations issues de DVF+ opendata pour le périmètre demandée sous forme d’un dataframe}
 \usage{
-dvf.mutations(code_insee = NULL, lon_lat = NULL, in_bbox = NULL, ...)
+dvf.mutations(
+  code_insee = NULL,
+  lon_lat = NULL,
+  in_bbox = NULL,
+  ordering = NULL,
+  fields = NULL,
+  anneemut = NULL,
+  anneemut_max = NULL,
+  anneemut_min = NULL,
+  codtypbien = NULL,
+  codtypproa = NULL,
+  codtypprov = NULL,
+  filtre = NULL,
+  idnatmut = NULL,
+  sbati_max = NULL,
+  sbati_min = NULL,
+  segmtab = NULL,
+  sterr_max = NULL,
+  sterr_min = NULL,
+  valeurfonc_max = NULL,
+  valeurfonc_min = NULL,
+  vefa = NULL,
+  ...
+)
 }
 \arguments{
 \item{code_insee}{Codes INSEE communaux ou des arrondissements municipaux.}
@@ -12,10 +35,6 @@ dvf.mutations(code_insee = NULL, lon_lat = NULL, in_bbox = NULL, ...)
 \item{lon_lat}{Coordonnée du point au sein de la ou des friches renvoyées c(longitude, latitude)}
 
 \item{in_bbox}{Emprise rectangulaire sous la forme d’un vecteur c(longitude_min, latitude_min, longitude_min, latitude_max)}
-
-\item{...}{pour futurs developpements}
-
-\item{coddep}{Codes INSEE des départements.}
 
 \item{ordering}{Champs à utiliser pour ordonner le résultat. Default NULL}
 
@@ -52,6 +71,8 @@ dvf.mutations(code_insee = NULL, lon_lat = NULL, in_bbox = NULL, ...)
 \item{valeurfonc_min}{Valeur foncière minimale (€) - cf valeurfonc}
 
 \item{vefa}{Vente en l'état futur d'achèvement - cf vefa}
+
+\item{...}{pour futurs developpements}
 }
 \value{
 Retourne les mutations issues de DVF+ opendata pour le périmètre demandée sous forme d’un dataframe

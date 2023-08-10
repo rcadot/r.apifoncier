@@ -4,7 +4,30 @@
 \alias{dv3f.mutations}
 \title{Retourne les mutations issues de DV3F pour le périmètre demandée sous forme d’un dataframe}
 \usage{
-dv3f.mutations(code_insee = NULL, lon_lat = NULL, in_bbox = NULL, ...)
+dv3f.mutations(
+  code_insee = NULL,
+  lon_lat = NULL,
+  in_bbox = NULL,
+  ordering = NULL,
+  fields = NULL,
+  anneemut = NULL,
+  anneemut_max = NULL,
+  anneemut_min = NULL,
+  codtypbien = NULL,
+  codtypproa = NULL,
+  codtypprov = NULL,
+  filtre = NULL,
+  idnatmut = NULL,
+  sbati_max = NULL,
+  sbati_min = NULL,
+  segmtab = NULL,
+  sterr_max = NULL,
+  sterr_min = NULL,
+  valeurfonc_max = NULL,
+  valeurfonc_min = NULL,
+  vefa = NULL,
+  ...
+)
 }
 \arguments{
 \item{code_insee}{Codes INSEE communaux ou des arrondissements municipaux.}
@@ -12,6 +35,42 @@ dv3f.mutations(code_insee = NULL, lon_lat = NULL, in_bbox = NULL, ...)
 \item{lon_lat}{Coordonnée du point au sein de la ou des friches renvoyées c(longitude, latitude)}
 
 \item{in_bbox}{Emprise rectangulaire sous la forme d’un vecteur c(longitude_min, latitude_min, longitude_min, latitude_max)}
+
+\item{ordering}{Champs à utiliser pour ordonner le résultat. Default NULL}
+
+\item{fields}{Retourne tous les champs associés si fields=all, sinon retourne uniquement une selection de champs.}
+
+\item{anneemut}{Annee de la mutation (>= 2010) - cf anneemut}
+
+\item{anneemut_max}{Annee de la mutation maximale - cf anneemut}
+
+\item{anneemut_min}{Annee de la mutation minimale - cf anneemut}
+
+\item{codtypbien}{Code(s) de la typologie de bien à sélectionner (il est possible de ne specifier que les premiers niveaux et de séparer par une virgule) - exemple : codtypbien=11,121 - cf codtypbien}
+
+\item{codtypproa}{Code(s) de la typologie de l'acheteur (il est possible de ne specifier que les premiers niveaux et de séparer par une virgule) - exemple : codtypproa=P,F7 - cf codtypproa}
+
+\item{codtypprov}{Code(s) de la typologie du vendeur (il est possible de ne specifier que les premiers niveaux et de séparer par une virgule) - exemple : codtypprov=P,F7 - cf codtypprov}
+
+\item{filtre}{Code alphanumerique permettant d'exclure des transactions particulières - cf filtre}
+
+\item{idnatmut}{Code(s) de nature de mutation (il est possible d'en demander plusieurs en séparant par une virgule - exemple : idnatmut=1,2 - cf idnatmut}
+
+\item{sbati_max}{Surface maximale bâtie vendue - cf sbati}
+
+\item{sbati_min}{Surface minimale bâtie vendue - cf sbati}
+
+\item{segmtab}{Note de segment du terrain à bâtir - cf segmtab}
+
+\item{sterr_max}{Surface maximale de terrain vendue - cf sterr}
+
+\item{sterr_min}{Surface minimale de terrain vendue - cf sterr}
+
+\item{valeurfonc_max}{Valeur foncière maximale (€) - cf valeurfonc}
+
+\item{valeurfonc_min}{Valeur foncière minimale (€) - cf valeurfonc}
+
+\item{vefa}{Vente en l'état futur d'achèvement - cf vefa}
 
 \item{...}{pour futurs developpements}
 }

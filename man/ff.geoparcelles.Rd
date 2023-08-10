@@ -4,7 +4,34 @@
 \alias{ff.geoparcelles}
 \title{Retourne les parcelles issues des Fichiers fonciers pour le périmètre demandé sous forme d’un geodataframe integrant les contours géométriques}
 \usage{
-ff.geoparcelles(code_insee = NULL, lon_lat = NULL, in_bbox = NULL, ...)
+ff.geoparcelles(
+  code_insee = NULL,
+  lon_lat = NULL,
+  in_bbox = NULL,
+  ctpdl = NULL,
+  dcntarti_max = NULL,
+  dcntarti_min = NULL,
+  dcntnaf_max = NULL,
+  dcntnaf_min = NULL,
+  dcntpa_max = NULL,
+  dcntpa_min = NULL,
+  fields = NULL,
+  idcomtxt = NULL,
+  jannatmin_max = NULL,
+  jannatmin_min = NULL,
+  nlocal_max = NULL,
+  nlocal_min = NULL,
+  nlogh_max = NULL,
+  nlogh_min = NULL,
+  slocal_max = NULL,
+  slocal_min = NULL,
+  sprincp_max = NULL,
+  sprincp_min = NULL,
+  stoth_max = NULL,
+  stoth_min = NULL,
+  catpro3 = NULL,
+  ...
+)
 }
 \arguments{
 \item{code_insee}{Code INSEE communal ou d'arrondissement municipal (possibilité de passer un vecteur de code insee sans limite maximum)}
@@ -12,6 +39,50 @@ ff.geoparcelles(code_insee = NULL, lon_lat = NULL, in_bbox = NULL, ...)
 \item{lon_lat}{Coordonnée du point au sein de la ou des friches renvoyées c(longitude, latitude).}
 
 \item{in_bbox}{Emprise rectangulaire (via Longitude min,Latitude min,Longitude max,Latitude max). L'emprise demandée ne doit pas excéder un carré de 0.02 deg. x 0.02 deg.}
+
+\item{ctpdl}{Type de pdl (type de copropriété) - cf ctpdl}
+
+\item{dcntarti_max}{Surface artificialisée maximale de la parcelle (m2) - cf dcntarti}
+
+\item{dcntarti_min}{Surface artificialisée minimale de la parcelle (m2) - cf dcntarti}
+
+\item{dcntnaf_max}{Surface NAF maximale de la parcelle (m2) - cf dcntnaf}
+
+\item{dcntnaf_min}{Surface NAF minimale de la parcelle (m2) - cf dcntnaf}
+
+\item{dcntpa_max}{Surface maximale de la parcelle (m2) - cf dcntpa}
+
+\item{dcntpa_min}{Surface minimale de la parcelle (m2) - cf dcntpa}
+
+\item{fields}{Retourne tous les champs associés si fields=all, sinon retourne uniquement une selection de champs.}
+
+\item{idcomtxt}{Chaine de caractères contenue dans le libellé de la commune - cf idcomtxt}
+
+\item{jannatmin_max}{Année maximale de construction du local le plus ancien - cf jannatmin}
+
+\item{jannatmin_min}{Année minimale de construction du local le plus ancien - cf jannatmin}
+
+\item{nlocal_max}{Nombre de locaux maximal sur la parcelle - cf nlocal}
+
+\item{nlocal_min}{Nombre de locaux minimal sur la parcelle - cf nlocal}
+
+\item{nlogh_max}{Nombre de logements maximal sur la parcelle - cf nlogh}
+
+\item{nlogh_min}{Nombre de logements minimal sur la parcelle - cf nlogh}
+
+\item{slocal_max}{Surface maximale des parties d'évaluation (m2) - cf slocal}
+
+\item{slocal_min}{Surface minimale des parties d'évaluation (m2) - cf slocal}
+
+\item{sprincp_max}{Surface maximale des pièces principales professionnelles (m2) - cf sprincp}
+
+\item{sprincp_min}{Surface minimale des pièces principales professionnelles (m2) - cf sprincp}
+
+\item{stoth_max}{Surface maximale des pièces d'habitation (m2) - cf stoth}
+
+\item{stoth_min}{Surface minimale des pièces d'habitation (m2) - cf stoth}
+
+\item{catpro3}{Chaîne(s) de caractères contenue dans le code de catégorie de propriétaire (il est possible de ne specifier que les premiers niveaux et de séparer par une virgule) - exemple : catpro3=P,F2,A2c - cf catpro3}
 
 \item{...}{pour futurs developpements}
 }

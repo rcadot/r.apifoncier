@@ -4,18 +4,24 @@
 \alias{conso_enaf.departements}
 \title{Retourne les indicateurs annuels de consommation d’espace departementaux}
 \usage{
-conso_enaf.departements(coddep, ...)
+conso_enaf.departements(
+  coddep,
+  annee_min = NULL,
+  annee_max = NULL,
+  ordering = NULL,
+  ...
+)
 }
 \arguments{
 \item{coddep}{Code INSEE du département (possibilité de passer un vecteur de code insee sans limite maximum)}
 
-\item{...}{pour futurs developpements}
+\item{annee_min}{Année à partir de laquelle renvoyer les indicateurs d'artificialisation (incluse)}
 
 \item{annee_max}{Année jusqu'à laquelle renvoyer les indicateurs d'artificialisation (incluse)}
 
-\item{annee_min}{Année à partir de laquelle renvoyer les indicateurs d'artificialisation (incluse)}
-
 \item{ordering}{Champs à utiliser pour ordonner le résultat. Defaults to None.}
+
+\item{...}{pour futurs developpements}
 }
 \value{
 Retourne les indicateurs annuels de consommation d’espace departementaux

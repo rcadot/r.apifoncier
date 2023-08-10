@@ -4,7 +4,25 @@
 \alias{ff.locaux}
 \title{Retourne les locaux des Fichiers fonciers pour le périmètre demandé sous forme d’un dataframe}
 \usage{
-ff.locaux(code_insee = NULL, lon_lat = NULL, in_bbox = NULL, ...)
+ff.locaux(
+  code_insee = NULL,
+  lon_lat = NULL,
+  in_bbox = NULL,
+  dteloc = NULL,
+  fields = NULL,
+  idpar = NULL,
+  idprocpte = NULL,
+  idsec = NULL,
+  locprop = NULL,
+  loghlls = NULL,
+  ordering = NULL,
+  proba_rprs = NULL,
+  slocal_max = NULL,
+  slocal_min = NULL,
+  typeact = NULL,
+  catpro3 = NULL,
+  ...
+)
 }
 \arguments{
 \item{code_insee}{Code INSEE communal ou d'arrondissement municipal (possibilité de passer un vecteur de code insee sans limite maximum)}
@@ -12,8 +30,6 @@ ff.locaux(code_insee = NULL, lon_lat = NULL, in_bbox = NULL, ...)
 \item{lon_lat}{Coordonnée du point au sein de la ou des friches renvoyées c(longitude, latitude).}
 
 \item{in_bbox}{Emprise rectangulaire (via Longitude min,Latitude min,Longitude max,Latitude max). L'emprise demandée ne doit pas excéder un carré de 0.02 deg. x 0.02 deg.}
-
-\item{...}{pour futurs developpements}
 
 \item{dteloc}{Type(s) de local (il est possible de spécifier plusieurs types et de séparer par une virgule) - exemple : dteloc=1,2 - cf dteloc}
 
@@ -40,6 +56,8 @@ ff.locaux(code_insee = NULL, lon_lat = NULL, in_bbox = NULL, ...)
 \item{typeact}{Chaîne(s) de caractères contenue dans le classement du local selon le type d'activité (Code catégorie du local d’activité) (il est possible de ne specifier que les premiers niveaux et de séparer par une virgule) - exemple : typeact=MAG,SPE3 - cf typeact}
 
 \item{catpro3}{Chaîne(s) de caractères contenue dans le code de catégorie de propriétaire (il est possible de ne specifier que les premiers niveaux et de séparer par une virgule) - exemple : catpro3=P,F2,A2c - cf catpro3}
+
+\item{...}{pour futurs developpements}
 }
 \value{
 Retourne les locaux des Fichiers fonciers pour le périmètre demandé sous forme d’un dataframe

@@ -17,8 +17,11 @@
 #' prix.aav(code_insee=c("001", "002"), periode="triennal")
 #'
 
-prix.aav <- function(code_insee,periode='annuel',...
-){
+prix.aav <- function(code_insee,
+                     periode='annuel',
+                     annee=NULL,
+                     ordering=NULL,
+                     ...){
 
   resultat=list(
     use_token=FALSE,
@@ -28,7 +31,9 @@ prix.aav <- function(code_insee,periode='annuel',...
     in_bbox=NULL,
     code_insee=code_insee,
     coddep=NULL,
-    params= list(...)
+    params= list(annee=annee,
+                 ordering=ordering,
+                 ...)
   )
 
 
@@ -61,7 +66,11 @@ prix.aav <- function(code_insee,periode='annuel',...
 #' prix.communes(code_insee=c("59350", "59646"), annee="2020")
 #' prix.communes(code_insee=c("59350", "59646"), periode="triennal")
 
-prix.communes <- function(code_insee,periode='annuel',...){
+prix.communes <- function(code_insee,
+                          periode='annuel',
+                          annee=NULL,
+                          ordering=NULL,
+                          ...){
 
   resultat=list(
     use_token=FALSE,
@@ -71,7 +80,9 @@ prix.communes <- function(code_insee,periode='annuel',...){
     in_bbox=NULL,
     code_insee=code_insee,
     coddep=NULL,
-    params= list(...)
+    params= list(annee=annee,
+                 ordering=ordering,
+                 ...)
     # token=NULL
   )
 
@@ -106,7 +117,11 @@ prix.communes <- function(code_insee,periode='annuel',...){
 #' prix.departements(coddep=c("59", "62"), annee="2020")
 #' prix.departements(coddep=c("59", "62"), periode="triennal")
 
-prix.departements <- function(coddep,periode='annuel',...){
+prix.departements <- function(coddep,
+                              periode='annuel',
+                              annee=NULL,
+                              ordering=NULL,
+                              ...){
 
   resultat=list(
     use_token=FALSE,
@@ -116,7 +131,9 @@ prix.departements <- function(coddep,periode='annuel',...){
     in_bbox=NULL,
     # code_insee=code_insee,
     coddep=coddep,
-    params= list(...)
+    params= list(annee=annee,
+                 ordering=ordering,
+                 ...)
     # token=NULL
   )
 
@@ -150,7 +167,11 @@ prix.departements <- function(coddep,periode='annuel',...){
 #' prix.epci(code_insee="200093201")
 #' prix.epci(code_insee="200093201", periode="triennal")
 #'
-prix.epci <- function(code_insee,periode='annuel',...){
+prix.epci <- function(code_insee,
+                      periode='annuel',
+                      annee=NULL,
+                      ordering=NULL,
+                      ...){
 
   resultat=list(
     use_token=FALSE,
@@ -160,7 +181,9 @@ prix.epci <- function(code_insee,periode='annuel',...){
     in_bbox=NULL,
     code_insee=code_insee,
     coddep=NULL,
-    params= list(...)
+    params= list(annee=annee,
+                 ordering=ordering,
+                 ...)
   )
 
 
@@ -192,7 +215,11 @@ prix.epci <- function(code_insee,periode='annuel',...){
 #' prix.regions(code_insee="32")
 #' prix.regions(code_insee=c("32", "11"), annee="2020")
 #' prix.regions(code_insee=c("32", "11"), periode="triennal")
-prix.regions <- function(code_insee,periode='annuel',...){
+prix.regions <- function(code_insee,
+                         periode='annuel',
+                         annee=NULL,
+                         ordering=NULL,
+                         ...){
 
   resultat=list(
     use_token=FALSE,
@@ -202,7 +229,9 @@ prix.regions <- function(code_insee,periode='annuel',...){
     in_bbox=NULL,
     code_insee=code_insee,
     coddep=NULL,
-    params= list(...)
+    params= list(annee=annee,
+                 ordering=ordering,
+                 ...)
   )
 
 

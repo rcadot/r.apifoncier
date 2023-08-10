@@ -4,18 +4,18 @@
 \alias{prix.epci}
 \title{Retourne les indicateurs annuels ou triennaux de prix à l'EPCI}
 \usage{
-prix.epci(code_insee, periode = "annuel", ...)
+prix.epci(code_insee, periode = "annuel", annee = NULL, ordering = NULL, ...)
 }
 \arguments{
 \item{code_insee}{Codes des EPCI}
 
 \item{periode}{Prend la valeur « annuel » ou « triennal ». Defaults to annuel.}
 
-\item{...}{pour futurs developpements}
-
 \item{annee}{Année de mutation}
 
 \item{ordering}{Champs à utiliser pour ordonner le résultat. Default NULL}
+
+\item{...}{pour futurs developpements}
 }
 \value{
 dataframe: données sur les marchés immobiliers

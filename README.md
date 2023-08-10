@@ -3,7 +3,7 @@
 
    
 
-`r.apifoncier` est un package `R` qui propose une boîte à outils pour
+`apifoncier` est un package `R` qui propose une boîte à outils pour
 interagir plus facilement avec [l’API Données foncières du
 Cerema](https://apidf-preprod.cerema.fr/).
 
@@ -18,8 +18,8 @@ foncières produites par le Cerema et la DGALN directement via `R`
 
 # Installation
 
-Vous pouvez installer `r.apifoncier` depuis
-[GitHub](https://github.com/) avec le code suivant :
+Vous pouvez installer `apifoncier` depuis [GitHub](https://github.com/)
+avec le code suivant :
 
 ``` r
 # install.packages("devtools") # à décommenter si vous n'avez pas {devtools} d'installé
@@ -35,7 +35,7 @@ données dans un dataframe ou un sf via la fonction adéquate :
 
 ``` r
 ## Récupérer des données de consommation d'espace sur une commune
-library(r.apifoncier)
+library(apifoncier)
 
 df <- conso_enaf.communes(code_insee='59350')
 ```

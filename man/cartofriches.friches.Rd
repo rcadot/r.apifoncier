@@ -9,6 +9,11 @@ cartofriches.friches(
   code_insee = NULL,
   lon_lat = NULL,
   in_bbox = NULL,
+  ordering = NULL,
+  fields = NULL,
+  surface_max = NULL,
+  surface_min = NULL,
+  urba_zone_type = NULL,
   ...
 )
 }
@@ -30,6 +35,8 @@ cartofriches.friches(
 \item{surface_min}{Surface minimale de l'unité foncière}
 
 \item{urba_zone_type}{Type de zone d'urbanisme}
+
+\item{...}{pour futurs developpements}
 }
 \value{
 Retourne les friches issues de Cartofriches pour le périmètre demandé sous forme d’un dataframe

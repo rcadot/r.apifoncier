@@ -4,18 +4,24 @@
 \alias{prix.regions}
 \title{Retourne les indicateurs annuels ou triennaux de prix à la région}
 \usage{
-prix.regions(code_insee, periode = "annuel", ...)
+prix.regions(
+  code_insee,
+  periode = "annuel",
+  annee = NULL,
+  ordering = NULL,
+  ...
+)
 }
 \arguments{
 \item{code_insee}{Codes des régions}
 
 \item{periode}{Prend la valeur « annuel » ou « triennal ». Defaults to annuel.}
 
-\item{...}{pour futurs developpements}
-
 \item{annee}{Année de mutation}
 
 \item{ordering}{Champs à utiliser pour ordonner le résultat. Default NULL}
+
+\item{...}{pour futurs developpements}
 }
 \value{
 dataframe: données sur les marchés immobiliers

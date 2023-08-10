@@ -9,6 +9,11 @@ cartofriches.geofriches(
   code_insee = NULL,
   lon_lat = NULL,
   in_bbox = NULL,
+  ordering = NULL,
+  fields = NULL,
+  surface_max = NULL,
+  surface_min = NULL,
+  urba_zone_type = NULL,
   ...
 )
 }
@@ -20,6 +25,18 @@ cartofriches.geofriches(
 \item{lon_lat}{Coordonnée du point au sein de la ou des friches renvoyées c(longitude, latitude)}
 
 \item{in_bbox}{Emprise rectangulaire sous la forme d’un vecteur c(longitude_min, latitude_min, longitude_min, latitude_max)}
+
+\item{ordering}{Champs à utiliser pour ordonner le résultat. Default NULL}
+
+\item{fields}{Retourne tous les champs associés si fields=all, sinon retourne uniquement une selection de champs.}
+
+\item{surface_max}{Surface maximale de l'unité foncière}
+
+\item{surface_min}{Surface minimale de l'unité foncière}
+
+\item{urba_zone_type}{Type de zone d'urbanisme}
+
+\item{...}{pour futurs developpements}
 }
 \value{
 Retourne les friches issues de Cartofriches pour le périmètre demandé sous forme d’un geodataframe

@@ -33,11 +33,32 @@ get_geodataframe <- function(self
       datas <- append(datas, list(data))
     }
   }
+  # browser()
   if (length(datas) == 1) {
-    return(datas[[1]])
+    #on converti les integer en numeric
+    data_a_retourner <- datas[[1]]  %>% en_num()
+      # dplyr::mutate(
+      #   dplyr::across(
+      #     dplyr::where(
+      #       is.integer
+      #     ),
+      #     ~{as.numeric(.)}
+      #   )
+      # )
+    return(data_a_retourner)
   } else {
     # dplyr::bind_rows(datas)
     combined_data <- do.call(rbind, datas)
+    #on converti les integer en numeric
+    combined_data <- combined_data  %>% en_num()
+      # dplyr::mutate(
+      #   dplyr::across(
+      #     dplyr::where(
+      #       is.integer
+      #     ),
+      #     ~{as.numeric(.)}
+      #   )
+      # )
     return(combined_data)
   }
 }
@@ -75,6 +96,7 @@ get_all_geodata <- function(url, params = NULL, use_token = FALSE){#,PROXY = PRO
     # combined_data <- data_pages
     # combined_data <- dplyr::bind_rows(data_pages)
     combined_data <- do.call(rbind, data_pages)
+
     return(combined_data)
   } else {
     return(NULL)
@@ -164,7 +186,17 @@ get_all_data <- function(url, params = NULL, use_token = FALSE,conversion_tibble
         data_page <- dplyr::bind_rows(response$results)
       }
 
-      data_pages <- dplyr::bind_rows(data_pages, data_page)
+      data_pages <-
+        dplyr::bind_rows(data_pages, data_page) %>% en_num()
+        # on converti les integer en numeric
+        # dplyr::mutate(
+        #   dplyr::across(
+        #     dplyr::where(
+        #       is.integer
+        #     ),
+        #     ~{as.numeric(.)}
+        #   )
+        # )
     }
 
 
@@ -258,6 +290,18 @@ get_api_response <- function(url,
 
 is_num <- function(value) {
   return(is.numeric(value))
+}
+
+en_num <- function(data){
+  data %>%
+    dplyr::mutate(
+    dplyr::across(
+      dplyr::where(
+        is.integer
+      ),
+      ~{as.numeric(.)}
+    )
+  )
 }
 
 process_geo_params <- function(...) {

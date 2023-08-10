@@ -4,7 +4,15 @@
 \alias{ff.tups}
 \title{Retourne les tup issues des Fichiers fonciers pour le périmètre demandé sous forme d’un dataframe}
 \usage{
-ff.tups(code_insee = NULL, lon_lat = NULL, in_bbox = NULL, ...)
+ff.tups(
+  code_insee = NULL,
+  lon_lat = NULL,
+  in_bbox = NULL,
+  typetup = NULL,
+  fields = NULL,
+  catpro3 = NULL,
+  ...
+)
 }
 \arguments{
 \item{code_insee}{Code INSEE communal ou d'arrondissement municipal (possibilité de passer un vecteur de code insee sans limite maximum)}
@@ -13,13 +21,13 @@ ff.tups(code_insee = NULL, lon_lat = NULL, in_bbox = NULL, ...)
 
 \item{in_bbox}{Emprise rectangulaire (via Longitude min,Latitude min,Longitude max,Latitude max). L'emprise demandée ne doit pas excéder un carré de 0.02 deg. x 0.02 deg.}
 
-\item{...}{pour futurs developpements}
-
 \item{typetup}{Type de l’entité : SIMPLE, PDLMP ou UF - cf typetup}
 
 \item{fields}{Retourne tous les champs associés si fields=all, sinon retourne uniquement une selection de champs.}
 
 \item{catpro3}{Chaîne(s) de caractères contenue dans le code de catégorie de propriétaire (il est possible de ne specifier que les premiers niveaux et de séparer par une virgule) - exemple : catpro3=P,F2,A2c - cf catpro3}
+
+\item{...}{pour futurs developpements}
 }
 \value{
 Retourne les tup issues des Fichiers fonciers pour le périmètre demandé sous forme d’un dataframe

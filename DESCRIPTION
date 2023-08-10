@@ -1,5 +1,5 @@
-Package: r.apifoncier
-Title: r.apifoncier : les données foncières du Cerema
+Package: apifoncier
+Title: apifoncier : les données foncières du Cerema
 Version: 0.4
 Authors@R: 
     person("Romain", "Cadot", email = "romain.cadot@cerema.fr", role = c("aut", "cre"))

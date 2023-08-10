@@ -4,7 +4,20 @@
 \alias{ff.proprios}
 \title{Retourne les droits de propriétés des Fichiers fonciers pour le périmètre demandé sous forme d’un dataframe}
 \usage{
-ff.proprios(code_insee = NULL, lon_lat = NULL, in_bbox = NULL, ...)
+ff.proprios(
+  code_insee = NULL,
+  lon_lat = NULL,
+  in_bbox = NULL,
+  ccodro = NULL,
+  fields = NULL,
+  gtoper = NULL,
+  idprocpte = NULL,
+  locprop = NULL,
+  ordering = NULL,
+  typedroit = NULL,
+  catpro3 = NULL,
+  ...
+)
 }
 \arguments{
 \item{code_insee}{Code INSEE communal ou d'arrondissement municipal (possibilité de passer un vecteur de code insee sans limite maximum)}
@@ -12,8 +25,6 @@ ff.proprios(code_insee = NULL, lon_lat = NULL, in_bbox = NULL, ...)
 \item{lon_lat}{Coordonnée du point au sein de la ou des friches renvoyées c(longitude, latitude).}
 
 \item{in_bbox}{Emprise rectangulaire (via Longitude min,Latitude min,Longitude max,Latitude max). L'emprise demandée ne doit pas excéder un carré de 0.02 deg. x 0.02 deg.}
-
-\item{...}{pour futurs developpements}
 
 \item{ccodro}{Code(s) du droit réel ou particulier (il est possible de spécifier plusieurs valeurs et de séparer par une virgule) - exemple : ccodro=A,B - cf ccodro}
 
@@ -30,6 +41,8 @@ ff.proprios(code_insee = NULL, lon_lat = NULL, in_bbox = NULL, ...)
 \item{typedroit}{Type de droit : propriétaire ou gestionnaire - cf typedroit}
 
 \item{catpro3}{Chaîne(s) de caractères contenue dans le code de catégorie de propriétaire (il est possible de ne specifier que les premiers niveaux et de séparer par une virgule) - exemple : catpro3=P,F2,A2c - cf catpro3}
+
+\item{...}{pour futurs developpements}
 }
 \value{
 Retourne les droits de propriétés des Fichiers fonciers pour le périmètre demandé sous forme d’un dataframe

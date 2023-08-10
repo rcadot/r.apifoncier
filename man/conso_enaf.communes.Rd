@@ -4,18 +4,24 @@
 \alias{conso_enaf.communes}
 \title{Retourne les indicateurs annuels de consommation d’espace communaux}
 \usage{
-conso_enaf.communes(code_insee, ...)
+conso_enaf.communes(
+  code_insee,
+  annee_min = NULL,
+  annee_max = NULL,
+  ordering = NULL,
+  ...
+)
 }
 \arguments{
 \item{code_insee}{Code INSEE communal ou d'arrondissement municipal (possibilité de passer un vecteur de code insee sans limite maximum)}
 
-\item{...}{pour futurs developpements}
+\item{annee_min}{Année à partir de laquelle renvoyer les indicateurs d'artificialisation (incluse)}
 
 \item{annee_max}{Année jusqu'à laquelle renvoyer les indicateurs d'artificialisation (incluse)}
 
-\item{annee_min}{Année à partir de laquelle renvoyer les indicateurs d'artificialisation (incluse)}
-
 \item{ordering}{Champs à utiliser pour ordonner le résultat. Defaults to None.}
+
+\item{...}{pour futurs developpements}
 }
 \value{
 Retourne les indicateurs annuels de consommation d’espace communaux

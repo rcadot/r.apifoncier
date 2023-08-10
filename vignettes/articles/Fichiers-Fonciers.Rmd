@@ -11,7 +11,7 @@ knitr::opts_chunk$set(
 
 # Présentation
 
-`r.apifoncier` permet d’interroger les **parcelles, tup, locaux, propriétaires issues des Fichiers fonciers**, base de données enrichie par le Cerema. Plus de détails sur [Fichiers fonciers](https://datafoncier.cerema.fr/fichiers-fonciers)
+`apifoncier` permet d’interroger les **parcelles, tup, locaux, propriétaires issues des Fichiers fonciers**, base de données enrichie par le Cerema. Plus de détails sur [Fichiers fonciers](https://datafoncier.cerema.fr/fichiers-fonciers)
 
 Les données proposées sont disponibles sous forme de dataframe ou sf, accessible soit via le code insee de la commune, du département ou une emprise geographique.
 

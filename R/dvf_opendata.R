@@ -1,7 +1,6 @@
 #' Retourne les mutations issues de DVF+ opendata pour le périmètre demandée sous forme d’un dataframe
 #'
 #' @param code_insee Codes INSEE communaux ou des arrondissements municipaux.
-#' @param coddep Codes INSEE des départements.
 #' @param in_bbox Emprise rectangulaire sous la forme d’un vecteur c(longitude_min, latitude_min, longitude_min, latitude_max)
 #' @param lon_lat Coordonnée du point au sein de la ou des friches renvoyées c(longitude, latitude)
 #' @param ordering Champs à utiliser pour ordonner le résultat. Default NULL
@@ -35,6 +34,24 @@ dvf.mutations <- function(
     code_insee=NULL,
     lon_lat=NULL,
     in_bbox=NULL,
+    ordering=NULL,
+    fields=NULL,
+    anneemut=NULL,
+    anneemut_max=NULL,
+    anneemut_min=NULL,
+    codtypbien=NULL,
+    codtypproa=NULL,
+    codtypprov=NULL,
+    filtre=NULL,
+    idnatmut=NULL,
+    sbati_max=NULL,
+    sbati_min=NULL,
+    segmtab=NULL,
+    sterr_max=NULL,
+    sterr_min=NULL,
+    valeurfonc_max=NULL,
+    valeurfonc_min=NULL,
+    vefa=NULL,
     ...){
 
   process_geo_params(code_insee=code_insee,
@@ -48,7 +65,26 @@ dvf.mutations <- function(
     lon_lat=lon_lat,
     in_bbox=in_bbox,
     code_insee=code_insee,
-    params= list(...)
+    params= list(
+      ordering=ordering,
+      fields=fields,
+      anneemut=anneemut,
+      anneemut_max=anneemut_max,
+      anneemut_min=anneemut_min,
+      codtypbien=codtypbien,
+      codtypproa=codtypproa,
+      codtypprov=codtypprov,
+      filtre=filtre,
+      idnatmut=idnatmut,
+      sbati_max=sbati_max,
+      sbati_min=sbati_min,
+      segmtab=segmtab,
+      sterr_max=sterr_max,
+      sterr_min=sterr_min,
+      valeurfonc_max=valeurfonc_max,
+      valeurfonc_min=valeurfonc_min,
+      vefa=vefa,
+      ...)
   )
 
 
@@ -76,6 +112,24 @@ dvf.geomutations <- function(
     code_insee=NULL,
     lon_lat=NULL,
     in_bbox=NULL,
+    ordering=NULL,
+    fields=NULL,
+    anneemut=NULL,
+    anneemut_max=NULL,
+    anneemut_min=NULL,
+    codtypbien=NULL,
+    codtypproa=NULL,
+    codtypprov=NULL,
+    filtre=NULL,
+    idnatmut=NULL,
+    sbati_max=NULL,
+    sbati_min=NULL,
+    segmtab=NULL,
+    sterr_max=NULL,
+    sterr_min=NULL,
+    valeurfonc_max=NULL,
+    valeurfonc_min=NULL,
+    vefa=NULL,
     ...){
 
   resultat=list(
@@ -85,7 +139,25 @@ dvf.geomutations <- function(
     lon_lat=lon_lat,
     in_bbox=in_bbox,
     code_insee=code_insee,
-    params=list(...)
+    params=list(ordering=ordering,
+                fields=fields,
+                anneemut=anneemut,
+                anneemut_max=anneemut_max,
+                anneemut_min=anneemut_min,
+                codtypbien=codtypbien,
+                codtypproa=codtypproa,
+                codtypprov=codtypprov,
+                filtre=filtre,
+                idnatmut=idnatmut,
+                sbati_max=sbati_max,
+                sbati_min=sbati_min,
+                segmtab=segmtab,
+                sterr_max=sterr_max,
+                sterr_min=sterr_min,
+                valeurfonc_max=valeurfonc_max,
+                valeurfonc_min=valeurfonc_min,
+                vefa=vefa,
+                ...)
   )
 
 
@@ -125,7 +197,15 @@ dvf.mutation <- function(
   )
   res <- lapply(res, function(x) if (is.null(x)) NA_character_ else x)
   res <- purrr::list_flatten(res) %>% tibble::as_tibble()
-
+  res <- res %>%
+    dplyr::mutate(
+      dplyr::across(
+        dplyr::where(
+          is.integer
+        ),
+        ~{as.numeric(.)}
+      )
+    )
   res
 
 }

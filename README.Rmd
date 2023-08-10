@@ -21,7 +21,7 @@ knitr::opts_chunk$set(
  
  
 
-`r.apifoncier` est un package `R` qui propose une boîte à outils pour interagir plus facilement avec [l’API Données foncières du Cerema](https://apidf-preprod.cerema.fr/).
+`apifoncier` est un package `R` qui propose une boîte à outils pour interagir plus facilement avec [l’API Données foncières du Cerema](https://apidf-preprod.cerema.fr/).
 
 Il permet d’interroger facilement les différentes bases de données foncières produites par le Cerema et la DGALN directement via `R`
 
@@ -33,7 +33,7 @@ Il permet d’interroger facilement les différentes bases de données foncière
 
 # Installation
 
-Vous pouvez installer `r.apifoncier` depuis [GitHub](https://github.com/) avec le code suivant :
+Vous pouvez installer `apifoncier` depuis [GitHub](https://github.com/) avec le code suivant :
 
 ``` r
 # install.packages("devtools") # à décommenter si vous n'avez pas {devtools} d'installé
@@ -49,7 +49,7 @@ Pour démarrer, il suffit de charger le package et de récupérer les données d
 
 ```r
 ## Récupérer des données de consommation d'espace sur une commune
-library(r.apifoncier)
+library(apifoncier)
 
 df <- conso_enaf.communes(code_insee='59350')
 ```

@@ -12,7 +12,7 @@ knitr::opts_chunk$set(
 
 # Présentation
 
-`r.apifoncier` permet d’interroger librement les **indicateurs de prix annuels et tri-annuels** produites par le Cerema à partir de DV3F. Plus de détails sur la [rubrique Datafoncier](https://datafoncier.cerema.fr/donnees/autres-donnees-foncieres/indicateurs-prix/)
+`apifoncier` permet d’interroger librement les **indicateurs de prix annuels et tri-annuels** produites par le Cerema à partir de DV3F. Plus de détails sur la [rubrique Datafoncier](https://datafoncier.cerema.fr/donnees/autres-donnees-foncieres/indicateurs-prix/)
 
 Les données proposées sont disponibles à **différentes échelles administratives** : communes, EPCI, départements, régions ainsi qu’à l’échelle des aires d’attraction des villes (AAV).
 
@@ -66,4 +66,3 @@ _Retrouvez l'ensemble des fonctions disponibles directement dans [l'onglet réf�
 
 # Exemples
 
-La rubriques Exemples présente des usages de ce module : Exemples sur Indicateurs de prix

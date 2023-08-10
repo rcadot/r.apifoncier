@@ -36,6 +36,28 @@ ff.parcelles <- function(
     code_insee=NULL,
     lon_lat=NULL,
     in_bbox=NULL,
+    ctpdl=NULL,
+    dcntarti_max=NULL,
+    dcntarti_min=NULL,
+    dcntnaf_max=NULL,
+    dcntnaf_min=NULL,
+    dcntpa_max=NULL,
+    dcntpa_min=NULL,
+    fields=NULL,
+    idcomtxt=NULL,
+    jannatmin_max=NULL,
+    jannatmin_min=NULL,
+    nlocal_max=NULL,
+    nlocal_min=NULL,
+    nlogh_max=NULL,
+    nlogh_min=NULL,
+    slocal_max=NULL,
+    slocal_min=NULL,
+    sprincp_max=NULL,
+    sprincp_min=NULL,
+    stoth_max=NULL,
+    stoth_min=NULL,
+    catpro3=NULL,
     ...){
 
 
@@ -46,7 +68,30 @@ ff.parcelles <- function(
     lon_lat=lon_lat,
     in_bbox=in_bbox,
     code_insee=code_insee,
-    params= list(...)
+    params= list(
+      ctpdl=ctpdl,
+      dcntarti_max=dcntarti_max,
+      dcntarti_min=dcntarti_min,
+      dcntnaf_max=dcntnaf_max,
+      dcntnaf_min=dcntnaf_min,
+      dcntpa_max=dcntpa_max,
+      dcntpa_min=dcntpa_min,
+      fields=fields,
+      idcomtxt=idcomtxt,
+      jannatmin_max=jannatmin_max,
+      jannatmin_min=jannatmin_min,
+      nlocal_max=nlocal_max,
+      nlocal_min=nlocal_min,
+      nlogh_max=nlogh_max,
+      nlogh_min=nlogh_min,
+      slocal_max=slocal_max,
+      slocal_min=slocal_min,
+      sprincp_max=sprincp_max,
+      sprincp_min=sprincp_min,
+      stoth_max=stoth_max,
+      stoth_min=stoth_min,
+      catpro3=catpro3,
+      ...)
   )
 
 
@@ -69,6 +114,28 @@ ff.geoparcelles <- function(
     code_insee=NULL,
     lon_lat=NULL,
     in_bbox=NULL,
+    ctpdl=NULL,
+    dcntarti_max=NULL,
+    dcntarti_min=NULL,
+    dcntnaf_max=NULL,
+    dcntnaf_min=NULL,
+    dcntpa_max=NULL,
+    dcntpa_min=NULL,
+    fields=NULL,
+    idcomtxt=NULL,
+    jannatmin_max=NULL,
+    jannatmin_min=NULL,
+    nlocal_max=NULL,
+    nlocal_min=NULL,
+    nlogh_max=NULL,
+    nlogh_min=NULL,
+    slocal_max=NULL,
+    slocal_min=NULL,
+    sprincp_max=NULL,
+    sprincp_min=NULL,
+    stoth_max=NULL,
+    stoth_min=NULL,
+    catpro3=NULL,
     ...){
 
   resultat=list(
@@ -78,7 +145,29 @@ ff.geoparcelles <- function(
     lon_lat=lon_lat,
     in_bbox=in_bbox,
     code_insee=code_insee,
-    params=list(...)
+    params=list(ctpdl=ctpdl,
+                dcntarti_max=dcntarti_max,
+                dcntarti_min=dcntarti_min,
+                dcntnaf_max=dcntnaf_max,
+                dcntnaf_min=dcntnaf_min,
+                dcntpa_max=dcntpa_max,
+                dcntpa_min=dcntpa_min,
+                fields=fields,
+                idcomtxt=idcomtxt,
+                jannatmin_max=jannatmin_max,
+                jannatmin_min=jannatmin_min,
+                nlocal_max=nlocal_max,
+                nlocal_min=nlocal_min,
+                nlogh_max=nlogh_max,
+                nlogh_min=nlogh_min,
+                slocal_max=slocal_max,
+                slocal_min=slocal_min,
+                sprincp_max=sprincp_max,
+                sprincp_min=sprincp_min,
+                stoth_max=stoth_max,
+                stoth_min=stoth_min,
+                catpro3=catpro3,
+                ...)
   )
 
 
@@ -148,6 +237,9 @@ ff.tups <- function(
     code_insee=NULL,
     lon_lat=NULL,
     in_bbox=NULL,
+    typetup=NULL,
+    fields=NULL,
+    catpro3=NULL,
     ...){
 
 
@@ -158,7 +250,10 @@ ff.tups <- function(
     lon_lat=lon_lat,
     in_bbox=in_bbox,
     code_insee=code_insee,
-    params= list(...)
+    params= list(typetup=typetup,
+                 fields=fields,
+                 catpro3=catpro3,
+                 ...)
   )
 
 
@@ -182,6 +277,9 @@ ff.geotups <- function(
     code_insee=NULL,
     lon_lat=NULL,
     in_bbox=NULL,
+    typetup=NULL,
+    fields=NULL,
+    catpro3=NULL,
     ...){
 
   resultat=list(
@@ -191,7 +289,10 @@ ff.geotups <- function(
     lon_lat=lon_lat,
     in_bbox=in_bbox,
     code_insee=code_insee,
-    params=list(...)
+    params=list(typetup=typetup,
+                fields=fields,
+                catpro3=catpro3,
+                ...)
   )
 
 
@@ -271,6 +372,19 @@ ff.locaux <- function(
     code_insee=NULL,
     lon_lat=NULL,
     in_bbox=NULL,
+    dteloc=NULL,
+    fields=NULL,
+    idpar=NULL,
+    idprocpte=NULL,
+    idsec=NULL,
+    locprop=NULL,
+    loghlls=NULL,
+    ordering=NULL,
+    proba_rprs=NULL,
+    slocal_max=NULL,
+    slocal_min=NULL,
+    typeact=NULL,
+    catpro3=NULL,
     ...){
 
 
@@ -281,7 +395,20 @@ ff.locaux <- function(
     lon_lat=lon_lat,
     in_bbox=in_bbox,
     code_insee=code_insee,
-    params= list(...)
+    params= list(dteloc=dteloc,
+                 fields=fields,
+                 idpar=idpar,
+                 idprocpte=idprocpte,
+                 idsec=idsec,
+                 locprop=locprop,
+                 loghlls=loghlls,
+                 ordering=ordering,
+                 proba_rprs=proba_rprs,
+                 slocal_max=slocal_max,
+                 slocal_min=slocal_min,
+                 typeact=typeact,
+                 catpro3=catpro3,
+                 ...)
   )
 
 
@@ -356,6 +483,14 @@ ff.proprios <- function(
     code_insee=NULL,
     lon_lat=NULL,
     in_bbox=NULL,
+    ccodro=NULL,
+    fields=NULL,
+    gtoper=NULL,
+    idprocpte=NULL,
+    locprop=NULL,
+    ordering=NULL,
+    typedroit=NULL,
+    catpro3=NULL,
     # PROXY = NULL,
     # TOKEN = NULL,
     ...){
@@ -368,7 +503,15 @@ ff.proprios <- function(
     lon_lat=lon_lat,
     in_bbox=in_bbox,
     code_insee=code_insee,
-    params= list(...)
+    params= list(ccodro=ccodro,
+                 fields=fields,
+                 gtoper=gtoper,
+                 idprocpte=idprocpte,
+                 locprop=locprop,
+                 ordering=ordering,
+                 typedroit=typedroit,
+                 catpro3=catpro3,
+                 ...)
   )
 
 

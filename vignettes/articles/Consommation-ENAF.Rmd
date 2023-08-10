@@ -12,7 +12,7 @@ knitr::opts_chunk$set(
 
 # Présentation
 
-`r.apifoncier` permet d’interroger librement les données de consommation d’espace annuelles produites par le Cerema et la DGALN. Plus de détails sur le [portail de l’artificialisation](https://artificialisation.developpement-durable.gouv.fr/).
+`apifoncier` permet d’interroger librement les données de consommation d’espace annuelles produites par le Cerema et la DGALN. Plus de détails sur le [portail de l’artificialisation](https://artificialisation.developpement-durable.gouv.fr/).
 
 Les données proposées sont disponibles à **deux échelles** : communes et départements.
 
@@ -23,7 +23,7 @@ Les données proposées sont disponibles à **deux échelles** : communes et dé
 L’accès aux indicateurs annuels communaux s’effectue via les codes INSEE des communes, en limitant éventuellement la période :
 
 ```r
-library(r.apifoncier)
+library(apifoncier)
 
 conso_enaf.communes(code_insee="59350")
 conso_enaf.communes(code_insee=c("59350", "62041"), annee_min="2015")
@@ -34,7 +34,7 @@ conso_enaf.communes(code_insee=c("59350", "62041"), annee_min="2015")
 L’accès aux indicateurs annuels départementaux s’effectue via les codes INSEE des départements, en limitant éventuellement la période :
 
 ```r
-library(r.apifoncier)
+library(apifoncier)
 
 conso_enaf.departements(coddep="59")
 conso_enaf.departements(coddep=c("59", "62"), annee_max="2015")
@@ -46,7 +46,7 @@ _Retrouvez l'ensemble des fonctions disponibles directement dans [l'onglet réf�
 # Exemples
 
 ```{r message=FALSE, warning=FALSE}
-library(r.apifoncier)
+library(apifoncier)
 library(plotly)
 library(tidyverse)
 

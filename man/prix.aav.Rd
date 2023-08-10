@@ -4,18 +4,18 @@
 \alias{prix.aav}
 \title{Retourne les indicateurs annuels ou triennaux de prix à l’aire d’attraction de la ville}
 \usage{
-prix.aav(code_insee, periode = "annuel", ...)
+prix.aav(code_insee, periode = "annuel", annee = NULL, ordering = NULL, ...)
 }
 \arguments{
 \item{code_insee}{Code AAV de l'aire INSEE}
 
 \item{periode}{Prend la valeur « annuel » ou « triennal ». Defaults to annuel.}
 
-\item{...}{pour futurs developpements}
-
 \item{annee}{Année de mutation}
 
 \item{ordering}{Champs à utiliser pour ordonner le résultat. Default NULL}
+
+\item{...}{pour futurs developpements}
 }
 \value{
 dataframe: données sur les marchés immobiliers

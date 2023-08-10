@@ -14,7 +14,11 @@
 #' conso_enaf.communes(code_insee="59350")
 #' conso_enaf.communes(code_insee=c("59350", "62041"), annee_min="2015")
 
-conso_enaf.communes <- function(code_insee,...){
+conso_enaf.communes <- function(code_insee,
+                                annee_min=NULL,
+                                annee_max=NULL,
+                                ordering=NULL,
+                                ...){
   resultat=list(
     use_token=FALSE,
     base_url=get_param("BASE_URL"),
@@ -23,7 +27,9 @@ conso_enaf.communes <- function(code_insee,...){
     in_bbox=NULL,
     code_insee=code_insee,
     coddep=NULL,
-    params= list(...)
+    params= list(annee_max=annee_max,
+                 annee_min=annee_min,
+                 ordering=ordering,...)
     # token=NULL
   )
 
@@ -50,7 +56,11 @@ conso_enaf.communes <- function(code_insee,...){
 #' conso_enaf.departements(coddep="59")
 #' conso_enaf.departements(coddep=c("59", "62"), annee_max="2015")
 
-conso_enaf.departements <- function(coddep,...){
+conso_enaf.departements <- function(coddep,
+                                    annee_min=NULL,
+                                    annee_max=NULL,
+                                    ordering=NULL,
+                                    ...){
   resultat=list(
     use_token=FALSE,
     base_url=get_param("BASE_URL"),
@@ -59,7 +69,9 @@ conso_enaf.departements <- function(coddep,...){
     in_bbox=NULL,
     code_insee=NULL,
     coddep=coddep,
-    params= list(...)
+    params= list(annee_max=annee_max,
+                 annee_min=annee_min,
+                 ordering=ordering,...)
   )
 
   get_dataframe(

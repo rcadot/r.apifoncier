@@ -9,6 +9,7 @@
 #' @param surface_max Surface maximale de l'unité foncière
 #' @param surface_min Surface minimale de l'unité foncière
 #' @param urba_zone_type Type de zone d'urbanisme
+#' @param ... pour futurs developpements
 #'
 #' @return Retourne les friches issues de Cartofriches pour le périmètre demandé sous forme d’un dataframe
 #' @export
@@ -22,6 +23,11 @@ cartofriches.friches <- function(
     code_insee=NULL,
     lon_lat=NULL,
     in_bbox=NULL,
+    ordering=NULL,
+    fields=NULL,
+    surface_max=NULL,
+    surface_min=NULL,
+    urba_zone_type=NULL,
     ...){
 
   resultat=list(
@@ -32,7 +38,12 @@ cartofriches.friches <- function(
     in_bbox=in_bbox,
     code_insee=code_insee,
     coddep=coddep,
-    params= list(...)
+    params= list(ordering=ordering,
+                 fields=fields,
+                 surface_max=surface_max,
+                 surface_min=surface_min,
+                 urba_zone_type=urba_zone_type,
+                 ...)
   )
 
 
@@ -76,7 +87,15 @@ cartofriches.friche <- function(
   )
   res <- lapply(res, function(x) if (is.null(x)) NA_character_ else x)
   res <- purrr::list_flatten(res) %>% tibble::as_tibble()
-
+  res <- res %>%
+    dplyr::mutate(
+      dplyr::across(
+        dplyr::where(
+          is.integer
+        ),
+        ~{as.numeric(.)}
+      )
+    )
   res
 
 }
@@ -97,6 +116,11 @@ cartofriches.geofriches <- function(
     code_insee=NULL,
     lon_lat=NULL,
     in_bbox=NULL,
+    ordering=NULL,
+    fields=NULL,
+    surface_max=NULL,
+    surface_min=NULL,
+    urba_zone_type=NULL,
     ...){
 
   resultat=list(
@@ -107,7 +131,12 @@ cartofriches.geofriches <- function(
     in_bbox=in_bbox,
     coddep=coddep,
     code_insee=code_insee,
-    params=list(...)
+    params=list(ordering=ordering,
+                fields=fields,
+                surface_max=surface_max,
+                surface_min=surface_min,
+                urba_zone_type=urba_zone_type,
+                ...)
   )
 
   get_geodataframe(

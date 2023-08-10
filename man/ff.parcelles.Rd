@@ -4,7 +4,34 @@
 \alias{ff.parcelles}
 \title{Retourne les parcelles issues des Fichiers fonciers pour le périmètre demandé sous forme d’un dataframe}
 \usage{
-ff.parcelles(code_insee = NULL, lon_lat = NULL, in_bbox = NULL, ...)
+ff.parcelles(
+  code_insee = NULL,
+  lon_lat = NULL,
+  in_bbox = NULL,
+  ctpdl = NULL,
+  dcntarti_max = NULL,
+  dcntarti_min = NULL,
+  dcntnaf_max = NULL,
+  dcntnaf_min = NULL,
+  dcntpa_max = NULL,
+  dcntpa_min = NULL,
+  fields = NULL,
+  idcomtxt = NULL,
+  jannatmin_max = NULL,
+  jannatmin_min = NULL,
+  nlocal_max = NULL,
+  nlocal_min = NULL,
+  nlogh_max = NULL,
+  nlogh_min = NULL,
+  slocal_max = NULL,
+  slocal_min = NULL,
+  sprincp_max = NULL,
+  sprincp_min = NULL,
+  stoth_max = NULL,
+  stoth_min = NULL,
+  catpro3 = NULL,
+  ...
+)
 }
 \arguments{
 \item{code_insee}{Code INSEE communal ou d'arrondissement municipal (possibilité de passer un vecteur de code insee sans limite maximum)}
@@ -12,8 +39,6 @@ ff.parcelles(code_insee = NULL, lon_lat = NULL, in_bbox = NULL, ...)
 \item{lon_lat}{Coordonnée du point au sein de la ou des friches renvoyées c(longitude, latitude).}
 
 \item{in_bbox}{Emprise rectangulaire (via Longitude min,Latitude min,Longitude max,Latitude max). L'emprise demandée ne doit pas excéder un carré de 0.02 deg. x 0.02 deg.}
-
-\item{...}{pour futurs developpements}
 
 \item{ctpdl}{Type de pdl (type de copropriété) - cf ctpdl}
 
@@ -58,6 +83,8 @@ ff.parcelles(code_insee = NULL, lon_lat = NULL, in_bbox = NULL, ...)
 \item{stoth_min}{Surface minimale des pièces d'habitation (m2) - cf stoth}
 
 \item{catpro3}{Chaîne(s) de caractères contenue dans le code de catégorie de propriétaire (il est possible de ne specifier que les premiers niveaux et de séparer par une virgule) - exemple : catpro3=P,F2,A2c - cf catpro3}
+
+\item{...}{pour futurs developpements}
 }
 \value{
 Retourne les parcelles issues des Fichiers fonciers pour le périmètre demandé sous forme d’un dataframe

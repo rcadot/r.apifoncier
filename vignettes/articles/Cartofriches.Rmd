@@ -52,4 +52,4 @@ _Retrouvez toutes les fonctions liées aux données de cartofriches directement 
 
 # Exemples
 
-La rubriques Exemples présente des usages de ce module : Exemples sur Cartofriches
+

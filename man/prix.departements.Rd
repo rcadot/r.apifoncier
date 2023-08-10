@@ -4,18 +4,24 @@
 \alias{prix.departements}
 \title{Retourne les indicateurs annuels ou triennaux de prix au département}
 \usage{
-prix.departements(coddep, periode = "annuel", ...)
+prix.departements(
+  coddep,
+  periode = "annuel",
+  annee = NULL,
+  ordering = NULL,
+  ...
+)
 }
 \arguments{
 \item{coddep}{Codes des départements}
 
 \item{periode}{Prend la valeur « annuel » ou « triennal ». Defaults to annuel.}
 
-\item{...}{pour futurs developpements}
-
 \item{annee}{Année de mutation}
 
 \item{ordering}{Champs à utiliser pour ordonner le résultat. Default NULL}
+
+\item{...}{pour futurs developpements}
 }
 \value{
 dataframe: données sur les marchés immobiliers
