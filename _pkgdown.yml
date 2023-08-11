@@ -3,8 +3,6 @@ template:
   bootstrap: 5
   bootswatch: cosmo
 lang: fr
-development:
-  mode: auto
 reference:
 - title: Indicateurs de consommation d’espace
   desc: Fonctions permettant l'accès aux données de consommation d'ENAF
