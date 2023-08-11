@@ -1,0 +1,16 @@
+---
+title: "test article"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(apifoncier)
+```
+
+mon test

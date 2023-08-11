@@ -9,6 +9,12 @@ knitr::opts_chunk$set(
 )
 ```
 
+```{r setup}
+library(apifoncier)
+library(tidyverse)
+library(plotly)
+```
+
 
 # Présentation
 
@@ -46,9 +52,6 @@ _Retrouvez l'ensemble des fonctions disponibles directement dans [l'onglet réf�
 # Exemples
 
 ```{r message=FALSE, warning=FALSE}
-library(apifoncier)
-library(plotly)
-library(tidyverse)
 
 df <- conso_enaf.communes(code_insee="59009")
 

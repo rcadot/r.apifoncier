@@ -9,6 +9,12 @@ knitr::opts_chunk$set(
 )
 ```
 
+```{r setup}
+library(mapview)
+library(apifoncier)
+library(tidyverse)
+library(plotly)
+```
 
 # Présentation
 
@@ -54,12 +60,6 @@ _Retrouvez toutes les fonctions liées aux données de cartofriches directement 
 
 ## Communes ayant le plus de friches identifiées sur un département
 
-```{r message=FALSE, warning=FALSE}
-library(apifoncier)
-library(tidyverse)
-library(plotly)
-```
-
 On récupère les friches du département 59
 
 ```{r}
@@ -91,8 +91,6 @@ result %>%
 ## Affichage des friches dans une emprise rectangulaire
 
 ```{r message=FALSE, warning=FALSE}
-library(mapview)
-
 sf <- cartofriches.geofriches(in_bbox=c(3, 50, 3.5, 50.5))
 
 mapview(sf)

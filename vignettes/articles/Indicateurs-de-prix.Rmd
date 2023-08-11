@@ -10,6 +10,13 @@ knitr::opts_chunk$set(
 ```
 
 
+```{r setup}
+library(apifoncier)
+library(plotly)
+library(tidyverse)
+library(tmap)
+```
+
 # Présentation
 
 `apifoncier` permet d’interroger librement les **indicateurs de prix annuels et tri-annuels** produites par le Cerema à partir de DV3F. Plus de détails sur la [rubrique Datafoncier](https://datafoncier.cerema.fr/donnees/autres-donnees-foncieres/indicateurs-prix/)
@@ -67,13 +74,6 @@ _Retrouvez l'ensemble des fonctions disponibles directement dans [l'onglet réf�
 # Exemples
 
 ## Evolution des prix et des volumes de transactions
-
-```{r message=FALSE, warning=FALSE}
-library(apifoncier)
-library(plotly)
-library(tidyverse)
-library(tmap)
-```
 
 ```{r}
 library(plotly)
