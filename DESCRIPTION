@@ -20,6 +20,12 @@ Imports:
     tibble
 Suggests: 
     rmarkdown,
+    tidyverse,
+    plotly,
+    mapview,
+    leaflet,
+    leaflet.extras,
+    tmap,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
 URL: https://github.com/rcadot/r.apifoncier,
