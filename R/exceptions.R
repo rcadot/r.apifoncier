@@ -17,7 +17,7 @@ TokenNotConfigured <- function() {
   obj <- cli::cli_bullets(
     # list(
     # message =
-   c("x"= "Le token n'a pas été configuré. Utiliser configure(TOKEN=\"jeton\")"),
+   c("x"= "Le token n'a pas ete configure. Utiliser configure(TOKEN=\"jeton\")"),
   id=""
    )
   # class(obj) <- "TokenNotConfigured"

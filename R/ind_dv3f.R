@@ -38,7 +38,7 @@ prix.aav <- function(code_insee,
 
 
   if (!(periode %in% c("annuel", "triennal"))) {
-    stop("Le paramètre periode doit valoir 'annuel' ou 'triennal'.", call. = FALSE)
+    stop("Le parametre periode doit valoir 'annuel' ou 'triennal'.", call. = FALSE)
   }
 
   get_dataframe(
@@ -88,7 +88,7 @@ prix.communes <- function(code_insee,
 
 
   if (!(periode %in% c("annuel", "triennal"))) {
-    stop("Le paramètre periode doit valoir 'annuel' ou 'triennal'.", call. = FALSE)
+    stop("Le parametre periode doit valoir 'annuel' ou 'triennal'.", call. = FALSE)
   }
 
   get_dataframe(
@@ -139,7 +139,7 @@ prix.departements <- function(coddep,
 
 
   if (!(periode %in% c("annuel", "triennal"))) {
-    stop("Le paramètre periode doit valoir 'annuel' ou 'triennal'.", call. = FALSE)
+    stop("Le parametre periode doit valoir 'annuel' ou 'triennal'.", call. = FALSE)
   }
 
   get_dataframe(
@@ -188,7 +188,7 @@ prix.epci <- function(code_insee,
 
 
   if (!(periode %in% c("annuel", "triennal"))) {
-    stop("Le paramètre periode doit valoir 'annuel' ou 'triennal'.", call. = FALSE)
+    stop("Le parametre periode doit valoir 'annuel' ou 'triennal'.", call. = FALSE)
   }
 
   get_dataframe(
@@ -236,7 +236,7 @@ prix.regions <- function(code_insee,
 
 
   if (!(periode %in% c("annuel", "triennal"))) {
-    stop("Le paramètre periode doit valoir 'annuel' ou 'triennal'.", call. = FALSE)
+    stop("Le parametre periode doit valoir 'annuel' ou 'triennal'.", call. = FALSE)
   }
 
   get_dataframe(

@@ -309,10 +309,10 @@ process_geo_params <- function(...) {
 
   # Vérification de l'obligation de préciser au moins un paramètre
   if (!any(keyword_priority %in% names(list(...)))) {
-    stop("Veuillez préciser au moins un paramètre parmi code_insee, in_bbox, lonlat et coddep.")
+    stop("Veuillez preciser au moins un parametre parmi code_insee, in_bbox, lonlat et coddep.")
   }
 
-  # Vérification si plusieurs mots-clés ont été utilisés
+  # Vérification si plusieurs mots-clés ont ete utilisés
   used_keywords <- names(Filter(function(x) !is.null(x), list(...)))
   first_keyword <- NULL
   for (keyword in keyword_priority) {
@@ -323,172 +323,8 @@ process_geo_params <- function(...) {
   }
 
   if (length(used_keywords) > 1) {
-    warning_message <- sprintf("Les mots-clés %s ont été précisés. Seul le mot-clé %s sera utilisé.", paste(used_keywords, collapse = ", "), first_keyword)
+    warning_message <- sprintf("Les mots-cles %s ont ete precises. Seul le mot-cle %s sera utilise.", paste(used_keywords, collapse = ", "), first_keyword)
     warning(warning_message)
   }
 }
-
-
-# OLD ----
-# process_params <- function(self,...) {
-#   args <- list(...)
-#
-#   # browser()
-#   # if ("lon_lat" %in% names(args)){
-#   #   self$lon_lat <- args$lon_lat
-#   # }else{
-#   #   self<-modifyList(self, list(lon_lat = NULL))
-#   #   # self <- append(
-#   #   #   self,
-#   #   #   list(lon_lat = NULL)
-#   #   # )
-#   # }
-#   #
-#   # if ("in_bbox" %in% names(args)){
-#   #   self$in_bbox <- args$in_bbox
-#   # }else{
-#   #   self<-modifyList(self, list(in_bbox = NULL))
-#   #
-#   #   # self <- append(
-#   #   #   self,
-#   #   #   list(in_bbox = NULL)
-#   #   # )
-#   # }
-#   #
-#   # if ("code_insee" %in% names(args)){
-#   #   self$code_insee <- args$code_insee
-#   # }else{
-#   #   self<-modifyList(self, list(code_insee = NULL))
-#   #   # self <- append(
-#   #   #   self,
-#   #   #   list(code_insee = NULL)
-#   #   # )
-#   # }
-#   #
-#   # if ("coddep" %in% names(args)){
-#   #   self$coddep <- args$coddep
-#   # }else{
-#   #   self<-modifyList(self, list(coddep = NULL))
-#   #   # self <- append(
-#   #   #   self,
-#   #   #   list(coddep = NULL)
-#   #   # )
-#   # }
-#
-#   self$params <- args[!names(args) %in% c("lon_lat","in_bbox","code_insee","coddep")]
-#
-#   # self$params <-
-#   #   args[!(
-#   #     names(args) %in% c("lon_lat","in_bbox","code_insee","coddep")
-#   #     &
-#   #     sapply(args, is.null)
-#   #   )]
-#   #
-#   # if (length(self$params)==0){
-#   #
-#   #   self <- self[!names(self) %in% c("params")]
-#   #   self <- append(
-#   #     self,
-#   #     list(params = NULL)
-#   #   )
-#   # }
-#
-#   self
-# }
-
-
-# process_params <- function(self, ...) {
-#
-#   args <- list(...)
-#
-#   geo_params <- process_filter_params(
-#     lon_lat = args$lon_lat,
-#     in_bbox = args$in_bbox,
-#     code_insee = args$code_insee,
-#     coddep = args$coddep
-#   )
-#
-#   self$lon_lat <- geo_params$lon_lat
-#   self$in_bbox <- geo_params$in_bbox
-#   self$code_insee <- geo_params$code_insee
-#   self$coddep <- geo_params$coddep
-#
-#   remaining_params <- process_filter_params(...)
-#   self$params <- remaining_params
-#
-#   self
-# }
-
-# process_filter_params <- function(...) {
-#   args <- list(...)
-#   params <- list()
-#
-#   for (kw in names(args)) {
-#     value <- args[[kw]]
-#     if (!is.null(value)) {
-#       params[[kw]] <- value
-#     }
-#   }
-#
-#   return(params)
-# }
-
-# process_geo_params <- function(...) {
-#   keyword_priority <- c("lon_lat", "in_bbox", "code_insee", "coddep")
-#
-#   args <- list(...)
-#
-#   # Vérification de l'obligation de préciser au moins un paramètre
-#   if (!any(keyword_priority %in% names(args))) {
-#     stop("Veuillez préciser au moins un paramètre parmi code_insee, in_bbox, lon_lat et coddep.")
-#   }
-#
-#   # Vérification si plusieurs mots-clés ont été utilisés
-#   used_keywords <- names(args)[!sapply(args, is.null)]
-#   first_keyword <- NULL
-#   for (keyword in keyword_priority) {
-#     if (keyword %in% used_keywords) {
-#       first_keyword <- keyword
-#       break
-#     }
-#   }
-#   if (length(used_keywords) > 1) {
-#     warning_message <- paste("Les mots-clés", paste(used_keywords, collapse = ", "),
-#                              "ont été précisés. Seul le mot-clé", first_keyword, "sera utilisé.")
-#     warning(warning_message)
-#   }
-#
-#   values <- setNames(rep(list(NULL), length(keyword_priority)), keyword_priority)
-#
-#   # Vérification et traitement des paramètres selon la priorité des mots-clés
-#   for (keyword in keyword_priority) {
-#     if (keyword %in% names(args)) {
-#       value <- args[[keyword]]
-#
-#       if (keyword == "lon_lat") {
-#         # Vérification que lon_lat est une liste de 2 nombres
-#         if (length(value) != 2 || !all(sapply(value, is.numeric))) {
-#           stop("Le paramètre lon_lat doit être une liste de 2 nombres.")
-#         }
-#         values[[keyword]] <- as.character(value)
-#         break
-#       } else if (keyword == "in_bbox") {
-#         # Vérification que in_bbox est une liste de 4 nombres
-#         if (length(value) != 4 || !all(sapply(value, is.numeric))) {
-#           stop("Le paramètre in_bbox doit être une liste de 4 nombres.")
-#         }
-#         values[[keyword]] <- as.character(value)
-#         break
-#       } else if (keyword %in% c("code_insee", "coddep")) {
-#         if (is.character(value)) {
-#           value <- list(value)
-#         }
-#         values[[keyword]] <- value
-#         break
-#       }
-#     }
-#   }
-#
-#   return(as.list(unlist(values)))
-# }
 

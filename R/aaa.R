@@ -26,7 +26,7 @@ the$CONFIG <- CONFIG_INIT
 #'configure(TOKEN="my_token")
 configure <- function(...) {
   arg_names <- deparse(substitute(list(...)))
-  cli::cli_alert_success(c("i"="La modification de {(arg_names)} a été effectuée"))
+  cli::cli_alert_success(c("i"="La modification de {(arg_names)} a ete effectue"))
   try(
     the$CONFIG <<- utils::modifyList(the$CONFIG, list(...)),
     silent = T
@@ -46,7 +46,7 @@ get_param <- function(value) {
 #' @examples
 #' reset()
 reset <- function() {
-  cli::cli_alert_success(c("i"="La configuration intiale a été restaurée."))
+  cli::cli_alert_success(c("i"="La configuration intiale a ete restauree."))
   try(
     the$CONFIG <<- CONFIG_INIT,
     silent = T
