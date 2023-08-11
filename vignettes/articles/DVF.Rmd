@@ -1,0 +1,149 @@
+---
+title: "DVF+ open-data"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,eval = T,
+  comment = "#>"
+)
+```
+
+
+# Présentation
+
+`apifoncier` permet d’interroger librement les **mutations issues de DVF** selon le modèle de données du Cerema. Plus de détails sur [DVF+](https://datafoncier.cerema.fr/donnees/autres-donnees-foncieres/dvfplus-open-data)
+
+Les données proposées sont disponibles sous forme de dataframe ou sf, accessible soit via le code insee de la commune, du département ou une emprise geographique.
+
+ 
+# Description des fonctions
+
+## dvf.mutations()
+
+Retourne les mutations issues de DVF+ opendata pour le périmètre demandée sous forme d’un dataframe
+
+```r
+dvf.mutations(code_insee="59001")
+dvf.mutations(in_bbox=c(3, 50, 3.01, 50.01), fields="all")
+dvf.mutations(code_insee=c("59350", "59646"), valeurfonc_min=1000000)
+```
+
+
+## dvf.geomutations()
+
+Retourne les mutations issues de DVF+ opendata pour le périmètre demandée sous forme d’un sf
+
+```r
+dvf.geomutations(code_insee="59001")
+dvf.geomutations(in_bbox=c(3, 50, 3.01, 50.01), fields="all")
+dvf.geomutations(code_insee=c("59350", "59646"), valeurfonc_min=1000000)
+```
+
+## dvf.mutation()
+
+Renvoi la mutation correspondant à l’identifiant idmutation
+
+```r
+dvf.mutation(site_id="id_du_site")
+```
+
+_Retrouvez l'ensemble des fonctions `dvf.*` dans [l'onglet référence](https://rcadot.github.io/r.apifoncier/reference/index.html#dvf-)_
+
+# Exemples
+
+## Distribution des ventes de maison sur une commune
+
+On charge les packages nécessaires.
+
+```{r setup, message=FALSE, warning=FALSE}
+library(apifoncier)
+library(tidyverse)
+library(plotly)
+library(sf)
+library(leaflet)
+library(leaflet.extras)
+```
+
+
+```{r}
+mutations <-
+  dvf.mutations(
+    code_insee="59646",
+    anneemut_min=2017,
+    codtypbien="111",
+    valeurfonc_max=1000000
+)
+```
+
+```{r}
+fig <- plot_ly(
+  data = mutations,
+  x = ~anneemut,
+  y = ~valeurfonc,
+  color = ~anneemut,
+  type = "violin",
+  box = list(visible = TRUE),
+  points = "all"
+) %>%
+layout(
+  title = "Distribution annuelle des prix des ventes de maison à partir de 2017",
+  xaxis = list(title = "Année"),
+  yaxis = list(title = "Prix en €"),
+  legend = list(title = "Année de mutation")
+)
+
+fig
+```
+
+
+
+## Carte de chaleur des ventes de maisons
+
+
+```{r message=FALSE, warning=FALSE}
+geomutations <- 
+  dvf.geomutations(
+    code_insee=c("62826", "62261"),
+    codtypbien="111",
+    anneemut_min=2017
+)
+
+# on converti les parcelles en centroids
+sf_use_s2(use_s2 = F)
+geomutations <- geomutations %>% drop_na() %>% st_centroid()
+```
+
+
+```{r}
+leaflet() %>%
+  addTiles() %>%
+  setView(1.60724,50.5335,13) %>% 
+  addHeatmap(
+    data = geomutations,
+    intensity = ~valeurfonc,
+    radius = 14
+  )
+```
+
+
+## Mutations de foncier nu
+
+```{r}
+# On récupère les mutations de foncier nu de plus de 1ha sur Lille
+gdf <- dvf.geomutations(code_insee="59350", codtypbien="2", sterr_min=10000)
+```
+
+```{r}
+leaflet() %>% 
+  setView(3.075,50.63,13) %>% 
+  addTiles() %>% 
+  addPolygons(
+    data=gdf,
+    popup = ~paste("Surface (m2) : ", sterr, "<br>",
+                   "Valeur foncière (€) : ", valeurfonc)
+  )
+```
+
+
+

@@ -1,0 +1,49 @@
+---
+title: "DV3F"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,eval = T,
+  comment = "#>"
+)
+```
+
+
+
+# Présentation
+
+`apifoncier` permet d’interroger les **mutations issues de DV3F**, base de données enrichie sur les marchés fonciers et immobiliers du Cerema. Plus de détails sur [DV3F](https://datafoncier.cerema.fr/dv3f)
+
+Les données proposées sont disponibles sous forme de dataframe ou geodataframe, accessible soit via le code insee de la commune, du département ou une emprise geographique.
+
+
+> *L’accès aux données DV3F nécessite d’appartenir à une structure publique bénéficiaire et d’avoir prélablement obtenu un jeton API. Rendez-vous sur [ConsultDF](https://consultdf.cerema.fr/consultdf/services/apidf) pour plus d’informations.*
+
+ 
+# Configuration du package
+
+L'ensemble des requêtes nécessitent un *token* qui se configure de la manière suivante :
+
+```r
+configure(TOKEN="mon_token")
+```
+
+ 
+# Description des fonctions
+
+
+## dv3f.mutations()
+
+Retourne les mutations issues de DV3F pour le périmètre demandée sous forme d’un dataframe
+
+## dv3f.geomutations()
+
+Retourne les mutations issues de DV3F pour le périmètre demandée sous forme d’un sf
+
+## dv3f.mutation()
+
+Renvoie la mutation correspondant à l’identifiant idmutation
+
+
+_Retrouvez l'ensemble des fonctions `dv3f.*` dans [l'onglet référence](https://rcadot.github.io/r.apifoncier/reference/index.html#dv-f)._

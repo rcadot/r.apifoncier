@@ -1,0 +1,82 @@
+---
+title: "Fichiers Fonciers"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,eval = T,
+  comment = "#>"
+)
+```
+
+# Présentation
+
+`apifoncier` permet d’interroger les **parcelles, tup, locaux, propriétaires issues des Fichiers fonciers**, base de données enrichie par le Cerema. Plus de détails sur [Fichiers fonciers](https://datafoncier.cerema.fr/fichiers-fonciers)
+
+Les données proposées sont disponibles sous forme de dataframe ou sf, accessible soit via le code insee de la commune, du département ou une emprise geographique.
+
+> *L’accès aux données DV3F nécessite d’appartenir à une structure publique bénéficiaire et d’avoir prélablement obtenu un jeton API. Rendez-vous sur [ConsultDF](https://consultdf.cerema.fr/consultdf/services/apidf) pour plus d’informations.*
+
+# Configuration du package
+
+L'ensemble des requêtes nécessitent un *token* qui se configure de la manière suivante :
+
+```r
+configure(TOKEN="mon_token")
+```
+
+
+# Description des fonctions
+
+## Parcelles
+
+### ff.parcelles()
+
+Retourne les parcelles issues des Fichiers Fonciers pour le périmètre demandée sous forme d’un dataframe
+
+### ff.geoparcelles()
+
+Retourne les parcelles issues des Fichiers Fonciers pour le périmètre demandée sous forme d’un sf
+
+### ff.parcelle()
+
+Renvoie la parcelle correspondant à l’identifiant idpar
+
+## TUP
+
+### ff.tups()
+
+Retourne les tup issues des Fichiers Fonciers pour le périmètre demandée sous forme d’un dataframe
+
+### ff.geotups()
+
+Retourne les tup issues des Fichiers Fonciers pour le périmètre demandée sous forme d’un sf
+
+### ff.tup()
+
+Renvoie la tup correspondant à l’identifiant idtup
+
+## Locaux
+
+
+### ff.locaux()
+
+Retourne les locaux issues des Fichiers Fonciers pour le périmètre demandée sous forme d’un dataframe
+
+
+### ff.local()
+
+Renvoie le local correspondant à l’identifiant idlocal
+
+
+## Propriétaires
+
+### ff.proprios()
+
+Retourne les propriétaires issues des Fichiers Fonciers pour le périmètre demandée sous forme d’un dataframe
+
+### ff.proprio()
+
+Renvoie le propriétaire correspondant à l’identifiant idprodroit
+
+_Retrouvez l'ensemble des fonctions disponibles directement dans [l'onglet référence](https://rcadot.github.io/r.apifoncier/reference/index.html#fichiers-fonciers)._

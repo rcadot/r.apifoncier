@@ -1,0 +1,103 @@
+---
+title: "Cartofriches"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,eval = T,
+  comment = "#>"
+)
+```
+
+
+
+# Présentation
+
+`r.apifoncier` permet d’interroger librement les **données des friches** produites par le Cerema. Plus de détails sur [Cartofriches](https://cartofriches.cerema.fr/).
+
+Les données proposées sont disponibles sous forme de dataframe ou sf, accessible soit via le code insee de la commune, du département ou une emprise geographique.
+
+# Description des fonctions
+
+## cartofriches.friches()
+
+Retourne les friches issues de Cartofriches pour le périmètre demandé sous forme d’un dataframe
+
+```r
+cartofriches.friches(code_insee="59350")
+cartofriches.friches(coddep="59")
+cartofriches.friches(in_bbox=c(3, 50, 4, 51))
+```
+
+
+## cartofriches.geofriches()
+
+Retourne les friches issues de Cartofriches pour le périmètre demandé sous forme d’un sf
+
+```r
+cartofriches.geofriches(code_insee="59350")
+cartofriches.geofriches(coddep="59")
+cartofriches.geofriches(in_bbox=c(3, 50, 4, 51))
+```
+
+## cartofriches.friche()
+
+Renvoi la friche correpondant au site_id
+
+```r
+cartofriches.friche(site_id="id_du_site")
+```
+
+_Retrouvez toutes les fonctions liées aux données de cartofriches directement dans [l'onglet Référence](https://rcadot.github.io/r.apifoncier/reference/index.html#cartofriches)._
+
+
+# Exemples
+
+
+## Communes ayant le plus de friches identifiées sur un département
+
+On charge les packages nécessaires.
+
+```{r setup, message=FALSE, warning=FALSE}
+library(mapview)
+library(apifoncier)
+library(tidyverse)
+library(plotly)
+```
+
+On récupère les friches du département 59
+
+```{r}
+df <- cartofriches.friches(coddep="59")
+```
+
+```{r}
+# Décompte par commune
+result <-
+  df %>% 
+  group_by(comm_nom) %>% 
+  tally() %>% 
+  arrange(desc(n)) %>% 
+  head(15)
+
+# Génération du graphique
+result %>% 
+  plot_ly(
+    x=~n,
+    y=~comm_nom
+  ) %>% 
+  layout(
+  xaxis = list(title = "Nombre de friches"),
+  yaxis = list(title = "Communes",categoryorder = "total descending"),
+  title = "Communes ayant le plus de friches dans le département du Nord"
+)
+```
+
+## Affichage des friches dans une emprise rectangulaire
+
+```{r message=FALSE, warning=FALSE}
+sf <- cartofriches.geofriches(in_bbox=c(3, 50, 3.5, 50.5))
+
+mapview(sf)
+```
+
