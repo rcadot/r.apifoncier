@@ -10,12 +10,6 @@ knitr::opts_chunk$set(
 ```
 
 
-```{r setup}
-library(apifoncier)
-library(plotly)
-library(tidyverse)
-library(tmap)
-```
 
 # Présentation
 
@@ -72,6 +66,16 @@ _Retrouvez l'ensemble des fonctions disponibles directement dans [l'onglet réf�
 
 
 # Exemples
+
+On charge les packages nécessaires.
+
+```{r setup, message=FALSE, warning=FALSE}
+library(apifoncier)
+library(plotly)
+library(tidyverse)
+library(tmap)
+```
+
 
 ## Evolution des prix et des volumes de transactions
 

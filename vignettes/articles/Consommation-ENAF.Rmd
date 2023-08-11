@@ -9,12 +9,6 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup}
-library(apifoncier)
-library(tidyverse)
-library(plotly)
-```
-
 
 # Présentation
 
@@ -50,6 +44,15 @@ _Retrouvez l'ensemble des fonctions disponibles directement dans [l'onglet réf�
 
 
 # Exemples
+
+On charge les packages nécessaires.
+
+```{r setup, message=FALSE, warning=FALSE}
+library(apifoncier)
+library(tidyverse)
+library(plotly)
+```
+
 
 ```{r message=FALSE, warning=FALSE}
 

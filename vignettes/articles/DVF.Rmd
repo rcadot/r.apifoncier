@@ -9,14 +9,6 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup}
-library(apifoncier)
-library(tidyverse)
-library(plotly)
-library(sf)
-library(leaflet)
-library(leaflet.extras)
-```
 
 # Présentation
 
@@ -61,6 +53,17 @@ _Retrouvez l'ensemble des fonctions `dvf.*` dans [l'onglet référence](https://
 # Exemples
 
 ## Distribution des ventes de maison sur une commune
+
+On charge les packages nécessaires.
+
+```{r setup, message=FALSE, warning=FALSE}
+library(apifoncier)
+library(tidyverse)
+library(plotly)
+library(sf)
+library(leaflet)
+library(leaflet.extras)
+```
 
 
 ```{r}

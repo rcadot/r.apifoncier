@@ -9,12 +9,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup}
-library(mapview)
-library(apifoncier)
-library(tidyverse)
-library(plotly)
-```
+
 
 # Présentation
 
@@ -58,7 +53,17 @@ _Retrouvez toutes les fonctions liées aux données de cartofriches directement 
 
 # Exemples
 
+
 ## Communes ayant le plus de friches identifiées sur un département
+
+On charge les packages nécessaires.
+
+```{r setup, message=FALSE, warning=FALSE}
+library(mapview)
+library(apifoncier)
+library(tidyverse)
+library(plotly)
+```
 
 On récupère les friches du département 59
 
