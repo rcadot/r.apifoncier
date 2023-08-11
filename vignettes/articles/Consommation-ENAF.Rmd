@@ -4,7 +4,7 @@ title: "Indicateurs de consommation d’espace"
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
-  collapse = TRUE,
+  collapse = TRUE,eval = F,
   comment = "#>"
 )
 ```
